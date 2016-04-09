@@ -3,7 +3,7 @@ Powered by TARS
 
 ##Installation
 
-`npm init`
+`npm install`
 
 It does not require global gulp or tars-cli, but you can install it optionally.
 
