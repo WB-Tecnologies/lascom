@@ -66,6 +66,7 @@
         "install": "node ./tars/helpers/install-additional-deps.js",
         "lint": "eslint tars/*.js tars/tasks/**/*.js tars/watchers/**/*.js tars/helpers/**/*.js gulpfile.js --rule 'valid-jsdoc: [0, {}]'",
         "build": "./node_modules/.bin/gulp build",
+        "dev": "./node_modules/.bin/gulp dev --lr",
         "init": "./node_modules/.bin/gulp init",
         "re-init": "./node_modules/.bin/gulp re-init"
     },
