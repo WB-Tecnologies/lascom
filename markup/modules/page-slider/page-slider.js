@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
 
