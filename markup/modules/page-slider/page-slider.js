@@ -14,23 +14,33 @@ for (let i = 0, length = slides.length, index = slides.length; i < length; i++) 
 }
 
 // Scroll slides.
-let currentSlide = 0;
-const scrollSlides = () => {
-    if (window.pageYOffset >= currentSlide * viewPortHeight) {
-
-        slides[currentSlide].active = true;
-        slides[currentSlide].style.position = 'absolute';
-        slides[currentSlide].style.top = currentSlide * viewPortHeight + 'px';
-        if (currentSlide < (slides.length - 1)) {
-            currentSlide++;
+let currentSlide = 1;
+let pageYOld = window.pageYOffset;
+let scrollSlides = () => {
+    // Scroll direction top.
+    if (pageYOld > window.pageYOffset) {
+        if (window.pageYOffset < currentSlide * viewPortHeight) {
+            slides[currentSlide].style.position = 'fixed';
+            slides[currentSlide].style.top = 'initial';
+            if (--currentSlide < 1) {
+                currentSlide = 1;
+            }
         }
 
+    // Scroll direction bottom.
     } else {
-        slides[currentSlide].style.position = 'fixed';
-        slides[currentSlide].style.top = 'initial';
-        currentSlide--;
-
+        if (window.pageYOffset >= currentSlide * viewPortHeight) {
+            slides[currentSlide].active = true;
+            slides[currentSlide].style.position = 'absolute';
+            slides[currentSlide].style.top = currentSlide * viewPortHeight + 'px';
+            if (currentSlide < (slides.length - 1)) {
+                currentSlide++;
+            }
+        }
     }
+    pageYOld = window.pageYOffset;
 };
+scrollSlides = _.throttle(scrollSlides, 50);
+
 window.addEventListener('scroll', scrollSlides);
 
