@@ -1,11 +1,13 @@
 #Lascom markup
-Powered by TARS
+Powered by [TARS](https://github.com/tars/tars)
 
 ##Installation
 
 `npm install`
 
 It does not require global gulp or tars-cli, but you can install it optionally.
+
+`npm install tars-cli -g`
 
 ##Scripts
 
