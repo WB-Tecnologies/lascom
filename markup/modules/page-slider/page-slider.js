@@ -10,6 +10,7 @@ body.style.height = viewPortHeight * slides.length + 'px';
 // Set z-index for slides.
 for (let i = 0, length = slides.length, index = slides.length; i < length; i++) {
     slides[i].style.zIndex = (index--);
+    slides[i].style.display = 'block';
 }
 
 // Scroll slides.
