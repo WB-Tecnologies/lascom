@@ -30,7 +30,6 @@ let scrollSlides = () => {
     // Scroll direction bottom.
     } else {
         if (window.pageYOffset >= currentSlide * viewPortHeight) {
-            slides[currentSlide].active = true;
             slides[currentSlide].style.position = 'absolute';
             slides[currentSlide].style.top = currentSlide * viewPortHeight + 'px';
             if (currentSlide < (slides.length - 1)) {
