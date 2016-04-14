@@ -8,28 +8,37 @@ let viewPortHeight = Math.max(document.documentElement.clientHeight, window.inne
 body.style.height = viewPortHeight * slides.length + 'px';
 
 // Set z-index for slides.
-for (let i = 0, length = slides.length, index = slides.length; i < length; i++) {
-    slides[i].style.zIndex = (index--);
-}
+let index = slides.length;
+_.forEach(slides, (slide) => {
+    slide.style.zIndex = (index--);
+    slide.style.display = 'block';
+});
 
 // Scroll slides.
-let currentSlide = 0;
-const scrollSlides = () => {
-    if (window.pageYOffset >= currentSlide * viewPortHeight) {
+let currentSlide = 1;
+let pageYOld = window.pageYOffset;
+let scrollSlides = () => {
+    let currentSlideBoundary = currentSlide * viewPortHeight;
 
-        slides[currentSlide].active = true;
+    // Scroll direction top.
+    if ((pageYOld > window.pageYOffset) && (window.pageYOffset < currentSlideBoundary)) {
+        slides[currentSlide].style.position = 'fixed';
+        slides[currentSlide].style.top = 'initial';
+        if (--currentSlide < 1) {
+            currentSlide = 1;
+        }
+
+    // Scroll direction bottom.
+    } else if (window.pageYOffset >= currentSlideBoundary) {
         slides[currentSlide].style.position = 'absolute';
-        slides[currentSlide].style.top = currentSlide * viewPortHeight + 'px';
+        slides[currentSlide].style.top = currentSlideBoundary + 'px';
         if (currentSlide < (slides.length - 1)) {
             currentSlide++;
         }
-
-    } else {
-        slides[currentSlide].style.position = 'fixed';
-        slides[currentSlide].style.top = 'initial';
-        currentSlide--;
-
     }
+    pageYOld = window.pageYOffset;
 };
+scrollSlides = _.throttle(scrollSlides, 50);
+
 window.addEventListener('scroll', scrollSlides);
 
