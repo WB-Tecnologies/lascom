@@ -21,7 +21,7 @@ let scrollSlides = () => {
     let currentSlideBoundary = currentSlide * viewPortHeight;
 
     // Scroll direction top.
-    if ((pageYOld > window.pageYOffset) && (window.pageYOffset < currentSlideBoundary)) {
+    if (pageYOld > window.pageYOffset && window.pageYOffset < currentSlideBoundary) {
         slides[currentSlide].style.position = 'fixed';
         slides[currentSlide].style.top = 'initial';
         if (--currentSlide < 1) {
@@ -38,7 +38,7 @@ let scrollSlides = () => {
     }
     pageYOld = window.pageYOffset;
 };
-scrollSlides = _.throttle(scrollSlides, 50);
+scrollSlides = _.throttle(scrollSlides, 10);
 
 window.addEventListener('scroll', scrollSlides);
 

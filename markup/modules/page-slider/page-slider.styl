@@ -2,6 +2,7 @@
   box-sizing border-box
   display none
   height 100%
+  overflow hidden
   padding 0 20px
   position fixed
   text-align center
@@ -9,6 +10,12 @@
   &:first-child
     display block
     position absolute
+
+.detached-screen_content
+  padding-top 20vh
+
+.detached-screen_icon-img
+  max-width 100%
 
 .detached-screen_icon-subtitle
   color #ffffff
@@ -51,7 +58,7 @@
   background #eb0029
   border none
   color #ffffff
-  margin-top 60px
+  margin-top 5vh
   min-height 60px
   min-width 300px
   transition background 50ms
@@ -60,3 +67,38 @@
     transition background 100ms
   &:focus
     outline none
+
+// @media (max-width: 800px)
+//   .detached-screen
+//     padding 0 5px
+
+//   .detached-screen_description-text
+//     font-size 24px
+//     line-height 32px
+
+//   .detached-screen_btn
+//     min-width 100%
+
+//   .detached-screen_icon-img
+//     max-width 26vw
+
+//   .detached-screen_icon-subtitle
+//     margin 10px 0
+
+//   .detached-screen_description-list_item
+//     margin-bottom 10px
+//     &:last-child
+//       margin-bottom 0
+
+//   .detached-screen_description-list_text
+//     font-size 24px
+//     line-height 32px
+//     &:before
+//         border-radius 50%
+//         content ""
+//         height 6px
+//         left -10px
+//         position absolute
+//         top 12px
+//         width 6px
+
