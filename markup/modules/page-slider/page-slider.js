@@ -20,16 +20,19 @@ _.forEach(slides, (slide) => {
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 
+// Set slide overlay opacity.
+let setSlideOpacity = (_pageYNew, _currentSlide) => {
+    let nextSlideOpacity = 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
+    slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+};
+
 let scrollSlides = () => {
     let currentSlideBoundary = currentSlide * viewPortHeight;
     let pageYNew = window.pageYOffset;
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
-
-        // Calculate nextSlide opacity while scroll up.
-        let nextSlideOpacity = 1 - (pageYNew / viewPortHeight - (currentSlide - 1));
-        slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+        setSlideOpacity(pageYNew, currentSlide);
 
         // Set current slide fixed.
         if (pageYNew < currentSlideBoundary) {
@@ -44,10 +47,7 @@ let scrollSlides = () => {
 
     // Scroll direction bottom.
     } else {
-
-        // Calculate nextSlide opacity while scroll down.
-        let nextSlideOpacity = 1 - (pageYNew / viewPortHeight - (currentSlide - 1));
-        slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+        setSlideOpacity(pageYNew, currentSlide);
 
         // Make current slide scrollable.
         if (pageYNew >= currentSlideBoundary) {
