@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
+let slidesOverlays = [];
 
 // Set body height by slides count.
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -12,6 +13,7 @@ let index = slides.length;
 _.forEach(slides, (slide) => {
     slide.style.zIndex = (index--);
     slide.style.display = 'block';
+    slidesOverlays.push(slide.querySelector('.detached-screen_overlay'));
 });
 
 // Scroll slides.
@@ -27,8 +29,7 @@ let scrollSlides = () => {
 
         // Calculate nextSlide opacity while scroll up.
         let nextSlideOpacity = 1 - (pageYNew / viewPortHeight - (currentSlide - 1));
-        let nextSlideOverlay = slides[currentSlide].querySelector('.detached-screen_overlay');
-        nextSlideOverlay.style.opacity = nextSlideOpacity;
+        slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
 
         // Set current slide fixed.
         if (pageYNew < currentSlideBoundary) {
@@ -46,8 +47,7 @@ let scrollSlides = () => {
 
         // Calculate nextSlide opacity while scroll down.
         let nextSlideOpacity = 1 - (pageYNew / viewPortHeight - (currentSlide - 1));
-        let nextSlideOverlay = slides[currentSlide].querySelector('.detached-screen_overlay');
-        nextSlideOverlay.style.opacity = nextSlideOpacity;
+        slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
 
         // Make current slide scrollable.
         if (pageYNew >= currentSlideBoundary) {
