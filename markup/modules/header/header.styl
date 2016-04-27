@@ -1,26 +1,44 @@
+// Color Map.
+$headerLinkColor = #666666
+
 .header
   padding-top 40px
 
 .header-nav
-  text-align right
+  text-align left
 
 .header-nav-list
   list-style none
+  margin 0
+  -webkit-padding-start 0
 
 .header-nav-list_item
-  color: #ffffff
-  cursor pointer
-  font-size 12px
   display inline-block
-  margin-right 20px
-  text-transform uppercase
-  transition color 100ms
-  vertical-align baseline
+  margin-right 30px
+  vertical-align middle
+  &:first-child
+    margin-right 40px
   &:last-child
     margin-right 0
+    .header-nav-list_link
+      font-family: $AvenirDemi
+
+.header-nav-list_link
+  color: $headerLinkColor
+  cursor pointer
+  font-size 14px
+  font-family $AvenirRegular
+  text-decoration none
+  text-transform uppercase
+  transition color 100ms
   &:hover
     color #eb0029
     transition color 50ms
+
+
+.header-nav_logo-img
+  height 40px
+  width 142px
 
 // @media (max-width 500px)
 //   .header
