@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
+let slidesOverlays = [];
 
 // Set body height by slides count.
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -12,31 +13,55 @@ let index = slides.length;
 _.forEach(slides, (slide) => {
     slide.style.zIndex = (index--);
     slide.style.display = 'block';
+    slidesOverlays.push(slide.querySelector('.detached-screen_overlay'));
 });
 
 // Scroll slides.
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
+
+// Set slide overlay opacity.
+let setSlideOpacity = (_pageYNew, _currentSlide) => {
+    let nextSlideOpacity = 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
+    slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+};
+
 let scrollSlides = () => {
     let currentSlideBoundary = currentSlide * viewPortHeight;
+    let pageYNew = window.pageYOffset;
 
     // Scroll direction top.
-    if (pageYOld > window.pageYOffset && window.pageYOffset < currentSlideBoundary) {
-        slides[currentSlide].style.position = 'fixed';
-        slides[currentSlide].style.top = 'initial';
-        if (--currentSlide < 1) {
-            currentSlide = 1;
+    if (pageYOld > pageYNew) {
+        setSlideOpacity(pageYNew, currentSlide);
+
+        // Set current slide fixed.
+        if (pageYNew < currentSlideBoundary) {
+            slides[currentSlide].style.position = 'fixed';
+            slides[currentSlide].style.top = 'initial';
+
+            // Switch slide when upslide overlay it.
+            if (pageYNew < (currentSlideBoundary - viewPortHeight) && --currentSlide < 1) {
+                currentSlide = 1;
+            }
         }
 
     // Scroll direction bottom.
-    } else if (window.pageYOffset >= currentSlideBoundary) {
-        slides[currentSlide].style.position = 'absolute';
-        slides[currentSlide].style.top = currentSlideBoundary + 'px';
-        if (currentSlide < (slides.length - 1)) {
-            currentSlide++;
+    } else {
+        setSlideOpacity(pageYNew, currentSlide);
+
+        // Make current slide scrollable.
+        if (pageYNew >= currentSlideBoundary) {
+            slides[currentSlide].style.position = 'absolute';
+            slides[currentSlide].style.top = currentSlideBoundary + 'px';
+
+            // Switch to next slide.
+            if (currentSlide < (slides.length - 1)) {
+                currentSlide++;
+            }
         }
     }
-    pageYOld = window.pageYOffset;
+
+    pageYOld = pageYNew;
 };
 scrollSlides = _.throttle(scrollSlides, 10);
 
