@@ -1,8 +1,45 @@
 // Color Map.
+$headerFixedBg = #ffffff
 $headerLinkColor = #666666
 
 .header
   padding-top 40px
+
+.header-fixed
+  background $headerFixedBg
+  box-shadow 0 0 30px 0 rgba(0, 0, 0, .13)
+  min-height: 70px
+  opacity: 0
+  position fixed
+  top 0
+  transition: opacity 200ms
+  left 0
+  width: 100%
+  .header-nav
+    display flex
+    justify-content: space-between
+    align-items center
+    margin: 0 auto
+    max-width: 1440px
+    min-height: 70px
+
+.header-fixed__active
+  opacity: 1
+
+.header-fixed_btn
+  background $btnRed
+  border none
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 16px
+  min-height 40px
+  width 220px
+  transition background 50ms
+  &:hover
+    background #da0018
+    transition background 100ms
+  &:focus
+    outline none
 
 .header-nav
   text-align left
@@ -20,8 +57,6 @@ $headerLinkColor = #666666
     margin-right 40px
   &:last-child
     margin-right 0
-    .header-nav-list_link
-      font-family: $AvenirDemi
 
 .header-nav-list_link
   color: $headerLinkColor
@@ -35,6 +70,8 @@ $headerLinkColor = #666666
     color #eb0029
     transition color 50ms
 
+.header-nav-list_link__lang
+  font-family: $AvenirDemi
 
 .header-nav_logo-img
   height 40px
