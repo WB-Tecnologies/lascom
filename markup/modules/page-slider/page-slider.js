@@ -47,6 +47,11 @@ let pageYOld = window.pageYOffset;
 let setSlideOpacity = (_pageYNew, _currentSlide) => {
     let nextSlideOpacity = 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
     slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+    if (nextSlideOpacity < 0.1) {
+        slidesOverlays[currentSlide].classList.add('detached-screen_overlay__transparent');
+    } else {
+        slidesOverlays[currentSlide].classList.remove('detached-screen_overlay__transparent');
+    }
 };
 
 let scrollSlides = () => {
