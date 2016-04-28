@@ -1,5 +1,8 @@
 import _ from 'lodash';
 
+const SLIDE_BEFORE_PARALAX = 2;
+const SLIDE_PARALAX = 3;
+const paralaxContent = document.querySelector('.usage-paralax');
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
 let slidesOverlays = [];
@@ -47,11 +50,13 @@ let pageYOld = window.pageYOffset;
 let setSlideOpacity = (_pageYNew, _currentSlide) => {
     let nextSlideOpacity = 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
     slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+
     if (nextSlideOpacity < 0.1) {
         slidesOverlays[currentSlide].classList.add('detached-screen_overlay__transparent');
     } else {
         slidesOverlays[currentSlide].classList.remove('detached-screen_overlay__transparent');
     }
+    return nextSlideOpacity;
 };
 
 let scrollSlides = () => {
@@ -60,7 +65,17 @@ let scrollSlides = () => {
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
-        setSlideOpacity(pageYNew, currentSlide);
+
+        // Paralax slide behavior.
+        if (currentSlide === SLIDE_BEFORE_PARALAX) {
+            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100;
+            paralaxContent.style.left = scrolledSlice + '%';
+        } else if (currentSlide === SLIDE_PARALAX) {
+            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100 - 100;
+            paralaxContent.style.left = scrolledSlice + '%';
+        } else {
+            setSlideOpacity(pageYNew, currentSlide);
+        }
 
         // Set current slide fixed.
         if (pageYNew < currentSlideBoundary) {
@@ -75,7 +90,17 @@ let scrollSlides = () => {
 
     // Scroll direction bottom.
     } else {
-        setSlideOpacity(pageYNew, currentSlide);
+
+        // Paralax slide behavior.
+        if (currentSlide === SLIDE_BEFORE_PARALAX) {
+            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100;
+            paralaxContent.style.left = scrolledSlice + '%';
+        } else if (currentSlide === SLIDE_PARALAX) {
+            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100 - 100;
+            paralaxContent.style.left = scrolledSlice + '%';
+        } else {
+            setSlideOpacity(pageYNew, currentSlide);
+        }
 
         // Make current slide scrollable.
         if (pageYNew >= currentSlideBoundary) {
