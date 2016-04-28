@@ -45,7 +45,7 @@ let pageYOld = window.pageYOffset;
 
 // Get slide overlay opacity.
 function getSlideOpacity(_pageYNew, _currentSlide) {
-    return 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
+    return 1 - (_pageYNew / viewPortHeight - _currentSlide - 1);
 }
 
 // Get slide overlay element.
