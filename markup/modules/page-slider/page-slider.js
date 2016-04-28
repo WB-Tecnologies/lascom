@@ -4,10 +4,6 @@ const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
 let slidesOverlays = [];
 
-// Set body height by slides count.
-let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-body.style.height = viewPortHeight * slides.length + 'px';
-
 // Set z-index for slides.
 let index = slides.length;
 _.forEach(slides, (slide) => {
@@ -15,6 +11,33 @@ _.forEach(slides, (slide) => {
     slide.style.display = 'block';
     slidesOverlays.push(slide.querySelector('.detached-screen_overlay'));
 });
+
+// Get current slide boundary.
+let getCurentSlideBoundary = () => {
+    let cache = {};
+
+    return (_currentSlide) => {
+
+        // Return result from cache if any.
+        if (cache[_currentSlide]) {
+            return cache[_currentSlide];
+        }
+
+        // Calculate result.
+        let currentSlideBoundary = 0;
+        _.forEach(slides, (slide, i) => {
+            currentSlideBoundary += slide.clientHeight;
+            cache[i + 1] = currentSlideBoundary;
+        });
+        return cache[_currentSlide];
+    };
+};
+getCurentSlideBoundary = getCurentSlideBoundary();
+
+// Set body height.
+let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+let bodyHeight = getCurentSlideBoundary(slides.length);
+body.style.height = bodyHeight + 'px';
 
 // Scroll slides.
 let currentSlide = 1;
@@ -27,7 +50,7 @@ let setSlideOpacity = (_pageYNew, _currentSlide) => {
 };
 
 let scrollSlides = () => {
-    let currentSlideBoundary = currentSlide * viewPortHeight;
+    let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
     let pageYNew = window.pageYOffset;
 
     // Scroll direction top.
