@@ -82,12 +82,10 @@ function scrollSlides() {
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
-        // Update next slide opacity.
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide]);
         updateSlideOpacity(slideOverlay, slideOpacity);
 
-        // Update paralax position.
         updateParalaxPosition(currentSlide, slideOpacity);
 
         // Set current slide fixed.
@@ -103,12 +101,10 @@ function scrollSlides() {
 
     // Scroll direction bottom.
     } else {
-        // Update next slide opacity.
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide]);
         updateSlideOpacity(slideOverlay, slideOpacity);
 
-        // Update paralax position.
         updateParalaxPosition(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
