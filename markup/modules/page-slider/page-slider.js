@@ -5,14 +5,12 @@ const SLIDE_PARALAX = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
-let slidesOverlays = [];
 
 // Set z-index for slides.
 let index = slides.length;
 _.forEach(slides, (slide) => {
     slide.style.zIndex = (index--);
     slide.style.display = 'block';
-    slidesOverlays.push(slide.querySelector('.detached-screen_overlay'));
 });
 
 // Get current slide boundary.
@@ -46,17 +44,45 @@ body.style.height = bodyHeight + 'px';
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 
-// Set slide overlay opacity.
-let setSlideOpacity = (_pageYNew, _currentSlide) => {
-    let nextSlideOpacity = 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
-    slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+// Get slide overlay opacity.
+const getSlideOpacity = (_pageYNew, _currentSlide) => {
+    return 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
 
-    if (nextSlideOpacity < 0.1) {
-        slidesOverlays[currentSlide].classList.add('detached-screen_overlay__transparent');
+    // slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
+
+    // if (nextSlideOpacity < 0.1) {
+    //     slidesOverlays[currentSlide].classList.add('detached-screen_overlay__transparent');
+    // } else {
+    //     slidesOverlays[currentSlide].classList.remove('detached-screen_overlay__transparent');
+    // }
+};
+
+// Get slide overlay element.
+let getSlideOverlay = (element) => {
+    return element.querySelector('.detached-screen_overlay');
+};
+getSlideOverlay = _.memoize(getSlideOverlay);
+
+// Update slide opacity.
+const updateSlideOpacity = (slide, slideOpacity) => {
+    slide.style.opacity = slideOpacity;
+
+    if (slideOpacity < 0.1) {
+        slide.classList.add('detached-screen_overlay__transparent');
     } else {
-        slidesOverlays[currentSlide].classList.remove('detached-screen_overlay__transparent');
+        slide.classList.remove('detached-screen_overlay__transparent');
     }
-    return nextSlideOpacity;
+};
+
+// Update paralax position.
+const updateParalaxPosition = (_currentSlide, scrolledSlice) => {
+    if (_currentSlide === SLIDE_BEFORE_PARALAX) {
+        scrolledSlice *= 100;
+        paralaxContent.style.left = scrolledSlice + '%';
+    } else if (_currentSlide === SLIDE_PARALAX) {
+        scrolledSlice = scrolledSlice * 100 - 100;
+        paralaxContent.style.left = scrolledSlice + '%';
+    }
 };
 
 let scrollSlides = () => {
@@ -65,17 +91,13 @@ let scrollSlides = () => {
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
+        // Update next slide opacity.
+        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
+        let slideOverlay = getSlideOverlay(slides[currentSlide]);
+        updateSlideOpacity(slideOverlay, slideOpacity);
 
-        // Paralax slide behavior.
-        if (currentSlide === SLIDE_BEFORE_PARALAX) {
-            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100;
-            paralaxContent.style.left = scrolledSlice + '%';
-        } else if (currentSlide === SLIDE_PARALAX) {
-            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100 - 100;
-            paralaxContent.style.left = scrolledSlice + '%';
-        } else {
-            setSlideOpacity(pageYNew, currentSlide);
-        }
+        // Update paralax position.
+        updateParalaxPosition(currentSlide, slideOpacity);
 
         // Set current slide fixed.
         if (pageYNew < currentSlideBoundary) {
@@ -90,17 +112,13 @@ let scrollSlides = () => {
 
     // Scroll direction bottom.
     } else {
+        // Update next slide opacity.
+        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
+        let slideOverlay = getSlideOverlay(slides[currentSlide]);
+        updateSlideOpacity(slideOverlay, slideOpacity);
 
-        // Paralax slide behavior.
-        if (currentSlide === SLIDE_BEFORE_PARALAX) {
-            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100;
-            paralaxContent.style.left = scrolledSlice + '%';
-        } else if (currentSlide === SLIDE_PARALAX) {
-            let scrolledSlice = setSlideOpacity(pageYNew, currentSlide) * 100 - 100;
-            paralaxContent.style.left = scrolledSlice + '%';
-        } else {
-            setSlideOpacity(pageYNew, currentSlide);
-        }
+        // Update paralax position.
+        updateParalaxPosition(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
         if (pageYNew >= currentSlideBoundary) {
