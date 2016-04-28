@@ -92,6 +92,7 @@ let scrollSlides = () => {
     pageYOld = pageYNew;
 };
 scrollSlides = _.throttle(scrollSlides, 10);
+scrollSlides();
 
 window.addEventListener('scroll', scrollSlides);
 
