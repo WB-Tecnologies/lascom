@@ -3,26 +3,30 @@ import _ from 'lodash';
 const SLIDE_BEFORE_PARALAX = 2;
 const SLIDE_PARALAX = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
-const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
 const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
-
-// Set z-index for slides.
-let index = slides.length;
-_.forEach(slides, (slide) => {
-    slide.style.zIndex = (index--);
-    slide.style.display = 'block';
-});
-
 let getCurentSlideBoundary = сurentSlideBoundaryFactory();
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 
-body.style.height = getCurentSlideBoundary(slides.length) + 'px';
-scrollSlides();
-window.addEventListener('scroll', scrollSlidesThrottled);
+initialize();
+
+function initialize() {
+    initSliderHeight();
+    document.querySelector('body').style.height = getCurentSlideBoundary(slides.length) + 'px';
+    scrollSlides();
+    window.addEventListener('scroll', scrollSlidesThrottled);
+}
+
+function initSliderHeight() {
+    let index = slides.length;
+    _.forEach(slides, (slide) => {
+        slide.style.zIndex = (index--);
+        slide.style.display = 'block';
+    });
+}
 
 function сurentSlideBoundaryFactory() {
     let cache = {};
