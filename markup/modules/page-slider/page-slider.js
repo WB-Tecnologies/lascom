@@ -1,23 +1,33 @@
 import _ from 'lodash';
 
+const SLIDE_BEFORE_PARALAX = 2;
+const SLIDE_PARALAX = 3;
+const paralaxContent = document.querySelector('.usage-paralax');
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
-let slidesOverlays = [];
+const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
 
 // Set z-index for slides.
 let index = slides.length;
 _.forEach(slides, (slide) => {
     slide.style.zIndex = (index--);
     slide.style.display = 'block';
-    slidesOverlays.push(slide.querySelector('.detached-screen_overlay'));
 });
 
-// Get current slide boundary.
-let getCurentSlideBoundary = () => {
+let getCurentSlideBoundary = сurentSlideBoundaryFactory();
+let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+let currentSlide = 1;
+let pageYOld = window.pageYOffset;
+let getSlideOverlayMemo = _.memoize(getSlideOverlay);
+
+body.style.height = getCurentSlideBoundary(slides.length) + 'px';
+scrollSlides();
+window.addEventListener('scroll', scrollSlidesThrottled);
+
+function сurentSlideBoundaryFactory() {
     let cache = {};
 
     return (_currentSlide) => {
-
         // Return result from cache if any.
         if (cache[_currentSlide]) {
             return cache[_currentSlide];
@@ -31,36 +41,47 @@ let getCurentSlideBoundary = () => {
         });
         return cache[_currentSlide];
     };
-};
-getCurentSlideBoundary = getCurentSlideBoundary();
+}
 
-// Set body height.
-let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-let bodyHeight = getCurentSlideBoundary(slides.length);
-body.style.height = bodyHeight + 'px';
+function getSlideOpacity(_pageYNew, _currentSlide) {
+    return 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
+}
 
-// Scroll slides.
-let currentSlide = 1;
-let pageYOld = window.pageYOffset;
+function getSlideOverlay(element) {
+    return element.querySelector('.detached-screen_overlay');
+}
 
-// Set slide overlay opacity.
-let setSlideOpacity = (_pageYNew, _currentSlide) => {
-    let nextSlideOpacity = 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
-    slidesOverlays[currentSlide].style.opacity = nextSlideOpacity;
-    if (nextSlideOpacity < 0.1) {
-        slidesOverlays[currentSlide].classList.add('detached-screen_overlay__transparent');
+function updateSlideOpacity(slide, slideOpacity) {
+    slide.style.opacity = slideOpacity;
+
+    if (slideOpacity < 0.1) {
+        slide.classList.add('detached-screen_overlay__transparent');
     } else {
-        slidesOverlays[currentSlide].classList.remove('detached-screen_overlay__transparent');
+        slide.classList.remove('detached-screen_overlay__transparent');
     }
-};
+}
 
-let scrollSlides = () => {
+function updateParalaxPosition(_currentSlide, scrolledSlice) {
+    if (_currentSlide === SLIDE_BEFORE_PARALAX) {
+        scrolledSlice *= 100;
+        paralaxContent.style.left = scrolledSlice + '%';
+    } else if (_currentSlide === SLIDE_PARALAX) {
+        scrolledSlice = scrolledSlice * 100 - 100;
+        paralaxContent.style.left = scrolledSlice + '%';
+    }
+}
+
+function scrollSlides() {
     let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
     let pageYNew = window.pageYOffset;
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
-        setSlideOpacity(pageYNew, currentSlide);
+        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
+        let slideOverlay = getSlideOverlayMemo(slides[currentSlide]);
+        updateSlideOpacity(slideOverlay, slideOpacity);
+
+        updateParalaxPosition(currentSlide, slideOpacity);
 
         // Set current slide fixed.
         if (pageYNew < currentSlideBoundary) {
@@ -75,7 +96,11 @@ let scrollSlides = () => {
 
     // Scroll direction bottom.
     } else {
-        setSlideOpacity(pageYNew, currentSlide);
+        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
+        let slideOverlay = getSlideOverlayMemo(slides[currentSlide]);
+        updateSlideOpacity(slideOverlay, slideOpacity);
+
+        updateParalaxPosition(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
         if (pageYNew >= currentSlideBoundary) {
@@ -90,9 +115,4 @@ let scrollSlides = () => {
     }
 
     pageYOld = pageYNew;
-};
-scrollSlides = _.throttle(scrollSlides, 10);
-scrollSlides();
-
-window.addEventListener('scroll', scrollSlides);
-
+}
