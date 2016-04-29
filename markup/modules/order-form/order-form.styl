@@ -1,0 +1,100 @@
+$colorInputBorder = #F89DAC
+$colorInputBorderFocus = #EB0029
+
+.detached-screen__order
+  background: #ffffff
+
+.order-content_title
+  color $colorRed
+  font-family: $AvenirDemi
+  font-size: 32px
+  margin: 0 0 4.45vh 0
+  text-decoration: none
+
+.order-form-list
+  list-style: none
+  margin: 0
+  padding: 0
+  width: 100%
+
+.order-form-list_item
+  margin-top: -1px
+  &:first-child
+    margin-top: 0
+
+.order-form_input
+  box-sizing border-box
+  border 1px solid $colorInputBorder
+  color $colorRed
+  font-family: $AvenirRegular
+  font-size: 16px
+  line-height: 50px
+  padding: 0 15px
+  position: relative
+  text-shadow: 0px 0px 0px #000;
+  width: 100%
+  -webkit-text-fill-color: transparent;
+  z-index: 0
+  &:focus
+    font-family: $AvenirDemi
+    border-color $colorInputBorderFocus
+    outline: none
+    z-index: 1
+    &::-webkit-input-placeholder
+        text-shadow: none
+        -webkit-text-fill-color: transparent
+  &::-webkit-input-placeholder
+    text-shadow: none
+    -webkit-text-fill-color: initial
+
+.order-form_textarea
+  box-sizing border-box
+  border 1px solid $colorInputBorder
+  color $colorRed
+  font-family: $AvenirRegular
+  font-size: 16px
+  line-height: 20px
+  margin-top: 2.2vh
+  min-height: 180px
+  padding: 15px
+  position: relative
+  resize none
+  text-shadow: 0px 0px 0px #000;
+  width: 100%
+  -webkit-text-fill-color: transparent;
+  z-index: 0
+  &:focus
+    font-family: $AvenirDemi
+    border-color $colorInputBorderFocus
+    outline: none
+    z-index: 1
+    &::-webkit-input-placeholder
+        text-shadow: none
+        -webkit-text-fill-color: transparent
+  &::-webkit-input-placeholder
+    text-shadow: none
+    -webkit-text-fill-color: initial
+
+.order-submit_btn
+  background $btnRed
+  border none
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 18px
+  margin-top 2.2vh
+  min-height 80px
+  width 100%
+  transition background 50ms
+  &:hover
+    background #da0018
+    transition background 100ms
+  &:focus
+    outline none
+
+
+
+
+
+
+
+
