@@ -116,7 +116,7 @@
         "args": "after-used"
       }
     ],
-    "no-use-before-define": 2,
+    "no-use-before-define": ["error", { "functions": false }],
     "no-with": 2,
     "quotes": [
       2,
