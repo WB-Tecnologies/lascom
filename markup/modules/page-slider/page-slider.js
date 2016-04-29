@@ -5,6 +5,7 @@ const SLIDE_PARALAX = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
 const body = document.querySelector('body');
 const slides = document.querySelectorAll('.detached-screen');
+const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
 
 // Set z-index for slides.
 let index = slides.length;
@@ -13,7 +14,16 @@ _.forEach(slides, (slide) => {
     slide.style.display = 'block';
 });
 
-// Get current slide boundary.
+let getCurentSlideBoundary = сurentSlideBoundaryFactory();
+let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+let currentSlide = 1;
+let pageYOld = window.pageYOffset;
+let getSlideOverlayMemo = _.memoize(getSlideOverlay);
+
+body.style.height = getCurentSlideBoundary(slides.length) + 'px';
+scrollSlides();
+window.addEventListener('scroll', scrollSlidesThrottled);
+
 function сurentSlideBoundaryFactory() {
     let cache = {};
 
@@ -32,29 +42,15 @@ function сurentSlideBoundaryFactory() {
         return cache[_currentSlide];
     };
 }
-let getCurentSlideBoundary = сurentSlideBoundaryFactory();
 
-// Set body height.
-let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-let bodyHeight = getCurentSlideBoundary(slides.length);
-body.style.height = bodyHeight + 'px';
-
-// Scroll slides.
-let currentSlide = 1;
-let pageYOld = window.pageYOffset;
-
-// Get slide overlay opacity.
 function getSlideOpacity(_pageYNew, _currentSlide) {
-    return 1 - (_pageYNew / viewPortHeight - _currentSlide - 1);
+    return 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
 }
 
-// Get slide overlay element.
 function getSlideOverlay(element) {
     return element.querySelector('.detached-screen_overlay');
 }
-let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 
-// Update slide opacity.
 function updateSlideOpacity(slide, slideOpacity) {
     slide.style.opacity = slideOpacity;
 
@@ -65,7 +61,6 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
-// Update paralax position.
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
         scrolledSlice *= 100;
@@ -121,8 +116,3 @@ function scrollSlides() {
 
     pageYOld = pageYNew;
 }
-scrollSlides();
-const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
-
-window.addEventListener('scroll', scrollSlidesThrottled);
-
