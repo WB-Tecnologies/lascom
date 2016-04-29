@@ -11,7 +11,7 @@ let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 
-initialize()
+initialize();
 
 function initialize() {
     initSliderHeight();
