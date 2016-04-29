@@ -1,0 +1,39 @@
+.detached-screen__production
+  background rgb(221, 221, 221) url("../img/general/bg-production.jpg") no-repeat center
+  background-size contain
+  height: 100%
+  .l-restrictor
+    height: 100%
+  .content-wrapper
+    height: 100%
+
+.production-content_title
+  color $colorRed
+
+.production-content_btn
+  background $btnRed
+  border none
+  bottom 20vh
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 18px
+  line-height 80px
+  position: absolute
+  text-align: center
+  transition background 50ms
+  text-decoration: none
+  width 100%
+  &:hover
+    background #da0018
+    transition background 100ms
+  &:focus
+    outline none
+  &:after
+    content ''
+    background: url('../img/general/icon-arrow-right.svg')no-repeat center;
+    height: 20px
+    position: absolute
+    right: 30px
+    top 30px
+    width: 12px
+
