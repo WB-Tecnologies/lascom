@@ -12,12 +12,12 @@ let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 
-sliderHeightInintialize();
+sliderHeightInitialize();
 body.style.height = getCurentSlideBoundary(slides.length) + 'px';
 scrollSlides();
 window.addEventListener('scroll', scrollSlidesThrottled);
 
-function sliderHeightInintialize() {
+function sliderHeightInitialize() {
     let index = slides.length;
     _.forEach(slides, (slide) => {
         slide.style.zIndex = (index--);
