@@ -10,7 +10,7 @@ function initMap(google) {
     let mapDiv = document.getElementById('map');
     let map = new google.maps.Map(mapDiv, {
         center: lascomOffice,
-        zoom: 16,
+        zoom: 15,
         mapTypeControl: false
     });
 
