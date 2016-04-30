@@ -21,7 +21,4 @@ function initMap(google) {
         labelClass: 'label'
     });
 
-    console.log(marker);
-
-
 }
