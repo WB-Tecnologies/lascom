@@ -1,0 +1,44 @@
+<article class="detached-screen detached-screen__contacts">
+    <div class="detached-screen_overlay"></div>
+    <div class="l-restrictor">
+        <div class="content-wrapper">
+            <div class="content">
+
+                <h2 class="contacts-content_title">Контакты</h2>
+
+                <ul class="contacts-adress">
+                    <li class="contacts-adress_item">
+                        Московская область, Дубна, улица Дружбы&nbsp;25
+                    <li class="contacts-adress_item">
+                        <a class="contacts-adress_link" href="mailto:team@lascom.pro">team@lascom.pro</a>
+                    <li class="contacts-adress_item">
+                        <a class="contacts-adress_link" href="tel:+74962171177">+7&nbsp;(496)&nbsp;217-11-77</a>
+
+                </ul>
+
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</article>
+<script>
+    function initMap() {
+        var lascomOffice = {lat: 56.749565, lng: 37.226751};
+
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: lascomOffice,
+          zoom: 15
+        });
+
+        var marker = new google.maps.Marker({
+            position: lascomOffice,
+            map: map,
+            title: 'Lascom office'
+        });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+
+
+
