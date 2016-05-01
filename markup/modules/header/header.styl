@@ -2,14 +2,24 @@
 $headerFixedBg = #ffffff
 $headerLinkColor = #666666
 
+.l-restrictor__header
+  max-width: 786px
+  padding: 0
+
 .header
-  padding-top 40px
+  box-sizing border-box
+  padding 40px 20px 0 20px
+  position: absolute
+  width: 100%
+  z-index: 9999
 
 .header-fixed
   background $headerFixedBg
   box-shadow 0 0 30px 0 rgba(0, 0, 0, .13)
+  box-sizing border-box
   min-height: 70px
   opacity: 0
+  padding: 0 20px
   position fixed
   top 0
   transition: opacity 200ms
@@ -26,7 +36,7 @@ $headerLinkColor = #666666
 
 .header-fixed__active
   opacity: 1
-  z-index: 5
+  z-index: 9999
 
 .header-fixed_btn
   background $btnRed
@@ -77,6 +87,8 @@ $headerLinkColor = #666666
 
 .header-nav_logo-img
   height 40px
+  position: relative
+  top: 2px
   width 142px
 
 // @media (max-width 500px)

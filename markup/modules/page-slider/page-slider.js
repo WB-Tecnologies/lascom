@@ -66,6 +66,10 @@ function updateSlideOpacity(slide, slideOpacity) {
 }
 
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
+    if (!paralaxContent) {
+        return;
+    }
+
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
         scrolledSlice *= 100;
         paralaxContent.style.left = scrolledSlice + '%';
