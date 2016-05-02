@@ -1,4 +1,4 @@
-console.log('styler');
+console.log('form styler');
 
 /**
  * wbt.formstyler.js v1.0.2
@@ -290,4 +290,4 @@ console.log('styler');
 
         return this;
     };
-})(jQuery);
+})($);
