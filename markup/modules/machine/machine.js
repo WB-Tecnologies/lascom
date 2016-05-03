@@ -21,11 +21,6 @@ $('#machine-layout').wbtRotator({
         src: 'static/img/plugins/machine/machine-laser.{{01}}.svg'
     },
     {
-        id: 'scaner',
-        color: '#f44',
-        src: 'static/img/plugins/machine/machine-laser.{{01}}.svg' // need scaner mask
-    },
-    {
         id: 'blend',
         color: '#f44',
         src: 'static/img/plugins/machine/machine-blend.{{01}}.svg'
@@ -46,25 +41,9 @@ $('#machine-layout').wbtRotator({
         src: 'static/img/plugins/machine/machine-stops.{{01}}.svg'
     },
     {
-        id: 'safetySensors',
-        color: '#f44',
-        src: 'static/img/plugins/machine/machine-stops.{{01}}.svg' // need safety sensors mask
-    },
-    {
         id: 'belts',
         color: '#f44',
         src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
-    }
-    // {
-    //     id: 'Belts',
-    //     color: '#2f2',
-    //     src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
-    // },
-    // {
-    //     id: 'Cooling',
-    //     color: '#228',
-    //     src: 'static/img/plugins/machine/machine-cooling.{{01}}.svg'
-    // }
-    ]
+    }]
 });
 
