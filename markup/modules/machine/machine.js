@@ -17,7 +17,7 @@ $('#machine-layout').wbtRotator({
     },
     masks: [{
         id: 'laser',
-        color: '#c4cb8a',
+        color: '#f44',
         src: 'static/img/plugins/machine/machine-laser.{{01}}.svg'
     },
     {
@@ -52,7 +52,7 @@ $('#machine-layout').wbtRotator({
     },
     {
         id: 'belts',
-        color: '#2f2',
+        color: '#f44',
         src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
     }
     // {
