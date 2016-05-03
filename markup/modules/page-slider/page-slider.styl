@@ -6,7 +6,6 @@
   right: 0
   min-height 100%
   margin: 0 auto;
-  overflow hidden
   position fixed
   max-width: 1440px
   padding-bottom: 80px
@@ -16,6 +15,22 @@
     position absolute
   &:last-child
     padding-bottom: 0
+  &:before
+    content: ''
+    background: #ccc
+    position: absolute
+    top: 0
+    left: -30px
+    height: 100%
+    width: 30px
+  &:after
+    content: ''
+    background: #ccc
+    position: absolute
+    top: 0
+    right: -30px
+    height: 100%
+    width: 30px
 
 .detached-screen_overlay
   background #000

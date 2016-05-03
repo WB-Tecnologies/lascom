@@ -30,6 +30,22 @@ $headerLinkColor = #666666
   max-width: 1440px
   width: 100%
   z-index: -1
+  &:before
+    content: ''
+    background: #ccc
+    position: absolute
+    top: 0
+    left: -30px
+    height: 110%
+    width: 30px
+  &:after
+    content: ''
+    background: #ccc
+    position: absolute
+    top: 0
+    right: -30px
+    height: 110%
+    width: 30px
   .header-nav
     display flex
     justify-content: space-between
