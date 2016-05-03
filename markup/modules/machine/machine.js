@@ -3,12 +3,12 @@ import * as rotator from 'static/js/plugins/rotator.js';
 import * as rotatorl10n from 'static/js/plugins/rotator.l10n.js';
 
 $('#machine-layout').wbtRotator({
-    language: 'en',
+    language: 'ru',
     src: 'static/img/plugins/machine/machine.{{01}}.jpg',
     sort: false,
     circular: true,
     autoLoad: true,
-    legendDescriptions: false,
+    legendDescriptions: true,
     theme: {
         text: '#999',
         hover: '#bbb',
@@ -16,39 +16,55 @@ $('#machine-layout').wbtRotator({
         background: '#161616'
     },
     masks: [{
-        id: 'Рабочая поверхность',
+        id: 'laser',
         color: '#c4cb8a',
-        src: 'static/img/plugins/machine/machine.{{01}}.svg'
+        src: 'static/img/plugins/machine/machine-laser.{{01}}.svg'
     },
     {
-        id: 'Blend',
+        id: 'scaner',
+        color: '#f44',
+        src: 'static/img/plugins/machine/machine-laser.{{01}}.svg' // need scaner mask
+    },
+    {
+        id: 'blend',
         color: '#f44',
         src: 'static/img/plugins/machine/machine-blend.{{01}}.svg'
     },
     {
-        id: 'Belts',
-        color: '#2f2',
-        src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
-    },
-    {
-        id: 'Cooling',
-        color: '#228',
-        src: 'static/img/plugins/machine/machine-cooling.{{01}}.svg'
-    },
-    {
-        id: 'Laser',
-        color: '#34ff86',
-        src: 'static/img/plugins/machine/machine-laser.{{01}}.svg'
-    },
-    {
-        id: 'Motors',
+        id: 'motors',
         color: '#f44',
         src: 'static/img/plugins/machine/machine-motors.{{01}}.svg'
     },
     {
-        id: 'Stops',
+        id: 'workingSurface',
+        color: '#f44',
+        src: 'static/img/plugins/machine/machine-surface.{{01}}.svg'
+    },
+    {
+        id: 'stops',
         color: '#f44',
         src: 'static/img/plugins/machine/machine-stops.{{01}}.svg'
-    }]
+    },
+    {
+        id: 'safetySensors',
+        color: '#f44',
+        src: 'static/img/plugins/machine/machine-stops.{{01}}.svg' // need safety sensors mask
+    },
+    {
+        id: 'belts',
+        color: '#2f2',
+        src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
+    }
+    // {
+    //     id: 'Belts',
+    //     color: '#2f2',
+    //     src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
+    // },
+    // {
+    //     id: 'Cooling',
+    //     color: '#228',
+    //     src: 'static/img/plugins/machine/machine-cooling.{{01}}.svg'
+    // }
+    ]
 });
 

@@ -970,7 +970,7 @@ Created by WB—Tech, http://wbtech.pro/
         titlesList = _ref[_i];
         $titlesList = $(titlesList);
         $titlesItems = $titlesList.find(".wbt-rotator-titles_item");
-        $titlesList.css("height", $titlesItems.length * 40);
+        $titlesList.css("height", $titlesItems.length * 30);
         $titlesItems.each(function(index, el) {
           return $(el).css({
             top: index * 40 + "px"
@@ -1060,6 +1060,8 @@ Created by WB—Tech, http://wbtech.pro/
         val = $.wbtRotator.l10n[this.cfg.language].masks[titleId].description;
         if (val === "{{EN}}" || !val) {
           val = $.wbtRotator.l10n["EN"].masks[titleId].description;
+          console.log('description');
+          console.log(val);
         }
         $el.html(val);
       }
