@@ -183,7 +183,7 @@ Created by WB—Tech, http://wbtech.pro/
                 "background-color": mask.color || this.cfg.mask.color
               });
               if (this.cfg.legendDescriptions) {
-                this.$legendDescriptions[mask.titleId] = $("<li></li>").attr("class", "wbt-rotator-descriptions_item").appendTo(this.$maskDescriptions).data("title", mask.titleId).html(mask.titleId);
+                this.$legendDescriptions[mask.titleId] = $("<div></div>").attr("class", "wbt-rotator-descriptions_item").appendTo(this.$legendTitles[mask.titleId]).data("title", mask.titleId).html(mask.titleId);
               }
             }
           }
@@ -256,7 +256,7 @@ Created by WB—Tech, http://wbtech.pro/
       },
       stroke: {
         color: "#fff",
-        width: 1,
+        width: 0,
         opacity: .4
       },
       cursor: "grab"
@@ -970,11 +970,9 @@ Created by WB—Tech, http://wbtech.pro/
         titlesList = _ref[_i];
         $titlesList = $(titlesList);
         $titlesItems = $titlesList.find(".wbt-rotator-titles_item");
-        $titlesList.css("height", $titlesItems.length * 30);
+        // $titlesList.css("height", $titlesItems.length * 30);
         $titlesItems.each(function(index, el) {
-          return $(el).css({
-            top: index * 40 + "px"
-          });
+          return $(el);
         });
         $titlesItemsPrevious = $titlesItems.clone(true).addClass("wbt-rotator-titles_item__clone").appendTo($titlesList);
         arrayOriginal = [];
@@ -1029,13 +1027,13 @@ Created by WB—Tech, http://wbtech.pro/
           return $(el).css({
             opacity: 0
           }).animate({
-            top: arraySorted.indexOf(arrayOriginal[index]) * 30,
+            // top: arraySorted.indexOf(arrayOriginal[index]) * 30,
             opacity: 1
           }, duration, animationCallback($titlesItems, $titlesList, $titlesItemsPrevious, arraySorted.length));
         });
         _results.push($titlesItemsPrevious.each(function(index, el) {
           return $(el).animate({
-            top: arraySorted.indexOf(arrayOriginal[index]) * 30,
+            // top: arraySorted.indexOf(arrayOriginal[index]) * 30,
             opacity: 0
           }, duration, animationCallback($titlesItems, $titlesList, $titlesItemsPrevious, arraySorted.length));
         }));
@@ -1060,8 +1058,7 @@ Created by WB—Tech, http://wbtech.pro/
         val = $.wbtRotator.l10n[this.cfg.language].masks[titleId].description;
         if (val === "{{EN}}" || !val) {
           val = $.wbtRotator.l10n["EN"].masks[titleId].description;
-          console.log('description');
-          console.log(val);
+
         }
         $el.html(val);
       }
