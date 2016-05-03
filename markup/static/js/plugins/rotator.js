@@ -256,8 +256,8 @@ Created by WB—Tech, http://wbtech.pro/
       },
       stroke: {
         color: "#fff",
-        width: 0,
-        opacity: .4
+        width: 1,
+        opacity: .5
       },
       cursor: "grab"
     };
@@ -304,8 +304,8 @@ Created by WB—Tech, http://wbtech.pro/
       }).appendTo(this.$elContent).on("load", (function(_this) {
         return function() {
           _this.frames.size = {
-            width: _this.$cover.width(),
-            height: _this.$cover.height()
+            width: '100%',
+            height: 'auto'
           };
           _this.$elContent.width(_this.frames.size.width);
           _this.$el.height(_this.frames.size.height);
@@ -370,7 +370,8 @@ Created by WB—Tech, http://wbtech.pro/
         display: "none",
         fill: "transparent",
         style: "-webkit-transition:100ms;transition:100ms;",
-        cursor: "pointer"
+        cursor: "pointer",
+        width: '100%'
       });
       $(documentSVG).find("path").each((function(_this) {
         return function(index, el) {
@@ -409,6 +410,7 @@ Created by WB—Tech, http://wbtech.pro/
       }));
       this.$masks[title].images[index] = imageNew;
       if (this.masks.loaded === this.masks.total) {
+
         _ref = this.cfg.maskSrc;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           mask = _ref[_i];
@@ -428,7 +430,8 @@ Created by WB—Tech, http://wbtech.pro/
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             path = _ref1[_j];
             path.attr({
-              stroke: "rgba(" + mask.stroke.color.r + "," + mask.stroke.color.g + "," + mask.stroke.color.b + "," + mask.stroke.opacity + ")"
+              // stroke: "rgba(" + mask.stroke.color.r + "," + mask.stroke.color.g + "," + mask.stroke.color.b + "," + mask.stroke.opacity + ")"
+              stroke: '#ffffff'
             });
             path.attr({
               "stroke-width": 0
@@ -458,8 +461,8 @@ Created by WB—Tech, http://wbtech.pro/
             if (_this.frames.loaded === 1 && !_this.frameCover) {
               $this = $(e.target);
               _this.frames.size = {
-                width: $this.width(),
-                height: $this.height()
+                width: '100%',
+                height: 'auto'
               };
               _this.$elContent.width(_this.frames.size.width);
               _this.$elContent.height(_this.frames.size.height);
