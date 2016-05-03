@@ -970,10 +970,10 @@ Created by WB—Tech, http://wbtech.pro/
         titlesList = _ref[_i];
         $titlesList = $(titlesList);
         $titlesItems = $titlesList.find(".wbt-rotator-titles_item");
-        $titlesList.css("height", $titlesItems.length * 30);
+        $titlesList.css("height", $titlesItems.length * 40);
         $titlesItems.each(function(index, el) {
           return $(el).css({
-            top: index * 30 + "px"
+            top: index * 40 + "px"
           });
         });
         $titlesItemsPrevious = $titlesItems.clone(true).addClass("wbt-rotator-titles_item__clone").appendTo($titlesList);
