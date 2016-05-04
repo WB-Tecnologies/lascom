@@ -58,7 +58,7 @@ if (tars.config.js.lint) {
         {
             test: /\.js$/,
             loader: 'eslint-loader',
-            include: `${cwd}/markup`
+            include: [`${cwd}/markup/modules`, `${cwd}/markup/static/js/main.js`]
         }
     );
 }
@@ -68,7 +68,7 @@ if (tars.config.js.useBabel) {
         {
             test: /\.js$/,
             loader: 'babel',
-            include: /markup/
+            include: [`${cwd}/markup/modules`, `${cwd}/markup/static/js/main.js`]
         }
     );
 }
@@ -106,7 +106,8 @@ function prepareEntryPoints(entryConfig) {
 module.exports = {
     // We have to add some pathes to entry point in case of using HMR
     entry: prepareEntryPoints({
-        main: path.resolve(`${cwd}/markup/${staticFolderName}/js/main.js`)
+        main: path.resolve(`${cwd}/markup/${staticFolderName}/js/main.js`),
+        // formStyler: path.resolve(`${cwd}/markup/${staticFolderName}/js/plugins/formStyler.js`)
     }),
 
     output: {
