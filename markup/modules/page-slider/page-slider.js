@@ -15,16 +15,17 @@ initialize();
 
 function initialize() {
     initSliderHeight();
-    document.querySelector('body').style.height = getCurentSlideBoundary(slides.length) + 'px';
-    scrollSlides();
+    // document.querySelector('body').style.height = getCurentSlideBoundary(slides.length) + 'px';
+    // scrollSlides();
     window.addEventListener('scroll', scrollSlidesThrottled);
 }
 
 function initSliderHeight() {
-    let index = slides.length;
-    _.forEach(slides, (slide) => {
-        slide.style.zIndex = (index--);
-        slide.style.display = 'block';
+    _.forEach(slides, (slide, index) => {
+        slide.style.zIndex = index;
+        slide.style.opacity = 1;
+        slide.style.top = getCurentSlideBoundary(index) + 'px';
+        slide.dataTop = getCurentSlideBoundary(index);
     });
 }
 
@@ -48,7 +49,7 @@ function сurentSlideBoundaryFactory() {
 }
 
 function getSlideOpacity(_pageYNew, _currentSlide) {
-    return 1 - (_pageYNew / viewPortHeight - (_currentSlide - 1));
+    return _pageYNew / viewPortHeight - (_currentSlide - 1);
 }
 
 function getSlideOverlay(element) {
@@ -81,20 +82,20 @@ function updateParalaxPosition(_currentSlide, scrolledSlice) {
 
 function scrollSlides() {
     let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
+    let heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
     let pageYNew = window.pageYOffset;
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
-        let slideOverlay = getSlideOverlayMemo(slides[currentSlide]);
+        let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
         updateSlideOpacity(slideOverlay, slideOpacity);
-
         updateParalaxPosition(currentSlide, slideOpacity);
 
         // Set current slide fixed.
-        if (pageYNew < currentSlideBoundary) {
-            slides[currentSlide].style.position = 'fixed';
-            slides[currentSlide].style.top = 'initial';
+        if (pageYNew < (currentSlideBoundary + heightDelta)) {
+            slides[currentSlide].style.position = 'absolute';
+            slides[currentSlide].style.top = slides[currentSlide].dataTop + 'px';
 
             // Switch slide when upslide overlay it.
             if (pageYNew < (currentSlideBoundary - viewPortHeight) && --currentSlide < 1) {
@@ -105,20 +106,15 @@ function scrollSlides() {
     // Scroll direction bottom.
     } else {
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
-        let slideOverlay = getSlideOverlayMemo(slides[currentSlide]);
+        let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
         updateSlideOpacity(slideOverlay, slideOpacity);
-
         updateParalaxPosition(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
-        if (pageYNew >= currentSlideBoundary) {
-            slides[currentSlide].style.position = 'absolute';
-            slides[currentSlide].style.top = currentSlideBoundary + 'px';
-
-            // Switch to next slide.
-            if (currentSlide < (slides.length - 1)) {
-                currentSlide++;
-            }
+        if (pageYNew >= (currentSlideBoundary + heightDelta) && slides[currentSlide + 1]) {
+            slides[currentSlide].style.position = 'fixed';
+            slides[currentSlide].style.top = -heightDelta + 'px';
+            currentSlide++;
         }
     }
 
