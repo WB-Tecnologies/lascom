@@ -11,7 +11,8 @@ function initMap(google) {
     let map = new google.maps.Map(mapDiv, {
         center: lascomOffice,
         zoom: 15,
-        mapTypeControl: false
+        mapTypeControl: false,
+        scrollwheel: false
     });
 
 
