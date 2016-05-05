@@ -15,6 +15,8 @@ let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let currentMenu;
 
+console.log();
+
 initialize();
 
 function initialize() {
@@ -46,6 +48,9 @@ function сurentSlideBoundaryFactory() {
         let currentSlideBoundary = 0;
         _.forEach(slides, (slide, i) => {
             currentSlideBoundary += slide.clientHeight;
+            if (i + 1 === SLIDE_PARALAX) {
+                currentSlideBoundary += $('.usage-paralax').width() / 2;
+            }
             cache[i + 1] = currentSlideBoundary;
         });
         return cache[_currentSlide];
@@ -76,11 +81,11 @@ function updateParalaxPosition(_currentSlide, scrolledSlice) {
     }
 
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
-        scrolledSlice *= 100;
-        paralaxContent.style.left = scrolledSlice + '%';
-    } else if (_currentSlide === SLIDE_PARALAX) {
         scrolledSlice = scrolledSlice * 100 - 100;
-        paralaxContent.style.left = scrolledSlice + '%';
+        paralaxContent.style.left = -scrolledSlice + '%';
+    } else if (_currentSlide === SLIDE_PARALAX) {
+        scrolledSlice = scrolledSlice * 100;
+        paralaxContent.style.left = -scrolledSlice + '%';
     }
 }
 
