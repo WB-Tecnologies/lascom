@@ -1,5 +1,5 @@
 .detached-screen__production
-  background rgb(221, 221, 221) url("../img/general/bg-production.jpg") no-repeat center
+  background rgb(227, 227, 227) url("../img/general/bg-production.jpg") no-repeat center
   background-size contain
   height: 100%
   padding-bottom: 0
@@ -10,12 +10,13 @@
 
 .production-content_btn
   background $btnRed
+  box-sizing border-box
   border none
   bottom 20vh
   color #ffffff
   font-family: $AvenirDemi
   font-size: 18px
-  line-height 80px
+  padding: 30px 50px 30px 20px;
   position: absolute
   text-align: center
   transition background 50ms
@@ -34,4 +35,29 @@
     right: 30px
     top 30px
     width: 12px
+
+@media (max-width: 600px)
+  .production-content_btn
+    font-size: 16px
+    line-height: 20px
+
+@media (max-width: 553px)
+  .production-content_btn:after
+    top: 40px
+
+@media (max-width: 500px)
+  .production-content_btn:after
+    top: 30px
+
+@media (max-width: 465px)
+  .production-content_btn:after
+    top: 40px
+
+
+
+
+
+
+
+
 
