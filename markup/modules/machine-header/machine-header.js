@@ -2,7 +2,7 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 const slides = document.querySelectorAll('.detached-screen');
-let $menuIndexElements = $('.header-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn');
+let $menuIndexElements = $('.header-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn, .ulsp-header_btn');
 let slidesOffset = {};
 
 initSliderHeight();

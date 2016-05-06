@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const $body = $('body');
-const $menuBtn = $('.header-fixed_menu-btn, .l-section_overlay, .mobile-menu .header-nav-list_link, .mobile-menu .header-fixed_btn');
+const $menuBtn = $('.header-fixed_menu-btn, .l-section_overlay, .mobile-menu .header-nav-list_link, .mobile-menu .header-fixed_btn, .ulsp-header_btn');
 
 $menuBtn.on('click', toggleMenu);
 
