@@ -17,28 +17,51 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from flask import Flask, request, make_response
-from jinja2 import Template
+from jinja2 import Template, Undefined
+
+
+JINJA2_ENVIRONMENT_OPTIONS = { 'undefined' : Undefined }
 
 
 app = Flask(__name__)
 
 
 MAIL_TEMPLATE_TXT = Template("""
+{% if name is defined %}
 Name: {{name.0}}
+{% endif %}
+{% if company is defined %}
 Company: {{company.0}}
+{% endif %}
+{% if phone is defined %}
 Phone number: {{phone.0}}
+{% endif %}
+{% if email is defined %}
 Email: {{email.0}}
+{% endif %}
+{% if message is defined %}
 Message:
 
 {{message.0}}
+{% endif %}
 """)
 MAIL_TEMPLATE_HTML = Template("""
+{% if name is defined %}
 <p><b>Name</b>: {{name.0}}</p>
+{% endif %}
+{% if company is defined %}
 <p><b>Company</b>: {{company.0}}</p>
+{% endif %}
+{% if phone is defined %}
 <p><b>Phone number</b>: {{phone.0}}</p>
+{% endif %}
+{% if email is defined %}
 <p><b>Email</b>: {{email.0}}</p>
+{% endif %}
+{% if message is defined %}
 <p><b>Message</b>:</p>
 <p>{{message.0}}</p>
+{% endif %}
 """)
 
 SMTP_FROM = 'no-reply@lascom.pro'
@@ -64,8 +87,8 @@ def _send_message(data):
         return False
     msg['From'] = SMTP_FROM
     msg['To'] = SMTP_TO
-    if data['email']:
-        msg['Reply-To'] = data['email']
+    if 'email' in data:
+        msg['Reply-To'] = data['email'][0]
     # text part
     text = MAIL_TEMPLATE_TXT.render(**data)
     text_part = MIMEText(text, 'plain')
