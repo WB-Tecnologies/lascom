@@ -1,11 +1,8 @@
 import $ from 'jquery';
 import * as validator from 'static/js/plugins/jquery.validate.min.js';
-console.log($.validator);
-
 
 const $contactForm = $('.order-form');
 const $submitBtn = $('.order-submit_btn');
-
 
 $.validator.addMethod('email', (value, element) => {
     return (/^(('[\w-\s]+'')|([\w-]+(?:\.[\w-]+)*)|('[\w-\s]+')([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/.test(value));
@@ -21,7 +18,6 @@ $.validator.addMethod('numbers', (value, element) => {
     return (/^([0-9]+)\s?([0-9]+)$/.test(value));
 }
 , 'please enter digits only');
-
 
 $contactForm.validate({
     rules: {
