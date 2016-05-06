@@ -6,7 +6,7 @@
 
                 <h2 class="content-title content-title__order">Обсудить заказ</h2>
 
-                <form action="#" method="POST" class="order-form">
+                <form  class="order-form">
                     <ul class="order-form-list">
                         <li class="order-form-list_item">
                             <input type="text" class="order-form_input" name="name" placeholder="Имя">
@@ -15,10 +15,12 @@
                         <li class="order-form-list_item">
                             <input type="tel" class="order-form_input" name="phone" placeholder="Телефон">
                         <li class="order-form-list_item">
-                            <input type="email" class="order-form_input" name="email" placeholder="Адрес электронной почты">
+                            <input id="email" type="email" class="order-form_input" name="email" placeholder="Адрес электронной почты">
                     </ul>
 
-                    <textarea class="order-form_textarea" name="message" placeholder="Ваше сообщение"></textarea>
+                    <div class="message-wrapper">
+                        <textarea id="message" class="order-form_textarea" name="message" placeholder="Ваше сообщение"></textarea>
+                    </div>
                     <input type="submit" class="order-submit_btn" value="Отправить">
                 </form>
 

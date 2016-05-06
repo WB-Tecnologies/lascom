@@ -13,7 +13,9 @@ let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
+let $paralaxContent = $('.usage-paralax');
 let currentMenu;
+console.log($paralaxContent.width());
 
 initialize();
 
@@ -46,6 +48,9 @@ function сurentSlideBoundaryFactory() {
         let currentSlideBoundary = 0;
         _.forEach(slides, (slide, i) => {
             currentSlideBoundary += slide.clientHeight;
+            if ($paralaxContent.length && i + 1 === SLIDE_PARALAX) {
+                currentSlideBoundary += $paralaxContent.width() / 2;
+            }
             cache[i + 1] = currentSlideBoundary;
         });
         return cache[_currentSlide];
@@ -53,7 +58,7 @@ function сurentSlideBoundaryFactory() {
 }
 
 function getSlideOpacity(_pageYNew, _currentSlide, t) {
-    return (_pageYNew - t) / viewPortHeight - (_currentSlide - 1);
+    return (_pageYNew) / viewPortHeight - (_currentSlide - 1);
 }
 
 function getSlideOverlay(element) {
@@ -70,17 +75,21 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
+let scrolledSliceCheck;
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
+    // scrolledSlice = Math.min(1, scrolledSlice);
+
     if (!paralaxContent) {
         return;
     }
 
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
-        scrolledSlice *= 100;
-        paralaxContent.style.left = scrolledSlice + '%';
+        scrolledSlice = scrolledSlice * 100 - 140;
+        scrolledSliceCheck = scrolledSlice;
+        paralaxContent.style.left = -scrolledSlice + '%';
     } else if (_currentSlide === SLIDE_PARALAX) {
-        scrolledSlice = scrolledSlice * 100 - 100;
-        paralaxContent.style.left = scrolledSlice + '%';
+        scrolledSlice = (scrolledSlice) * 100 - 40;
+        paralaxContent.style.left = -scrolledSlice + '%';
     }
 }
 
