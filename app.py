@@ -1,0 +1,105 @@
+"""
+Contanct form handler.
+Listen POST requests on URI `/contact` in `application/x-www-form-urlencoded`.
+Accepted POST arguments:
+- name
+- company
+- phone
+- email
+- message
+- type - "request" or "samples"
+"""
+import json
+import logging
+from smtplib import SMTP
+from email.MIMEBase import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+from flask import Flask, request, make_response
+from jinja2 import Template
+
+
+app = Flask(__name__)
+
+
+MAIL_TEMPLATE_TXT = Template("""
+Name: {{name.0}}
+Company: {{company.0}}
+Phone number: {{phone.0}}
+Email: {{email.0}}
+Message:
+
+{{message.0}}
+""")
+MAIL_TEMPLATE_HTML = Template("""
+<p><b>Name</b>: {{name.0}}</p>
+<p><b>Company</b>: {{company.0}}</p>
+<p><b>Phone number</b>: {{phone.0}}</p>
+<p><b>Email</b>: {{email.0}}</p>
+<p><b>Message</b>:</p>
+<p>{{message.0}}</p>
+""")
+
+SMTP_FROM = 'no-reply@lascom.pro'
+SMTP_TO = 'admin@lascom.pro'
+SMTP_HOST = 'debugmail.io'
+SMTP_PORT = 25
+SMTP_LOGIN = 'dizballanze@gmail.com'
+SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
+
+
+
+def _send_message(data):
+    if not 'type' in data:
+        logging.warning("Request type was not provided %s", data)
+        return False
+    msg = MIMEMultipart('alternative')
+    if data['type'] == 'request':
+        msg['Subject'] = 'Lascom: order request'
+    elif data['type'] == 'samples':
+        msg['Subject'] = 'Lascom: sample request'
+    else:
+        logging.warning("Wrong type %s", data['type'])
+        return False
+    msg['From'] = SMTP_FROM
+    msg['To'] = SMTP_TO
+    if data['email']:
+        msg['Reply-To'] = data['email']
+    # text part
+    text = MAIL_TEMPLATE_TXT.render(**data)
+    text_part = MIMEText(text, 'plain')
+    msg.attach(text_part)
+    # html part
+    html = MAIL_TEMPLATE_HTML.render(**data)
+    html_part = MIMEText(html, 'html')
+    msg.attach(html_part)
+    # senging
+    smtp = SMTP()
+    smtp.connect(SMTP_HOST, SMTP_PORT)
+    smtp.ehlo()
+    smtp.starttls()
+    smtp.ehlo()
+    smtp.login(SMTP_LOGIN, SMTP_PASSWORD)
+    try:
+        smtp.sendmail(SMTP_FROM, SMTP_TO, msg.as_string())
+    except e:
+        logging.error("Email sending was failed: %s", e)
+        smtp.close()
+        return False
+    finally:
+        smtp.close()
+    return True
+
+
+@app.route('/contact', methods=['POST'])
+def hello():
+    logging.debug(request.form)
+    result = _send_message(request.form)
+    resp = make_response(json.dumps(dict(result=result)), 200)
+    resp.headers['Content-Type'] = 'application/json'
+    return resp
+
+
+if __name__ == '__main__':
+    app.run()
