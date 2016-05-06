@@ -9,7 +9,7 @@ $headerLinkColor = #666666
 .header
   display: none
   box-sizing border-box
-  padding 40px 20px 0 20px
+  padding 40px 64px 0
   position: absolute
   width: 100%
   z-index: 9999
@@ -176,6 +176,9 @@ $headerLinkColor = #666666
 
 
 @media (max-width $palmtopWidth)
+  .header-fixed
+    padding: 0 64px;
+
   .header-nav-list__desktop
     display: none
 

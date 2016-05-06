@@ -5,16 +5,16 @@ $btnRed = #EB0029
   background rgb(102, 102, 102) url("../img/general/bg-greeting.jpg") no-repeat center
   background-size cover
 
-
 .greeting-content
   padding-top 26.7vh
 
 .greeting-content_description
   color $descriptionTextColor
   font-family: $AvenirDemi
-  font-size 48px
-  line-height 56px
+  font-size 56px
+  line-height 60px
   margin 0
+  max-width: 755px
 
 .greeting-content_btn
   background $btnRed
@@ -32,6 +32,7 @@ $btnRed = #EB0029
   &:focus
     outline none
 
-// @media (max-width: 800px)
-//   .detached-screen__greenting .detached-screen_content
-//     padding-top 60px
+@media (max-width: $phoneWidth)
+  .greeting-content_description
+    font-size: 46px
+    line-height: 50px

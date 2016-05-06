@@ -1,5 +1,5 @@
 .machine-header
-  background $headerFixedBg
+  background #ffffff
   box-sizing border-box
   box-shadow 0 0 30px 0 rgba(0, 0, 0, .13)
   min-height: 70px
@@ -58,3 +58,8 @@
     transition background 100ms
   &:focus
     outline none
+
+@media (max-width: $palmtopWidth)
+  .machine-header
+    padding-left: 64px
+    padding-right: 64px
