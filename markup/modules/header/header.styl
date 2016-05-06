@@ -30,7 +30,7 @@ $headerLinkColor = #666666
   left 0
   max-width: 1440px
   width: 100%
-  z-index: 9999
+  z-index: 888
   &:before
     content: ''
     background: #ccc
@@ -115,7 +115,70 @@ $headerLinkColor = #666666
   top: 2px
   width 142px
 
-// @media (max-width 500px)
-//   .header
-//     padding-top 10px
+.header-fixed_menu-btn
+  display: none
+  cursor: pointer
+  list-style: none
+  padding: 0
+  position: relative
+  width: 24px
+
+.header-fixed_menu-btn:hover li
+  background: $colorRed
+
+.header-fixed_menu-btn li
+  background: $colorTextGrey
+  border-radius: 3px
+  height: 2px
+  margin-bottom: 7px
+  width: 100%
+  &:last-child
+    margin-bottom: 0
+
+.mobile-menu
+  background: #ffffff;
+  box-sizing border-box
+  height: 100%;
+  max-width: 320px;
+  overflow: hidden
+  position: absolute;
+  right: 0;
+  width: 0;
+  z-index: 999;
+  .header-fixed_btn
+    min-height: 50px
+    width: 100%
+
+.mobile-menu .header-nav-list_item
+  display: block
+  margin-bottom: 40px
+
+.mobile-close-btn
+  cursor: pointer
+  position: absolute
+  opacity: 0.6
+  top 20px
+  right: 337px
+  height: 30px
+  width: 30px
+  img
+    width: 100%
+  &:hover
+    opacity: 1
+
+.mob-menu-active
+  .mobile-menu
+    padding: 20px
+    width: 100%
+
+  .header-fixed_menu-btn
+    display: none
+
+
+@media (max-width $palmtopWidth)
+  .header-nav-list__desktop
+    display: none
+
+  .header-fixed_menu-btn
+    display: block
 

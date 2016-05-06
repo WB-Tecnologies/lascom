@@ -1,28 +1,12 @@
-import _ from 'lodash';
+import $ from 'jquery';
 
-const header = document.getElementsByClassName('header')[0];
+const $body = $('body');
+const $menuBtn = $('.header-fixed_menu-btn, .l-section_overlay, .mobile-menu .header-nav-list_link, .mobile-menu .header-fixed_btn');
 
-fixedHeaderInit();
+$menuBtn.on('click', toggleMenu);
 
-function fixedHeaderInit() {
-    if (header) {
-        const headerFixed = document.getElementsByClassName('header-fixed')[0];
-        const headerHeight = header.clientHeight;
-
-        // Toggle header fixed/static position.
-        let setHeader = () => {
-            if (window.pageYOffset > headerHeight) {
-                if (!headerFixed.classList.contains('header-fixed__active')) {
-                    headerFixed.classList.add('header-fixed__active');
-                }
-            } else {
-                if (headerFixed.classList.contains('header-fixed__active')) {
-                    headerFixed.classList.remove('header-fixed__active');
-                }
-            }
-        };
-        setHeader = _.throttle(setHeader, 200);
-
-        window.addEventListener('scroll', setHeader);
-    }
+function toggleMenu() {
+    $body.toggleClass('mob-menu-active');
 }
+
+
