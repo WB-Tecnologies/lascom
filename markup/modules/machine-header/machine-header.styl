@@ -12,7 +12,7 @@
   margin: 0 auto
   padding: 0 20px
   width: 100%
-  z-index: 9999
+  z-index: 998
   &:before
     content: ''
     background: #ccc
@@ -43,3 +43,18 @@
   position: relative
   top: 3px
   width: 106px
+
+.ulsp-header_btn
+  background $btnRed
+  border none
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 16px
+  min-height 40px
+  width 220px
+  transition background 50ms
+  &:hover
+    background #da0018
+    transition background 100ms
+  &:focus
+    outline none

@@ -1,3 +1,6 @@
+// Width map.
+$palmtopWidth = 1024px
+
 // Color map.
 $colorRed = #EB0029
 $colorTextGrey = #262626
@@ -12,6 +15,16 @@ body
 .l-section
   height 100%
 
+.l-section_overlay
+  opacity: 0
+  position: absolute
+  background: rgba(0,0,0,0.5)
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: -1
+
 .l-restrictor
   box-sizing border-box
   margin 0 auto
@@ -19,3 +32,13 @@ body
 
 .emphasis
   font-family: $AvenirDemi
+
+.mob-menu-active
+  .l-section
+    // max-width: 100vh;
+    position: relative;
+    overflow: hidden;
+
+  .l-section_overlay
+    z-index: 998
+    opacity: 1
