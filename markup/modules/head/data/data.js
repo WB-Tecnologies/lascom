@@ -1,6 +1,6 @@
 head: {
     defaults: {
-        title: 'default title',
+        title: 'Lascom',
         useSocialMetaTags: true
     }
 }

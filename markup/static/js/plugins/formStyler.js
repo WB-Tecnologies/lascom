@@ -1,4 +1,3 @@
-console.log('form styler');
 
 /**
  * wbt.formstyler.js v1.0.2
