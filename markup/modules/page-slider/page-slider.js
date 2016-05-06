@@ -13,9 +13,8 @@ let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
+let $paralaxContent = $('.usage-paralax');
 let currentMenu;
-
-console.log();
 
 initialize();
 
@@ -48,8 +47,8 @@ function сurentSlideBoundaryFactory() {
         let currentSlideBoundary = 0;
         _.forEach(slides, (slide, i) => {
             currentSlideBoundary += slide.clientHeight;
-            if (i + 1 === SLIDE_PARALAX) {
-                currentSlideBoundary += $('.usage-paralax').width() / 2;
+            if ($paralaxContent.length && i + 1 === SLIDE_PARALAX) {
+                currentSlideBoundary += $paralaxContent.width() / 2;
             }
             cache[i + 1] = currentSlideBoundary;
         });
