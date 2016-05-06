@@ -94,13 +94,14 @@
 .mob-menu-active .detached-screen
   left: -640px
 
-
-
-
 @media (max-width: 1440px)
   .detached-screen:before,
   .detached-screen:after
     display: none
+
+@media (max-width: $palmtopWidth)
+  .detached-screen
+    padding: 0 20px 40px
 
 
 
