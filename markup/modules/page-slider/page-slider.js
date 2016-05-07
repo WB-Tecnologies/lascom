@@ -3,10 +3,12 @@ import $ from 'jquery';
 
 const SLIDE_BEFORE_PARALAX = 2;
 const SLIDE_PARALAX = 3;
+const MOBILE_SIZE = 768;
 const paralaxContent = document.querySelector('.usage-paralax');
 const slides = document.querySelectorAll('.detached-screen');
 const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
 let getCurentSlideBoundary = сurentSlideBoundaryFactory();
+let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
@@ -21,11 +23,13 @@ window.initialize = initialize;
 initialize();
 
 function initialize() {
-    console.log('init');
-    updateMenuInit();
-    initSliderHeight();
-    scrollSlides();
-    window.addEventListener('scroll', scrollSlidesThrottled);
+    if (viewPortWidth > MOBILE_SIZE) {
+        console.log('init');
+        updateMenuInit();
+        initSliderHeight();
+        scrollSlides();
+        window.addEventListener('scroll', scrollSlidesThrottled);
+    }
 }
 
 function initSliderHeight() {
