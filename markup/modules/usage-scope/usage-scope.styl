@@ -29,7 +29,6 @@
   vertical-align: bottom
   margin-right: 45px
 
-
 .usage-img
   height: 48vh
   max-height: 434px
@@ -43,6 +42,59 @@
   font-family: $AvenirDemi
   font-size: 16px
   margin-top: 34px
+
+.scroll-bth-left,
+.scroll-bth-right
+  background: #ffffff
+  border-radius: 50%
+  cursor: pointer
+  height: 40px
+  position: absolute
+  opacity 0.7
+  top 40%
+  width: 40px
+  z-index: 999
+  &:hover,
+  &:active
+    opacity 1
+
+.scroll-bth-left
+  background: #ffffff url('../img/general/scroll-btn-left.svg')no-repeat center;
+  left 20px
+  display: none
+
+.scroll-bth-right
+  background: #ffffff url('../img/general/scroll-btn-right.svg')no-repeat center;
+  right 20px
+
+@media (max-width: $phoneWidth)
+  .detached-screen__usage
+    padding: 0 0 40px;
+
+  .content-title__usage
+    margin-bottom: 20px !important;
+
+  .content-wrapper__usage
+    padding-left: 64px
+    padding-right: 64px
+    padding-top: 5px
+
+  .usage-list
+    left 0
+
+  .usage-list_item
+    margin-right: 0
+    vertical-align: top
+    width: 100vw
+
+  .usage-img
+    height: auto
+    width: 90vw
+
+@media (max-width: $smallPhoneWidth)
+  .scroll-bth-left,
+  .scroll-bth-right
+    top 30%
 
 
 
