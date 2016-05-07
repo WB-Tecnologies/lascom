@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import $ from 'jquery';
 
-const SLIDE_BEFORE_PARALAX = 2;
-const SLIDE_PARALAX = 3;
+const SLIDE_BEFORE_PARALAX = 3;
+const SLIDE_PARALAX = 4;
 const MOBILE_SIZE = 768;
 const paralaxContent = document.querySelector('.usage-paralax');
 const slides = document.querySelectorAll('.detached-screen');
@@ -17,14 +17,16 @@ let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
-let paralaxSpeed = 20;
+let paralaxSpeed = 30;
 let currentMenu;
+console.log($paralaxContent.width());
 window.initialize = initialize;
 
 initialize();
 
 function initialize() {
     if (viewPortWidth > MOBILE_SIZE) {
+        console.log('init');
         updateMenuInit();
         initSliderHeight();
         scrollSlides();
@@ -81,6 +83,7 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
+
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
     // scrolledSlice = Math.min(1, scrolledSlice);
 
@@ -105,9 +108,9 @@ function updateMenuInit() {
 
 function updateIndexMenu() {
 
-    if (currentSlide === 4 || pageYOld === 0) {
+    if (currentSlide === 5 || pageYOld === 0) {
         menuIndexElements.removeClass('header-nav-list_link__active');
-    } else if (currentSlide === 5) {
+    } else if (currentSlide === 6) {
         menuIndexElements.removeClass('header-nav-list_link__active');
         menuIndexElements[currentSlide - 2].classList.add('header-nav-list_link__active');
     } else {
@@ -118,13 +121,11 @@ function updateIndexMenu() {
 }
 
 function updateMachineMenu() {
-
-
-
+    console.log(currentSlide);
     switch (currentSlide) {
         case 3:
             menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
+            menuMachineElements[currentSlide].classList.add('header-nav-list_link__active');
             break;
         case 4:
             menuMachineElements.removeClass('header-nav-list_link__active');
@@ -140,8 +141,12 @@ function updateMachineMenu() {
             break;
         case 7:
             menuMachineElements.removeClass('header-nav-list_link__active');
+            menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
             break;
         case 8:
+            menuMachineElements.removeClass('header-nav-list_link__active');
+            break;
+        case 9:
             menuMachineElements.removeClass('header-nav-list_link__active');
             menuMachineElements[currentSlide - 2].classList.add('header-nav-list_link__active');
             break;
@@ -153,7 +158,7 @@ function updateMachineMenu() {
 
     if (pageYOld === 0) {
         menuMachineElements.removeClass('header-nav-list_link__active');
-        menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
+        menuMachineElements[1].classList.add('header-nav-list_link__active');
     }
 
 

@@ -1,12 +1,13 @@
 import _ from 'lodash';
 import $ from 'jquery';
 
-const SLIDE_PARALAX = 3;
+const SLIDE_PARALAX = 4;
 const slides = document.querySelectorAll('.detached-screen');
 
 let $paralaxContent = $('.usage-paralax');
 let $menuIndexElements = $('.header-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn');
 let slidesOffset = {};
+window.initSliderHeightForMenu = initSliderHeight;
 
 initSliderHeight();
 

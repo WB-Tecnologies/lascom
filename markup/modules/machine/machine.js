@@ -55,7 +55,10 @@ function rotatorInit() {
             src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
         }]
     }, () => {
-        setTimeout(window.initialize, 500);
+        setTimeout(() => {
+            window.initialize();
+            window.initSliderHeightForMenu();
+        }, 500);
     });
 }
 
