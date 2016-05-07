@@ -60,6 +60,30 @@
   .wbt-rotator-titles_item:hover
     background: $colorRed
 
+@media (max-width: 500px)
+  .wbt-rotator-titles_list
+    width: 100%
+
+  .wbt-rotator__descriptions .wbt-rotator-descriptions_list
+    float none
+    padding-left: 20px
+    padding-bottom: 30px
+    max-width: 100%
+    width: 100%
+
+  .wbt-rotator-legend__active
+    .wbt-rotator-titles_list
+      padding-bottom: 0
+    .wbt-rotator-titles_item
+      display: none
+    .wbt-rotator-titles_item__active
+       display: block
+
+  .wbt-rotator-titles_item__active
+    background: $colorRed
+    &:before
+      background: url("../img/general/legend-arrow-left__active.svg") no-repeat center !important;
+
 
 
 

@@ -627,6 +627,8 @@ Created by WB—Tech, http://wbtech.pro/
       }
     };
     WBTRotator.prototype.onPathClick = function(el, e) {
+
+
       var mask, title, _i, _len, _ref, _results;
       if ((el != null) || (e != null)) {
         title = el ? el.data("title") : $(e.target).data("title") || $(e.target).closest(".wbt-rotator-titles_item").data("title");
@@ -656,6 +658,11 @@ Created by WB—Tech, http://wbtech.pro/
             _results.push(void 0);
           }
         }
+        if ($('.wbt-rotator-titles_item__active').length) {
+            $('.wbt-rotator-legend').addClass('wbt-rotator-legend__active');
+          } else {
+            $('.wbt-rotator-legend').removeClass('wbt-rotator-legend__active');
+          }
         return _results;
       }
     };
