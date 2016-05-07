@@ -17,15 +17,14 @@ let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
+let paralaxSpeed = 20;
 let currentMenu;
-console.log($paralaxContent.width());
 window.initialize = initialize;
 
 initialize();
 
 function initialize() {
     if (viewPortWidth > MOBILE_SIZE) {
-        console.log('init');
         updateMenuInit();
         initSliderHeight();
         scrollSlides();
@@ -82,7 +81,6 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
-let paralaxSpeed = 20;
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
     // scrolledSlice = Math.min(1, scrolledSlice);
 
