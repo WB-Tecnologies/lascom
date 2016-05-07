@@ -16,6 +16,7 @@ let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
+let $paralaxWrapper = $('.usage-paralax-wrapper');
 let currentMenu;
 console.log($paralaxContent.width());
 window.initialize = initialize;
@@ -81,7 +82,7 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
-let scrolledSliceCheck;
+let paralaxSpeed = 20;
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
     // scrolledSlice = Math.min(1, scrolledSlice);
 
@@ -90,12 +91,9 @@ function updateParalaxPosition(_currentSlide, scrolledSlice) {
     }
 
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
-        scrolledSlice = scrolledSlice * 100 - 140;
-        scrolledSliceCheck = scrolledSlice;
-        paralaxContent.style.left = -scrolledSlice + '%';
+        $paralaxWrapper.scrollLeft($paralaxWrapper.scrollLeft() - paralaxSpeed);
     } else if (_currentSlide === SLIDE_PARALAX) {
-        scrolledSlice = (scrolledSlice) * 100 - 40;
-        paralaxContent.style.left = -scrolledSlice + '%';
+        $paralaxWrapper.scrollLeft($paralaxWrapper.scrollLeft() + paralaxSpeed);
     }
 }
 
