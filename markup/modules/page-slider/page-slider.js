@@ -19,14 +19,12 @@ let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
 let paralaxSpeed = 30;
 let currentMenu;
-console.log($paralaxContent.width());
 window.initialize = initialize;
 
 initialize();
 
 function initialize() {
     if (viewPortWidth > MOBILE_SIZE) {
-        console.log('init');
         updateMenuInit();
         initSliderHeight();
         scrollSlides();
@@ -121,7 +119,6 @@ function updateIndexMenu() {
 }
 
 function updateMachineMenu() {
-    console.log(currentSlide);
     switch (currentSlide) {
         case 3:
             menuMachineElements.removeClass('header-nav-list_link__active');
