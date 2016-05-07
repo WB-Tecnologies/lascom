@@ -16,10 +16,12 @@ let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let currentMenu;
 console.log($paralaxContent.width());
+window.initialize = initialize;
 
 initialize();
 
 function initialize() {
+    console.log('init');
     updateMenuInit();
     initSliderHeight();
     scrollSlides();

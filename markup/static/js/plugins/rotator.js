@@ -24,7 +24,7 @@ Created by WB—Tech, http://wbtech.pro/
 (function() {
   (function($) {
     var WBTRotator;
-    WBTRotator = function($el, params) {
+    WBTRotator = function($el, params, callback) {
       var $categoryTitle, $categoryWrap, $style, category, cssText, lang, mask, maskToShow, tplLanguages, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _m, _n, _o, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
       this.cfg = $.extend({}, WBTRotator.prototype.defaults, params);
       this.cfg.frameSrc = this.createSrcArray(this.cfg.src);
@@ -226,6 +226,9 @@ Created by WB—Tech, http://wbtech.pro/
         this.$maskScrollTrack = $('<div class="wbt-rotator-scroll_track"></div>').appendTo(this.$maskScrollPath);
         this.$maskScrollSlider = $('<div class="wbt-rotator-scroll_slider"></div>').appendTo(this.$maskScrollPath);
         this.$maskScroll[0].addEventListener(($.wbtIsTouch() ? "touchstart" : "mousedown"), $.proxy(this.onSliderPointerDown, this));
+      }
+      if (callback) {
+        callback();
       }
     };
     WBTRotator.prototype.defaults = {
@@ -1091,8 +1094,8 @@ Created by WB—Tech, http://wbtech.pro/
         return false;
       }
     };
-    $.fn.wbtRotator = function(params) {
-      return new WBTRotator(this, params);
+    $.fn.wbtRotator = function(params, callback) {
+      return new WBTRotator(this, params, callback);
     };
     $.wbtRotator = {} || $.wbtRotator;
     Array.prototype.rotate = (function() {
