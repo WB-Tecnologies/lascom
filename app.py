@@ -20,6 +20,7 @@ from flask import Flask, request, make_response
 from jinja2 import Template, Undefined
 
 
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 
