@@ -120,7 +120,7 @@ def _send_message(data):
 
 @app.route('/contact', methods=['POST'])
 def hello():
-    logging.debug(request.form)
+    logging.info(request.form)
     result = _send_message(request.form)
     resp = make_response(json.dumps(dict(result=result)), 200)
     resp.headers['Content-Type'] = 'application/json'
