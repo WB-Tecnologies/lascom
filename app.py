@@ -70,7 +70,7 @@ MAIL_TEMPLATE_HTML = Template(u"""
 # SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
 
 SMTP_FROM = 'ask@wbtech.pro'
-SMTP_TO = 'kirill@wbtech.pro'
+SMTP_TO = 'dmitry.volodkin@lascom.pro'
 SMTP_HOST = 'in-v3.mailjet.com'
 SMTP_PORT = 25
 SMTP_LOGIN = '5c68accfc347d434988c59a886cd6350'
