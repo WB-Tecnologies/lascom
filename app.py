@@ -92,7 +92,7 @@ def _send_message(data):
     msg['From'] = SMTP_FROM
     msg['To'] = SMTP_TO
     if 'email' in data:
-        msg['Reply-To'] = data['email'][0]
+        msg['Reply-To'] = data['email']
     # text part
     text = MAIL_TEMPLATE_TXT.render(**data)
     text_part = MIMEText(text, 'plain', 'utf-8')
