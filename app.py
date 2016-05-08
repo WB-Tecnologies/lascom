@@ -57,7 +57,7 @@ MAIL_TEMPLATE_HTML = Template(u"""
 {% endif %}
 {% if message is defined %}
 <p><b>Message</b>:</p>
-<p>{{message.0}}</p>
+<p>{{message.0|replace("\n", "<br>")}}</p>
 {% endif %}
 """)
 
