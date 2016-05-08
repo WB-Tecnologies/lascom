@@ -540,36 +540,36 @@ Created by WB—Tech, http://wbtech.pro/
           e.returnValue = false;
         }
       }
-      if (this.sliderPressed) {
-        newPosition = this.sliderPosition.current;
-        if (this.cfg.invertAxes) {
-          newPosition += y - this.sliderPosition.y;
-        } else {
-          newPosition += x - this.sliderPosition.x;
-        }
-        if (newPosition < 0) {
-          newPosition = 0;
-        }
-        if (newPosition > this.sliderPosition.max) {
-          newPosition = this.sliderPosition.max;
-        }
-        this.frames.current = Math.floor(newPosition * (this.frames.total - 1) / this.sliderPosition.max);
-        this.changeFrame(this.frames.current);
-      }
-      if (this.pointerPressed) {
-        if (this.cfg.invertAxes) {
-          delta = y - this.pointerPosition.y;
-        } else {
-          delta = x - this.pointerPosition.x;
-        }
-        delta = Math.floor(delta * this.frames.total / (this.invertAxes ? this.frames.size.height : this.frames.size.width));
-        if (this.cfg.invertMouse) {
-          delta = this.frames.current - delta;
-        } else {
-          delta = this.frames.current + delta;
-        }
-        this.changeFrame(delta);
-      }
+      // if (this.sliderPressed) {
+      //   newPosition = this.sliderPosition.current;
+      //   if (this.cfg.invertAxes) {
+      //     newPosition += y - this.sliderPosition.y;
+      //   } else {
+      //     newPosition += x - this.sliderPosition.x;
+      //   }
+      //   if (newPosition < 0) {
+      //     newPosition = 0;
+      //   }
+      //   if (newPosition > this.sliderPosition.max) {
+      //     newPosition = this.sliderPosition.max;
+      //   }
+      //   this.frames.current = Math.floor(newPosition * (this.frames.total - 1) / this.sliderPosition.max);
+      //   this.changeFrame(this.frames.current);
+      // }
+      // if (this.pointerPressed) {
+      //   if (this.cfg.invertAxes) {
+      //     delta = y - this.pointerPosition.y;
+      //   } else {
+      //     delta = x - this.pointerPosition.x;
+      //   }
+      //   delta = Math.floor(delta * this.frames.total / (this.invertAxes ? this.frames.size.height : this.frames.size.width));
+      //   if (this.cfg.invertMouse) {
+      //     delta = this.frames.current - delta;
+      //   } else {
+      //     delta = this.frames.current + delta;
+      //   }
+      //   this.changeFrame(delta);
+      // }
     };
     WBTRotator.prototype.pathSelect = function(title, frame) {
       var mask, _i, _len, _ref;
@@ -627,8 +627,6 @@ Created by WB—Tech, http://wbtech.pro/
       }
     };
     WBTRotator.prototype.onPathClick = function(el, e) {
-
-
       var mask, title, _i, _len, _ref, _results;
       if ((el != null) || (e != null)) {
         title = el ? el.data("title") : $(e.target).data("title") || $(e.target).closest(".wbt-rotator-titles_item").data("title");
