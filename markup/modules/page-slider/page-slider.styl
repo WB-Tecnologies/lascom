@@ -12,7 +12,7 @@
   width 100%
   &:first-child
     opacity: 1
-    position fixed
+    // position fixed
   &:last-child
     padding-bottom: 0
   &:before
@@ -31,6 +31,11 @@
     right: -30px
     height: 100%
     width: 30px
+
+.detached-screen__buffer
+  height: 0
+  min-height: 0
+  padding: 0
 
 .detached-screen_overlay
   background #000
@@ -110,6 +115,12 @@
   .detached-screen__contacts .l-restrictor
     padding-left: 20px
     padding-right: 20px
+
+@media (max-width: $phoneWidth)
+  .detached-screen
+    position: relative !important
+    opacity: 1
+    min-height: initial
 
 @media (max-width: $smallPhoneWidth)
   .content-title

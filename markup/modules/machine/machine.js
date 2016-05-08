@@ -4,12 +4,12 @@ import * as rotatorl10n from 'static/js/plugins/rotator.l10n.js';
 
 let $machine = $('#machine-layout');
 
+
 if ($machine.length) {
     rotatorInit();
 }
 
 function rotatorInit() {
-
 
     $machine.wbtRotator({
         language: 'ru',
@@ -54,6 +54,11 @@ function rotatorInit() {
             color: '#f44',
             src: 'static/img/plugins/machine/machine-belts.{{01}}.svg'
         }]
+    }, () => {
+        setTimeout(() => {
+            window.initialize();
+            window.initSliderHeightForMenu();
+        }, 500);
     });
 }
 

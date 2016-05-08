@@ -1,12 +1,15 @@
 import _ from 'lodash';
 import $ from 'jquery';
 
-const SLIDE_PARALAX = 3;
+const MOBILE_SIZE = 768;
+const SLIDE_PARALAX = 4;
 const slides = document.querySelectorAll('.detached-screen');
+let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 let $paralaxContent = $('.usage-paralax');
-let $menuIndexElements = $('.header-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn');
+let $menuIndexElements = $('.header-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn, .ulsp-header_btn');
 let slidesOffset = {};
+window.initSliderHeightForMenu = initSliderHeight;
 
 initSliderHeight();
 
@@ -24,7 +27,7 @@ function initSliderHeight() {
     let currentSlideBoundary = 0;
     _.forEach(slides, (slide, i) => {
         currentSlideBoundary += slide.clientHeight - 1;
-        if ($paralaxContent.length && (i + 1) === SLIDE_PARALAX) {
+        if ($paralaxContent.length && (i + 1) === SLIDE_PARALAX && viewPortWidth > MOBILE_SIZE) {
             currentSlideBoundary += $paralaxContent.width() / 2;
         }
         slidesOffset[i] = currentSlideBoundary;

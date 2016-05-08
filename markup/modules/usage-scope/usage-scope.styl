@@ -1,9 +1,7 @@
 .detached-screen__usage
   background: $colorRed
-  height: 100%
 
 .l-restrictor__usage
-  height: 100%
 
 .content-wrapper__usage
   position: initial
@@ -18,9 +16,99 @@
   position: relative
   width: 100%
 
-.usage-paralax
-  background-position: 0 center
+.usage-list
+  list-style: none
+  padding: 0
+  white-space: nowrap
+  position: relative
+  left: 40vh
+
+.usage-list_item
+  display: inline-block
+  text-align: center
+  vertical-align: bottom
+  margin-right: 45px
+
+.usage-img
+  height: 48vh
+  max-height: 434px
+
+.usage-img__avia,
+.usage-img__auto
+  height: 30vh
+
+.usage-subtitle
+  color: #ffffff
+  font-family: $AvenirDemi
+  font-size: 16px
+  margin-top: 34px
+
+.scroll-bth-left,
+.scroll-bth-right
+  background: #ffffff
+  border-radius: 50%
+  cursor: pointer
+  display: none
+  height: 40px
   position: absolute
-  height: 50vh
-  margin-left: 0
+  opacity 0.7
+  top 40%
+  width: 40px
+  z-index: 999
+  &:hover,
+  &:active
+    opacity 1
+
+.scroll-bth-left
+  background: #ffffff url('../img/general/scroll-btn-left.svg')no-repeat center;
+  left 20px
+  display: none
+
+.scroll-bth-right
+  background: #ffffff url('../img/general/scroll-btn-right.svg')no-repeat center;
+  right 20px
+
+@media (max-width: $phoneWidth)
+  .scroll-bth-left,
+  .scroll-bth-right
+    display: block
+
+  .usage-img__building
+    max-height: 260px
+
+  .detached-screen__usage
+    padding: 0 0 40px;
+
+  .content-title__usage
+    margin-bottom: 20px !important;
+
+  .content-wrapper__usage
+    padding-left: 64px
+    padding-right: 64px
+    padding-top: 60px
+
+  .usage-list
+    left 0
+
+  .usage-list_item
+    margin-right: 0
+    vertical-align: top
+    width: 100vw
+
+  .usage-img
+    height: auto
+    width: 90vw
+
+@media (max-width: $smallPhoneWidth)
+  .scroll-bth-left,
+  .scroll-bth-right
+    top 30%
+
+
+
+
+
+
+
+
 

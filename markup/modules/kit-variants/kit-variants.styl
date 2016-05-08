@@ -44,9 +44,14 @@ $colorTip = #4d4d4d
   &:first-child
     text-align: left
 
+.kit-table__short
+  list-style: none
+  margin: 0
+  padding: 0
+
 .kit-table__short .kit-table_col
   &:first-child
-    width: 70%
+    width: 69%
   &:last-child
     width: 30%
 
@@ -69,6 +74,36 @@ $colorTip = #4d4d4d
   color $colorTip
   font-size: 14px
 
+.kit-table-mobile
+  list-style: none
+  padding: 0
+  display: none
+  margin-bottom: 40px
+
+.kit-table_row
+  display: flex
+  justify-content:  space-between
+
+.kit-table-mobile .kit-table_row__head .kit-table_col
+  font-family: $AvenirDemi
+  color $colorRed
+
+.kit-table-mobile_val
+  color $colorRed
+  text-align: right
+
+@media (max-width: $phoneWidth)
+  .detached-screen__kit .content-wrapper
+    padding-top: 5px
+
+  .kit-table
+    display: none
+
+  .kit-table-mobile
+    display: block
+
+  .kit-table_col
+    font-size: 14px
 
 
 

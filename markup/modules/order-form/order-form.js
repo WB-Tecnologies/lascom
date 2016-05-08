@@ -1,25 +1,26 @@
 import $ from 'jquery';
 import * as validator from 'static/js/plugins/jquery.validate.min.js';
 
-const $contactForm = $('.order-form');
+const $orderForm = $('.order-form');
 const $submitBtn = $('.order-submit_btn');
+const $tnxText = $('.order-submit_tnx');
 
 $.validator.addMethod('email', (value, element) => {
     return (/^(('[\w-\s]+'')|([\w-]+(?:\.[\w-]+)*)|('[\w-\s]+')([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/.test(value));
 }
-, 'please enter valid email');
+, 'неверный ввод');
 
 $.validator.addMethod('alphabetical', (value, element) => {
-    return (/^([a-zA-Z]+)\s?([a-zA-Z]+)$/.test(value));
+    return (/^([а-яА-ЯёЁa-zA-Z]+)\s?([а-яА-ЯёЁa-zA-Z]+)$/.test(value));
 }
-, 'please enter characters only');
+, 'только буквы');
 
 $.validator.addMethod('numbers', (value, element) => {
-    return (/^([0-9]+)\s?([0-9]+)$/.test(value));
+    return (/^\+?\d?\(?(\s?\(?([0-9]+)\)?\s?\-?\(?\)?)+([0-9]+)\)?$/.test(value));
 }
-, 'please enter digits only');
+, 'неверный ввод');
 
-$contactForm.validate({
+$orderForm.validate({
     rules: {
         name: {
             required: true,
@@ -37,52 +38,59 @@ $contactForm.validate({
 
     messages: {
         name: {
-            required: 'please enter name'
+            required: 'пожалуйста, введите Ваше имя'
         },
         email: {
-            required: 'please enter email'
+            required: 'пожалуйста, введите email'
         },
         phone: {
-            required: 'please enter phone'
+            required: 'пожалуйста, введите телефон'
         },
-        message: 'please enter message'
+        message: 'пожалуйста, напишите сообщение'
     },
 
     invalidHandler: (e, _validator) => {
         console.log('err');
+    },
+
+    submitHandler: () => {
+        submitOrder();
+        $tnxText.fadeIn();
+        setTimeout(() => $tnxText.fadeOut(), 3000);
     }
-        // $submitBtn.addClass "contact-form_submit__error"
-        // setTimeout ->
-        //     $submitBtn.removeClass "contact-form_submit__error"
-        // , 200
+
 });
 
 
-        // submitHandler: ->
-        //     $submitTnxMessage.fadeIn()
+$orderForm.on('submit', (e) => e.preventDefault());
 
-// $contactForm.on('submit', (e) => {
-//     e.preventDefault();
-//     console.log('subm');
-//     dataObj = {}
-//     $name = $("#name")
-//     $email = $("#email")
-//     $company = $("#company")
-//     $message = $("#message")
+function submitOrder() {
+    console.log('subm');
+    let dataObj = {};
+    let $name = $('#name');
+    let $company = $('#company');
+    let $phone = $('#phone');
+    let $email = $('#email');
+    let $message = $('#message');
 
-//     dataObj.name = $name.val()
-//     dataObj.email = $email.val()
-//     dataObj.company = $company.val()
-//     dataObj.message = $message.val()
+    dataObj.type = 'request';
+    dataObj.name = $name.val();
+    dataObj.company = $company.val();
+    dataObj.phone = $phone.val();
+    dataObj.email = $email.val();
+    dataObj.message = $message.val();
 
-//     $name.val("")
-//     $email.val("")
-//     $company.val("")
-//     $message.val("")
+    $name.val('');
+    $company.val('');
+    $phone.val('');
+    $email.val('');
+    $message.val('');
 
-//     $.ajax
-//         type: "POST"
-//         url: "http://madmind.io/handler"
-//         data: dataObj
-// });
+    $.ajax({
+        type: 'POST',
+        url: 'http://127.0.0.1:5000/contact',
+        data: dataObj
+    });
+
+}
 
