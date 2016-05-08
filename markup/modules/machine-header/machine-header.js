@@ -3,6 +3,7 @@ import $ from 'jquery';
 
 const MOBILE_SIZE = 768;
 const SLIDE_PARALAX = 4;
+const HEADER_HEIGHT = 60;
 const slides = document.querySelectorAll('.detached-screen');
 let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
@@ -18,8 +19,14 @@ $menuIndexElements.on('click', scrollToScreen);
 function scrollToScreen(e) {
     e.preventDefault();
     let slideToScroll = $(this).data('slide');
+    let sclollHeight = slidesOffset[slideToScroll];
+
+    if (viewPortWidth <= MOBILE_SIZE) {
+        sclollHeight -= HEADER_HEIGHT;
+    }
+
     $('html, body').animate({
-        scrollTop: slidesOffset[slideToScroll]
+        scrollTop: sclollHeight
     }, 300);
 }
 
