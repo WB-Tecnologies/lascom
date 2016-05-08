@@ -5,6 +5,7 @@
 require('./tars/tars');
 
 const gulp = tars.packages.gulp;
+const imageop = require('gulp-image-optimization');
 
 // Require system and user's tasks
 // You can add your own tasks.
@@ -19,6 +20,14 @@ gulp.task('build-dev', () => gulp.start('main:build-dev'));
 
 // Dev task. Build dev-version with watchers and livereload
 gulp.task('dev', () => gulp.start('main:dev'));
+gulp.task('imagemin', () => {
+    gulp.src(['markup/static/img/**/*.png','markup/static/img/**/*.jpg','markup/static/img/**/*.gif','markup/static/img/**/*.jpeg'])
+    .pipe(imageop({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    })).pipe(gulp.dest('temp'));
+});
 
 // Build task. Build release version
 gulp.task('build', () => gulp.start('main:build'));
