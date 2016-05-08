@@ -194,7 +194,7 @@ Created by WB—Tech, http://wbtech.pro/
             }
           }
         }
-        this.$maskLegend.on("" + ($.wbtIsTouch() ? "singleTap" : "click"), ".wbt-rotator-titles_item", $.proxy(this.onPathClick, this, null));
+        this.$maskLegend.on("click", ".wbt-rotator-titles_item", $.proxy(this.onPathClick, this, null));
         if (!$.wbtIsTouch()) {
           this.$maskLegend.on("mouseover", ".wbt-rotator-titles_item", $.proxy(this.onPathOver, this, null));
           this.$maskLegend.on("mouseout", ".wbt-rotator-titles_item", $.proxy(this.onPathOut, this, null));
