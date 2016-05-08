@@ -16,7 +16,7 @@ $.validator.addMethod('alphabetical', (value, element) => {
 , 'только буквы');
 
 $.validator.addMethod('numbers', (value, element) => {
-    return (/^\+?\d+?(\s?\(?([0-9]+)\)?\s?\-?\(?\)?)+([0-9]+)\)?$/.test(value));
+    return (/^\+?\d?\(?(\s?\(?([0-9]+)\)?\s?\-?\(?\)?)+([0-9]+)\)?$/.test(value));
 }
 , 'неверный ввод');
 
@@ -56,6 +56,7 @@ $orderForm.validate({
     submitHandler: () => {
         submitOrder();
         $tnxText.fadeIn();
+        setTimeout(() => $tnxText.fadeOut(), 3000);
     }
 
 });

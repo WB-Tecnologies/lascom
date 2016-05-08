@@ -3,6 +3,7 @@ import * as validator from 'static/js/plugins/jquery.validate.min.js';
 
 const $samplesForm = $('.samples-form');
 const $submitBtn = $('.samples-submit_btn');
+const $tnxText = $('.order-submit_tnx');
 
 $samplesForm.validate({
     rules: {
@@ -22,53 +23,60 @@ $samplesForm.validate({
 
     messages: {
         name: {
-            required: 'please enter name'
+            required: 'пожалуйста, введите Ваше имя'
         },
         email: {
-            required: 'please enter email'
+            required: 'пожалуйста, введите email'
         },
         phone: {
-            required: 'please enter phone'
+            required: 'пожалуйста, введите телефон'
         },
-        message: 'please enter message'
+        message: 'пожалуйста, напишите сообщение'
     },
 
     invalidHandler: (e, _validator) => {
         console.log('err');
+    },
+
+    submitHandler: () => {
+        submitOrder();
+        $tnxText.fadeIn();
+        setTimeout(() => $tnxText.fadeOut(), 3000);
     }
-        // $submitBtn.addClass "contact-form_submit__error"
-        // setTimeout ->
-        //     $submitBtn.removeClass "contact-form_submit__error"
-        // , 200
+
 });
 
 
-        // submitHandler: ->
-        //     $submitTnxMessage.fadeIn()
+$samplesForm.on('submit', (e) => e.preventDefault());
 
-// $samplesForm.on('submit', (e) => {
-//     e.preventDefault();
-//     console.log('subm');
-//     dataObj = {}
-//     $name = $("#name")
-//     $email = $("#email")
-//     $company = $("#company")
-//     $message = $("#message")
+function submitOrder() {
+    console.log('subm');
+    let dataObj = {};
+    let $name = $('#name');
+    let $company = $('#company');
+    let $phone = $('#phone');
+    let $email = $('#email');
+    let $message = $('#message');
 
-//     dataObj.name = $name.val()
-//     dataObj.email = $email.val()
-//     dataObj.company = $company.val()
-//     dataObj.message = $message.val()
+    dataObj.type = 'request';
+    dataObj.name = $name.val();
+    dataObj.company = $company.val();
+    dataObj.phone = $phone.val();
+    dataObj.email = $email.val();
+    dataObj.message = $message.val();
 
-//     $name.val("")
-//     $email.val("")
-//     $company.val("")
-//     $message.val("")
+    $name.val('');
+    $company.val('');
+    $phone.val('');
+    $email.val('');
+    $message.val('');
 
-//     $.ajax
-//         type: "POST"
-//         url: "http://madmind.io/handler"
-//         data: dataObj
-// });
+    $.ajax({
+        type: 'POST',
+        url: 'http://127.0.0.1:5000/contact',
+        data: dataObj
+    });
+
+}
 
 
