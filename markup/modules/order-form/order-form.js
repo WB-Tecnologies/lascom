@@ -23,8 +23,7 @@ $.validator.addMethod('numbers', (value, element) => {
 $orderForm.validate({
     rules: {
         name: {
-            required: true,
-            alphabetical: true
+            required: true
         },
         email: {
             required: true

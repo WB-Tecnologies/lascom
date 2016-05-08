@@ -8,8 +8,7 @@ const $tnxText = $('.order-submit_tnx');
 $samplesForm.validate({
     rules: {
         name: {
-            required: true,
-            alphabetical: true
+            required: true
         },
         email: {
             required: true
