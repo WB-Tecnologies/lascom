@@ -61,13 +61,19 @@ MAIL_TEMPLATE_HTML = Template(u"""
 {% endif %}
 """)
 
-SMTP_FROM = 'no-reply@lascom.pro'
-SMTP_TO = 'admin@lascom.pro'
-SMTP_HOST = 'debugmail.io'
-SMTP_PORT = 25
-SMTP_LOGIN = 'dizballanze@gmail.com'
-SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
+# SMTP_FROM = 'no-reply@lascom.pro'
+# SMTP_TO = 'admin@lascom.pro'
+# SMTP_HOST = 'debugmail.io'
+# SMTP_PORT = 25
+# SMTP_LOGIN = 'dizballanze@gmail.com'
+# SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
 
+SMTP_FROM = 'ask@wbtech.pro'
+SMTP_TO = 'yuri@wbtech.pro,kirill@wbtech.pro'
+SMTP_HOST = 'in-v3.mailjet.com'
+SMTP_PORT = 25
+SMTP_LOGIN = '5c68accfc347d434988c59a886cd6350'
+SMTP_PASSWORD = '07dbb3fd8a51075f9b241d0d1c5c83c8'
 
 
 def _send_message(data):
