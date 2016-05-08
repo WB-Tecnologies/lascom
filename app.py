@@ -20,13 +20,10 @@ from flask import Flask, request, make_response
 from jinja2 import Template, Undefined
 
 
-JINJA2_ENVIRONMENT_OPTIONS = { 'undefined' : Undefined }
-
-
 app = Flask(__name__)
 
 
-MAIL_TEMPLATE_TXT = Template("""
+MAIL_TEMPLATE_TXT = Template(u"""
 {% if name is defined %}
 Name: {{name.0}}
 {% endif %}
@@ -45,7 +42,7 @@ Message:
 {{message.0}}
 {% endif %}
 """)
-MAIL_TEMPLATE_HTML = Template("""
+MAIL_TEMPLATE_HTML = Template(u"""
 {% if name is defined %}
 <p><b>Name</b>: {{name.0}}</p>
 {% endif %}
@@ -91,11 +88,11 @@ def _send_message(data):
         msg['Reply-To'] = data['email'][0]
     # text part
     text = MAIL_TEMPLATE_TXT.render(**data)
-    text_part = MIMEText(text, 'plain')
+    text_part = MIMEText(text, 'plain', 'utf-8')
     msg.attach(text_part)
     # html part
     html = MAIL_TEMPLATE_HTML.render(**data)
-    html_part = MIMEText(html, 'html')
+    html_part = MIMEText(html, 'html', 'utf-8')
     msg.attach(html_part)
     # senging
     smtp = SMTP()
