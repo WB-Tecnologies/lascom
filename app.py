@@ -20,6 +20,7 @@ from flask import Flask, request, make_response
 from jinja2 import Template, Undefined
 
 
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 
@@ -57,17 +58,23 @@ MAIL_TEMPLATE_HTML = Template(u"""
 {% endif %}
 {% if message is defined %}
 <p><b>Message</b>:</p>
-<p>{{message.0}}</p>
+<p>{{message.0|replace("\n", "<br>")}}</p>
 {% endif %}
 """)
 
-SMTP_FROM = 'no-reply@lascom.pro'
-SMTP_TO = 'admin@lascom.pro'
-SMTP_HOST = 'debugmail.io'
-SMTP_PORT = 25
-SMTP_LOGIN = 'dizballanze@gmail.com'
-SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
+# SMTP_FROM = 'no-reply@lascom.pro'
+# SMTP_TO = 'admin@lascom.pro'
+# SMTP_HOST = 'debugmail.io'
+# SMTP_PORT = 25
+# SMTP_LOGIN = 'dizballanze@gmail.com'
+# SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
 
+SMTP_FROM = 'ask@wbtech.pro'
+SMTP_TO = 'dmitry.volodkin@lascom.pro'
+SMTP_HOST = 'in-v3.mailjet.com'
+SMTP_PORT = 25
+SMTP_LOGIN = '5c68accfc347d434988c59a886cd6350'
+SMTP_PASSWORD = '07dbb3fd8a51075f9b241d0d1c5c83c8'
 
 
 def _send_message(data):
@@ -85,7 +92,7 @@ def _send_message(data):
     msg['From'] = SMTP_FROM
     msg['To'] = SMTP_TO
     if 'email' in data:
-        msg['Reply-To'] = data['email'][0]
+        msg['Reply-To'] = data['email']
     # text part
     text = MAIL_TEMPLATE_TXT.render(**data)
     text_part = MIMEText(text, 'plain', 'utf-8')
@@ -114,7 +121,7 @@ def _send_message(data):
 
 @app.route('/contact', methods=['POST'])
 def hello():
-    logging.debug(request.form)
+    logging.info(request.form)
     result = _send_message(request.form)
     resp = make_response(json.dumps(dict(result=result)), 200)
     resp.headers['Content-Type'] = 'application/json'
