@@ -1,6 +1,9 @@
 .detached-screen__laser
   background #ffffff
 
+.detached-screen__laser .l-restrictor
+    position: relative
+
 .video-wrapper
   position: absolute
   height: 100%
@@ -12,14 +15,16 @@
   position: absolute
   height: 100%
   width: 100%
+  transition: opacity 300ms
   z-index: 1
 
 .laser-videobg
   position: absolute;
-  height: 100%
+  height: auto
   margin: 0 auto
   left: 0
   right: 0
+  width: 100%
   z-index: 0;
 
 .laser-videobg__book
@@ -27,6 +32,7 @@
 
 .content-title__laser
   color #ffffff !important
+  transition: opacity 300ms
 
 .laser-content_description
   color #ffffff
@@ -35,6 +41,43 @@
   line-height: 30px
   margin-bottom: 2.3vh
   margin-top: 0
+  transition: opacity 300ms
+
+.laser-sound-btn {background:url('../img/general/icon-sound-on.svg')no-repeat center;cursor:pointer;height:40px;width: 100px;transition: opacity 300ms}
+.laser-sound-btn:hover {background:url('../img/general/icon-sound-on__hover.svg')no-repeat center;}
+
+.video-back
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 50%;
+  color: rgba(0,0,0,0.2)
+  cursor: pointer
+  font-size: 23px;
+  opacity: 0;
+  text-align: center
+  position: absolute
+  height: 30px
+  top: 40px
+  right:40px
+  width: 30px
+  z-index: 9999
+
+.video-back:hover
+    background: rgba(255,255,255,.5);
+
+.detached-screen__video .video-filter
+    background:rgba(0,0,0,0);
+
+.detached-screen__video .laser-content_description
+    opacity:0;
+
+.detached-screen__video .laser-sound-btn
+  opacity: 0
+
+.detached-screen__video .content-title__laser
+  opacity: 0
+
+.detached-screen__video .video-back
+  opacity: 1
 
 @media (max-width: $palmtopWidth)
   .detached-screen__laser

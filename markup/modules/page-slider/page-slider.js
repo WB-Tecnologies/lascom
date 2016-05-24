@@ -4,6 +4,7 @@ import $ from 'jquery';
 const SLIDE_BEFORE_PARALAX = 3;
 const SLIDE_PARALAX = 4;
 const MOBILE_SIZE = 768;
+const LASER_VIDEO_SLIDE = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
 const slides = document.querySelectorAll('.detached-screen');
 const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
@@ -19,6 +20,8 @@ let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
 let paralaxSpeed = 30;
 let currentMenu;
+let laserVideo = $('.laser-videobg')[0];
+let videoIsPlay = false;
 window.initialize = initialize;
 
 initialize();
@@ -169,11 +172,27 @@ function updateMenu() {
     }
 }
 
+function playLaserVideo(_currentSlide) {
+    if (_currentSlide === LASER_VIDEO_SLIDE) {
+        if (!videoIsPlay) {
+            laserVideo.play();
+            videoIsPlay = true;
+        }
+    } else {
+        if (videoIsPlay) {
+            laserVideo.pause();
+            videoIsPlay = false;
+        }
+    }
+}
+
 function scrollSlides() {
     let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
     let heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
     let heightDeltaPrev = slides[currentSlide - 1].clientHeight - viewPortHeight;
     let pageYNew = window.pageYOffset;
+
+    playLaserVideo(currentSlide);
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
