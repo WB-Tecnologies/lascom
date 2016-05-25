@@ -192,7 +192,9 @@ function scrollSlides() {
     let heightDeltaPrev = slides[currentSlide - 1].clientHeight - viewPortHeight;
     let pageYNew = window.pageYOffset;
 
-    playLaserVideo(currentSlide);
+    if (laserVideo) {
+        playLaserVideo(currentSlide);
+    }
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
