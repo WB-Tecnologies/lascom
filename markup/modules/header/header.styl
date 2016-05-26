@@ -158,6 +158,7 @@ $headerLinkColor = #666666
   .header-fixed_menu-btn
     display: none
 
+.mobile-close-btn__menu {display: none;right: 10px;}
 
 @media (max-width $palmtopWidth)
   .header-fixed
@@ -177,6 +178,10 @@ $headerLinkColor = #666666
   .header-fixed
     padding: 0 20px;
 
+@media (max-width: 370px) {
+    .mobile-close-btn {display: none;}
+    .mobile-close-btn__menu {display: block;}
+}
 
 
 
