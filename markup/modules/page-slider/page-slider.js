@@ -7,7 +7,7 @@ const MOBILE_SIZE = 768;
 const LASER_VIDEO_SLIDE = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
 const slides = document.querySelectorAll('.detached-screen');
-const scrollSlidesThrottled = _.throttle(scrollSlides, 10);
+const scrollSlidesDebounced = _.debounce(scrollSlides, 0);
 let getCurentSlideBoundary = сurentSlideBoundaryFactory();
 let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -31,7 +31,7 @@ function initialize() {
         updateMenuInit();
         initSliderHeight();
         scrollSlides();
-        window.addEventListener('scroll', scrollSlidesThrottled);
+        window.addEventListener('scroll', scrollSlidesDebounced);
     }
 }
 
