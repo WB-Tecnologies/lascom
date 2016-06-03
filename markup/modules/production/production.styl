@@ -1,30 +1,45 @@
 .detached-screen__production
-  background rgb(227, 227, 227) url("../img/general/bg-ulsp.png") no-repeat center
-  background-size cover
-  height: 100%
+  background-color: #ffffff;
+  min-height: 100%
   padding-bottom: 0
-  .content-wrapper
-    height: 100%
 
-.l-restrictor__production
-  background url("../img/general/machine-ulsp__1.png") no-repeat center
+.production-machine
+  background url("../img/general/bg-ulsp.png")no-repeat center;
+  top: 120px
+  text-align:center
+  margin-bottom: 20px
+  width:100%
+
+.proguction-machine_img
+  max-width: 1440px
+  width: 100%
+
+.detached-screen_machine
+  background: url("../img/general/machine-ulsp.png") no-repeat center
   background-size contain
+  position: absolute
   height: 100%
+  width: 100%
+
+
+.content-title_production
+  margin-top:-10px
 
 .production-content_btn
   background $btnRed
   box-sizing border-box
   border none
   border-radius: 8px
-  bottom 12vh
   color #ffffff
+  display: block
   font-family: $AvenirDemi
   font-size: 18px
+  margin:0 auto 40px
   padding: 30px 50px 30px 20px;
-  position: absolute
   text-align: center
   transition background 50ms
   text-decoration: none
+  max-width: 786px
   width 100%
   &:hover
     background #da0018
