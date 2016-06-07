@@ -5,7 +5,7 @@
     height: 100%
   .content-wrapper
     height: 100%
-    // padding: 0
+    padding-left: 40px
 
 .content-title__machine
   margin-bottom: 34px !important
@@ -18,7 +18,6 @@
   height: 100vh
   max-width: initial !important
   width: 100%
-
 
 
 .wbt-rotator-content
@@ -42,15 +41,11 @@
       padding: 0 0 40px !important
 
     .content-title__machine
-      margin-top: 20px !important
       left: 64px
 
 @media (max-width $phoneWidth)
   .detached-screen__machine
     padding-bottom: 0 !important
-
-  .content-title__machine
-    display: none
 
   .wbt-rotator-legend
     position: static
@@ -84,6 +79,9 @@
     background: $colorRed
 
 @media (max-width: 500px)
+  .detached-screen__machine .content-wrapper
+    padding-left: 20px
+
   .wbt-rotator-titles_list
     width: 100%
 
