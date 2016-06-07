@@ -163,8 +163,6 @@ function updateMachineMenu() {
 function updateMenu() {
     if (currentMenu === 'index') {
         updateIndexMenu();
-    } else if (currentMenu === 'machine') {
-        updateMachineMenu();
     }
 }
 
