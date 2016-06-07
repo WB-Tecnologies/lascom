@@ -8,7 +8,7 @@ const slides = document.querySelectorAll('.detached-screen');
 let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 let $paralaxContent = $('.usage-paralax');
-let $menuIndexElements = $('.header-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn, .ulsp-header_btn');
+let $menuIndexElements = $('.anchors-nav-list_link, .header-fixed_btn, .greeting-content_btn, .ulsp-content_btn, .ulsp-header_btn');
 let slidesOffset = {};
 window.initSliderHeightForMenu = initSliderHeight;
 
