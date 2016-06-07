@@ -1,18 +1,33 @@
 .detached-screen__machine
-  background rgb(227, 227, 227)
-  padding-bottom: 0
+  background: #ffffff
+  padding-bottom: 0 !important;
   .l-restrictor
     height: 100%
   .content-wrapper
     height: 100%
-    // padding: 0
+    padding-left: 40px
 
 .content-title__machine
-  position: absolute
+  margin-bottom: 34px !important
+  margin-top:0 !important
 
-#machine-layout
+
+.wbt-rotator
+  // background: linear-gradient(#e3e3e3, #dadada) !important
+  background: url("../img/general/bg-ulsp.png")no-repeat center !important
   height: 100vh
+  max-width: initial !important
   width: 100%
+
+
+.wbt-rotator-content
+  float: none
+  border: none
+  margin: auto
+
+.wbt-rotator-image
+  max-width:1440px
+  margin:auto
 
 .wbt-rotator-cover {width:100%;}
 
@@ -26,15 +41,11 @@
       padding: 0 0 40px !important
 
     .content-title__machine
-      margin-top: 20px !important
       left: 64px
 
 @media (max-width $phoneWidth)
   .detached-screen__machine
     padding-bottom: 0 !important
-
-  .content-title__machine
-    display: none
 
   .wbt-rotator-legend
     position: static
@@ -68,6 +79,9 @@
     background: $colorRed
 
 @media (max-width: 500px)
+  .detached-screen__machine .content-wrapper
+    padding-left: 20px
+
   .wbt-rotator-titles_list
     width: 100%
 

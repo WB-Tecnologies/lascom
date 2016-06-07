@@ -7,12 +7,12 @@ $headerLinkColor = #666666
   padding: 0
 
 .header
-  display: none
+  display: block
   box-sizing border-box
   padding 40px 64px 0
-  position: absolute
+  position: fixed
   width: 100%
-  z-index: 9999
+  z-index: 2
 
 .header-fixed
   background $headerFixedBg
@@ -22,7 +22,7 @@ $headerLinkColor = #666666
   right: 0
   min-height: 70px
   margin 0 auto
-  opacity: 1
+  opacity: 0
   padding: 0 20px
   position fixed
   top 0
@@ -31,7 +31,11 @@ $headerLinkColor = #666666
   width: 100%
   z-index: 888
 
-  .header-nav
+.sticky-header
+  .header-fixed
+    opacity: 1
+
+.header-nav
     display flex
     justify-content: space-between
     align-items center
@@ -45,6 +49,7 @@ $headerLinkColor = #666666
 
 .header-fixed_btn
   background $btnRed
+  border-radius 4px
   border none
   color #ffffff
   font-family: $AvenirDemi
@@ -89,15 +94,16 @@ $headerLinkColor = #666666
 
 .header-nav-list_link__active
   color $colorRed
+  cursor: default
 
 .header-nav-list_link__lang
   font-family: $AvenirDemi
 
 .header-nav_logo-img
-  height 40px
+  height: 30px
   position: relative
-  top: 2px
-  width 142px
+  top: 3px
+  width: 106px
 
 .header-fixed_menu-btn
   display: none
@@ -118,6 +124,9 @@ $headerLinkColor = #666666
   width: 100%
   &:last-child
     margin-bottom: 0
+
+.header-nav-list__lang
+  opacity: 0
 
 .mobile-menu
   background: #ffffff;

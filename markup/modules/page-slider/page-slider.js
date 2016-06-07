@@ -8,6 +8,7 @@ const LASER_VIDEO_SLIDE = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
 const slides = document.querySelectorAll('.detached-screen');
 const scrollSlidesDebounced = _.throttle(scrollSlides, 0);
+const $body = $('body');
 let getCurentSlideBoundary = сurentSlideBoundaryFactory();
 let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -108,15 +109,10 @@ function updateMenuInit() {
 }
 
 function updateIndexMenu() {
-
-    if (currentSlide === 5 || pageYOld === 0) {
-        menuIndexElements.removeClass('header-nav-list_link__active');
-    } else if (currentSlide === 6) {
-        menuIndexElements.removeClass('header-nav-list_link__active');
-        menuIndexElements[currentSlide - 2].classList.add('header-nav-list_link__active');
+    if (currentSlide > 2) {
+        $body.addClass('sticky-header');
     } else {
-        menuIndexElements.removeClass('header-nav-list_link__active');
-        menuIndexElements[currentSlide - 1].classList.add('header-nav-list_link__active');
+        $body.removeClass('sticky-header');
     }
 
 }
@@ -167,8 +163,6 @@ function updateMachineMenu() {
 function updateMenu() {
     if (currentMenu === 'index') {
         updateIndexMenu();
-    } else if (currentMenu === 'machine') {
-        updateMachineMenu();
     }
 }
 

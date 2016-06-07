@@ -1,5 +1,6 @@
 $descriptionTextColor = #262626
 $btnRed = #EB0029
+$anchorLinkColor = #666666
 
 .detached-screen__greenting
   background rgb(102, 102, 102) url("../img/general/bg-greeting.jpg") no-repeat center
@@ -19,6 +20,7 @@ $btnRed = #EB0029
 
 .greeting-content_btn
   background $btnRed
+  border-radius: 8px;
   border none
   color #ffffff
   font-family: $AvenirDemi
@@ -32,6 +34,37 @@ $btnRed = #EB0029
     transition background 100ms
   &:focus
     outline none
+
+.anchors-nav
+  display: none
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid;
+
+.anchors-nav-list
+  list-style none
+  margin: 0
+  padding: 0
+  text-align:center
+
+.anchors-nav-list_item
+  display inline-block
+  margin-right 30px
+  vertical-align middle
+  &:last-child
+    margin-right 0
+
+.anchors-nav-list_link
+  color: $anchorLinkColor
+  cursor pointer
+  font-size 14px
+  font-family $AvenirRegular
+  text-decoration none
+  text-transform uppercase
+  transition color 100ms
+  &:hover
+    color #eb0029
+    transition color 50ms
 
 @media (max-width: $phoneWidth)
   .greeting-content_description

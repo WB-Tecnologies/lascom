@@ -13,7 +13,7 @@ function rotatorInit() {
 
     $machine.wbtRotator({
         language: 'ru',
-        src: 'static/img/plugins/machine/machine.{{01}}.jpg',
+        src: 'static/img/plugins/machine/machine.{{01}}.png',
         sort: false,
         circular: true,
         autoLoad: true,
