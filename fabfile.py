@@ -1,6 +1,7 @@
+import os
 import fabric
 from fabric.state import env
-from fabric.api import run, sudo, cd, task, roles
+from fabric.api import run, sudo, cd, task, roles, runs_once, local, lcd
 
 
 env.roledefs = {
@@ -34,3 +35,15 @@ def deploy():
         run('npm i')
         run('npm run build')
         sudo('supervisorctl restart lascom')
+    register_deployment(os.path.dirname(__file__))
+
+
+@task
+@runs_once
+def register_deployment(git_path):
+    with(lcd(git_path)):
+        revision = local('git log -n 1 --pretty="format:%H"', capture=True)
+        branch = local('git rev-parse --abbrev-ref HEAD', capture=True)
+        local('curl -XPOST http://alerts.wbtech.pro/api/hooks/release/builtin/9/3b4e9064e499ce787610d2764eb98eb085bcd3ebf98f430e583db3772dc285c6/'
+              ' -H "Content-Type: application/json"'
+              ' -d \'{{"version": "{}@{}"}}\''.format(branch, revision))
