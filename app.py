@@ -18,10 +18,12 @@ from email.mime.text import MIMEText
 
 from flask import Flask, request, make_response
 from jinja2 import Template, Undefined
+from raven.contrib.flask import Sentry
 
 
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
+sentry = Sentry(app, dsn='http://d0ec3639da8e4c9e86c8af276aa80551:56ab587bcd8f4275a3f271e566d1eac9@alerts.wbtech.pro/9')
 
 
 MAIL_TEMPLATE_TXT = Template(u"""
