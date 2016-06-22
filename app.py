@@ -128,5 +128,10 @@ def hello():
     return resp
 
 
+@app.route('/ping', methods=['GET'])
+def ping():
+    return make_response('Pong', 200)
+
+
 if __name__ == '__main__':
     app.run()
