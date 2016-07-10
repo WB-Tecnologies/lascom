@@ -19,12 +19,14 @@ let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
+let paralaxScrollMax = getParalxMaxScroll();
 let paralaxSpeed = 45;
 let currentMenu;
 let laserVideo = $('.laser-videobg')[0];
 let videoIsPlay = false;
 let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
 let heightDelta = 0;
+let updateParalaxPositionThrottled = _.throttle(updateParalaxPosition, 10);
 window.initialize = initialize;
 
 initialize();
@@ -46,13 +48,21 @@ function initSliderHeight() {
     });
 }
 
+function getParalxMaxScroll() {
+    let paralaxContentWidth = 0;
+    _.forEach($paralaxContent.children(), (child) => {
+        paralaxContentWidth += child.clientWidth;
+    });
+
+    return paralaxContentWidth;
+}
+
 function сurentSlideBoundaryFactory() {
     let cache = {};
 
     return (_currentSlide) => {
         // Return result from cache if any.
         if (cache[_currentSlide]) {
-            console.log('from cache');
             return cache[_currentSlide];
         }
 
@@ -61,11 +71,10 @@ function сurentSlideBoundaryFactory() {
         _.forEach(slides, (slide, i) => {
             _currentSlideBoundary += slide.clientHeight;
             if ($paralaxContent.length && i + 1 === SLIDE_PARALAX) {
-                _currentSlideBoundary += $paralaxContent.width() / 2;
+                _currentSlideBoundary += paralaxScrollMax - $paralaxContent.width();
             }
             cache[i + 1] = _currentSlideBoundary;
         });
-        console.log('by Calculate');
         return cache[_currentSlide];
     };
 }
@@ -88,18 +97,24 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
-
+let scrolledPercent = 0;
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
-    // scrolledSlice = Math.min(1, scrolledSlice);
+    scrolledSlice = scrolledSlice.toFixed(2);
 
     if (!paralaxContent) {
         return;
     }
 
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
-        $paralaxWrapper.scrollLeft($paralaxWrapper.scrollLeft() - paralaxSpeed);
+        scrolledPercent = 100 - (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
+        if (scrolledPercent < 0) {
+            $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * Math.abs(scrolledPercent));
+        }
     } else if (_currentSlide === SLIDE_PARALAX) {
-        $paralaxWrapper.scrollLeft($paralaxWrapper.scrollLeft() + paralaxSpeed);
+        if (scrolledSlice < 0) {
+            scrolledPercent = (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
+            $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * scrolledPercent);
+        }
     }
 }
 
@@ -192,7 +207,7 @@ function scrollSlides() {
     if (pageYOld > pageYNew) {
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
-        updateParalaxPosition(currentSlide, slideOpacity);
+        updateParalaxPositionThrottled(currentSlide, slideOpacity);
 
         // Set current slide fixed.
         if (pageYNew < (currentSlideBoundary + heightDelta)) {
@@ -204,7 +219,6 @@ function scrollSlides() {
                 currentSlide = (currentSlide - 1) || 1;
                 currentSlideBoundary = getCurentSlideBoundary(currentSlide);
                 heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
-                console.log('delta calc');
             }
 
         }
@@ -213,7 +227,7 @@ function scrollSlides() {
     } else {
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
-        updateParalaxPosition(currentSlide, slideOpacity);
+        updateParalaxPositionThrottled(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
         if (pageYNew >= (currentSlideBoundary + heightDelta) && slides[currentSlide + 1]) {
@@ -222,7 +236,6 @@ function scrollSlides() {
             currentSlide++;
             currentSlideBoundary = getCurentSlideBoundary(currentSlide);
             heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
-            console.log('delta calc');
         }
     }
 
