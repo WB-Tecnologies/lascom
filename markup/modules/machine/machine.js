@@ -56,8 +56,8 @@ function rotatorInit() {
         }]
     }, () => {
         setTimeout(() => {
-            window.initialize();
-            window.initSliderHeightForMenu();
+            // window.initialize();
+            // window.initSliderHeightForMenu();
         }, 500);
     });
 }

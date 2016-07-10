@@ -19,10 +19,12 @@ let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
-let paralaxSpeed = 30;
+let paralaxSpeed = 45;
 let currentMenu;
 let laserVideo = $('.laser-videobg')[0];
 let videoIsPlay = false;
+let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
+let heightDelta = 0;
 window.initialize = initialize;
 
 initialize();
@@ -50,18 +52,20 @@ function сurentSlideBoundaryFactory() {
     return (_currentSlide) => {
         // Return result from cache if any.
         if (cache[_currentSlide]) {
+            console.log('from cache');
             return cache[_currentSlide];
         }
 
         // Calculate result.
-        let currentSlideBoundary = 0;
+        let _currentSlideBoundary = 0;
         _.forEach(slides, (slide, i) => {
-            currentSlideBoundary += slide.clientHeight;
+            _currentSlideBoundary += slide.clientHeight;
             if ($paralaxContent.length && i + 1 === SLIDE_PARALAX) {
-                currentSlideBoundary += $paralaxContent.width() / 2;
+                _currentSlideBoundary += $paralaxContent.width() / 2;
             }
-            cache[i + 1] = currentSlideBoundary;
+            cache[i + 1] = _currentSlideBoundary;
         });
+        console.log('by Calculate');
         return cache[_currentSlide];
     };
 }
@@ -178,8 +182,6 @@ function playLaserVideo(_currentSlide) {
 }
 
 function scrollSlides() {
-    let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
-    let heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
     let pageYNew = window.pageYOffset;
 
     if (laserVideo) {
@@ -190,7 +192,6 @@ function scrollSlides() {
     if (pageYOld > pageYNew) {
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
-        updateSlideOpacity(slideOverlay, slideOpacity);
         updateParalaxPosition(currentSlide, slideOpacity);
 
         // Set current slide fixed.
@@ -199,16 +200,19 @@ function scrollSlides() {
             slides[currentSlide].style.top = slides[currentSlide].dataTop + 'px';
 
             // Switch slide when upslide overlay it.
-            if (pageYNew < (currentSlideBoundary - viewPortHeight) && --currentSlide < 1) {
-                currentSlide = 1;
+            if (pageYNew < (currentSlideBoundary - viewPortHeight)) {
+                currentSlide = (currentSlide - 1) || 1;
+                currentSlideBoundary = getCurentSlideBoundary(currentSlide);
+                heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
+                console.log('delta calc');
             }
+
         }
 
     // Scroll direction bottom.
     } else {
         let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
-        updateSlideOpacity(slideOverlay, slideOpacity);
         updateParalaxPosition(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
@@ -216,6 +220,9 @@ function scrollSlides() {
             slides[currentSlide].style.position = 'fixed';
             slides[currentSlide].style.top = -heightDelta + 'px';
             currentSlide++;
+            currentSlideBoundary = getCurentSlideBoundary(currentSlide);
+            heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
+            console.log('delta calc');
         }
     }
 
