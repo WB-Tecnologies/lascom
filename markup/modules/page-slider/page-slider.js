@@ -26,6 +26,7 @@ let laserVideo = $('.laser-videobg')[0];
 let videoIsPlay = false;
 let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
 let heightDelta = 0;
+let scrolledPercent = 0;
 let updateParalaxPositionThrottled = _.throttle(updateParalaxPosition, 10);
 window.initialize = initialize;
 
@@ -97,24 +98,21 @@ function updateSlideOpacity(slide, slideOpacity) {
     }
 }
 
-let scrolledPercent = 0;
 function updateParalaxPosition(_currentSlide, scrolledSlice) {
-    scrolledSlice = scrolledSlice.toFixed(2);
-
     if (!paralaxContent) {
         return;
     }
+
+    scrolledSlice = scrolledSlice.toFixed(2);
 
     if (_currentSlide === SLIDE_BEFORE_PARALAX) {
         scrolledPercent = 100 - (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
         if (scrolledPercent < 0) {
             $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * Math.abs(scrolledPercent));
         }
-    } else if (_currentSlide === SLIDE_PARALAX) {
-        if (scrolledSlice < 0) {
-            scrolledPercent = (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
-            $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * scrolledPercent);
-        }
+    } else if (_currentSlide === SLIDE_PARALAX && scrolledSlice < 0) {
+        scrolledPercent = (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
+        $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * scrolledPercent);
     }
 }
 
@@ -220,7 +218,6 @@ function scrollSlides() {
                 currentSlideBoundary = getCurentSlideBoundary(currentSlide);
                 heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
             }
-
         }
 
     // Scroll direction bottom.
@@ -240,6 +237,6 @@ function scrollSlides() {
     }
 
     pageYOld = pageYNew;
-    updateMenu();
+    // updateMenu();
 }
 
