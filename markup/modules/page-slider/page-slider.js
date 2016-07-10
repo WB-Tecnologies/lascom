@@ -38,9 +38,8 @@ function initialize() {
 
 function initSliderHeight() {
     _.forEach(slides, (slide, index) => {
-        slide.style.zIndex = index;
-        slide.style.opacity = 1;
-        slide.style.top = getCurentSlideBoundary(index) + 'px';
+        let slideInitStyles = 'top:' + getCurentSlideBoundary(index) + 'px;opacity:1;z-index:' + index + ';';
+        slide.style.cssText = slideInitStyles;
         slide.dataTop = getCurentSlideBoundary(index);
     });
 }
@@ -67,7 +66,7 @@ function сurentSlideBoundaryFactory() {
     };
 }
 
-function getSlideOpacity(_pageYNew, _currentSlide, t) {
+function getSlideOpacity(_pageYNew, _currentSlide) {
     return (_pageYNew) / viewPortHeight - (_currentSlide - 1);
 }
 
@@ -156,8 +155,6 @@ function updateMachineMenu() {
         menuMachineElements.removeClass('header-nav-list_link__active');
         menuMachineElements[1].classList.add('header-nav-list_link__active');
     }
-
-
 }
 
 function updateMenu() {
@@ -183,7 +180,6 @@ function playLaserVideo(_currentSlide) {
 function scrollSlides() {
     let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
     let heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
-    let heightDeltaPrev = slides[currentSlide - 1].clientHeight - viewPortHeight;
     let pageYNew = window.pageYOffset;
 
     if (laserVideo) {
@@ -192,7 +188,7 @@ function scrollSlides() {
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
-        let slideOpacity = getSlideOpacity(pageYNew, currentSlide, heightDeltaPrev);
+        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
         updateSlideOpacity(slideOverlay, slideOpacity);
         updateParalaxPosition(currentSlide, slideOpacity);
@@ -210,7 +206,7 @@ function scrollSlides() {
 
     // Scroll direction bottom.
     } else {
-        let slideOpacity = getSlideOpacity(pageYNew, currentSlide, heightDeltaPrev);
+        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
         let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
         updateSlideOpacity(slideOverlay, slideOpacity);
         updateParalaxPosition(currentSlide, slideOpacity);
