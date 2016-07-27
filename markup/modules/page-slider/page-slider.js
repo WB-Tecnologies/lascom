@@ -49,7 +49,7 @@ function initSliderHeight() {
     });
 }
 
-function getParalxMaxScroll() {
+export function getParalxMaxScroll() {
     let paralaxContentWidth = 0;
     _.forEach($paralaxContent.children(), (child) => {
         paralaxContentWidth += child.clientWidth;
