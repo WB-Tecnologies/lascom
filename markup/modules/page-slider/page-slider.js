@@ -194,11 +194,26 @@ function playLaserVideo(_currentSlide) {
     }
 }
 
+const anchorNav = document.querySelector('.anchors-nav');
+const anchorNavBottom = document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
+function toggleSecondaryMenu(_currentSlideNumber) {
+    let secondSlideTop = slides[_currentSlideNumber].getBoundingClientRect().top;
+    if (secondSlideTop < anchorNavBottom) {
+        anchorNav.classList.add('anchors-nav__active');
+    } else {
+        anchorNav.classList.remove('anchors-nav__active');
+    }
+}
+
 function scrollSlides() {
     let pageYNew = window.pageYOffset;
 
     if (laserVideo) {
         playLaserVideo(currentSlide);
+    }
+
+    if (currentSlide === 2) {
+        toggleSecondaryMenu(currentSlide);
     }
 
     // Scroll direction top.

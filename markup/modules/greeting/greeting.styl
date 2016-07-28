@@ -36,16 +36,28 @@ $anchorLinkColor = #666666
     outline none
 
 .anchors-nav
-  // display: none
-  margin-top: 20px;
+  padding-top: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid;
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  z-index: 999;
 
 .anchors-nav-list
+  border-bottom: 1px solid;
   list-style none
   margin: 0
-  padding: 0
+  padding: 0 0 20px 0
   text-align:center
+  max-width: 786px;
+  margin: 0 auto;
+
+.anchors-nav__active
+  background: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  .anchors-nav-list
+    border-bottom: none;
+    padding: 0;
 
 .anchors-nav-list_item
   display inline-block
