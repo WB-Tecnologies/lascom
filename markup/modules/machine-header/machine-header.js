@@ -37,7 +37,7 @@ function initSliderHeight() {
     _.forEach(slides, (slide, i) => {
         currentSlideBoundary += slide.clientHeight - 1;
         if ($paralaxContent.length && (i + 1) === SLIDE_PARALAX && viewPortWidth > MOBILE_SIZE) {
-            currentSlideBoundary += paralaxScrollMax - $paralaxContent.width();
+            currentSlideBoundary += (paralaxScrollMax - $paralaxContent.width());
         }
         slidesOffset[i] = currentSlideBoundary;
     });

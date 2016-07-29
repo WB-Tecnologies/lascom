@@ -15,7 +15,7 @@ let viewPortHeight = Math.max(document.documentElement.clientHeight, window.inne
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
-let menuIndexElements = $('.header-nav-list__index .header-nav-list_link');
+let menuIndexElements = $('.anchors-nav__index .anchors-nav-list_link');
 let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
@@ -29,6 +29,9 @@ let heightDelta = 0;
 let scrolledPercent = 0;
 let updateParalaxPositionThrottled = _.throttle(updateParalaxPosition, 10);
 window.initialize = initialize;
+const anchorNav = document.querySelector('.anchors-nav');
+const anchorNavBottom = document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
+const updateMenuThrottled = _.throttle(updateMenu, 500);
 
 initialize();
 
@@ -124,13 +127,17 @@ function updateMenuInit() {
     }
 }
 
+let currentSlideTop = 0;
+let previousSlideMiddle = 0;
 function updateIndexMenu() {
-    if (currentSlide > 2) {
-        $body.addClass('sticky-header');
+    currentSlideTop = slides[currentSlide].getBoundingClientRect().top;
+    previousSlideMiddle = slides[currentSlide - 1].getBoundingClientRect().bottom / 2;
+    if (currentSlideTop < previousSlideMiddle) {
+        menuIndexElements.removeClass('anchors-nav-list_link__active');
+        menuIndexElements[currentSlide - 2].classList.add('anchors-nav-list_link__active');
     } else {
-        $body.removeClass('sticky-header');
+        menuIndexElements.removeClass('anchors-nav-list_link__active');
     }
-
 }
 
 function updateMachineMenu() {
@@ -174,7 +181,7 @@ function updateMachineMenu() {
     }
 }
 
-function updateMenu() {
+export function updateMenu() {
     if (currentMenu === 'index') {
         updateIndexMenu();
     }
@@ -194,8 +201,6 @@ function playLaserVideo(_currentSlide) {
     }
 }
 
-const anchorNav = document.querySelector('.anchors-nav');
-const anchorNavBottom = document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
 function toggleSecondaryMenu(_currentSlideNumber) {
     let secondSlideTop = slides[_currentSlideNumber].getBoundingClientRect().top;
     if (secondSlideTop < anchorNavBottom) {
@@ -232,6 +237,7 @@ function scrollSlides() {
                 currentSlide = (currentSlide - 1) || 1;
                 currentSlideBoundary = getCurentSlideBoundary(currentSlide);
                 heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
+
             }
         }
 
@@ -248,10 +254,10 @@ function scrollSlides() {
             currentSlide++;
             currentSlideBoundary = getCurentSlideBoundary(currentSlide);
             heightDelta = slides[currentSlide].clientHeight - viewPortHeight;
+
         }
     }
-
     pageYOld = pageYNew;
-    // updateMenu();
+    updateMenuThrottled();
 }
 
