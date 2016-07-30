@@ -16,7 +16,7 @@ let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 let menuIndexElements = $('.anchors-nav__index .anchors-nav-list_link');
-let menuMachineElements = $('.header-nav-list__machine .header-nav-list_link');
+let menuMachineElements = $('.anchors-nav__ulsp .anchors-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
 let paralaxScrollMax = getParalxMaxScroll();
@@ -131,7 +131,7 @@ let currentSlideTop = 0;
 let previousSlideMiddle = 0;
 function updateIndexMenu() {
     currentSlideTop = slides[currentSlide].getBoundingClientRect().top;
-    previousSlideMiddle = slides[currentSlide - 1].getBoundingClientRect().bottom / 2;
+    previousSlideMiddle = slides[currentSlide - 1].getBoundingClientRect().bottom * 0.9;
     if (currentSlideTop < previousSlideMiddle) {
         menuIndexElements.removeClass('anchors-nav-list_link__active');
         menuIndexElements[currentSlide - 2].classList.add('anchors-nav-list_link__active');
@@ -141,49 +141,22 @@ function updateIndexMenu() {
 }
 
 function updateMachineMenu() {
-    switch (currentSlide) {
-        case 3:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide].classList.add('header-nav-list_link__active');
-            break;
-        case 4:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
-            break;
-        case 5:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
-            break;
-        case 6:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
-            break;
-        case 7:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide - 1].classList.add('header-nav-list_link__active');
-            break;
-        case 8:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            break;
-        case 9:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide - 2].classList.add('header-nav-list_link__active');
-            break;
-
-        default:
-            menuMachineElements.removeClass('header-nav-list_link__active');
-            menuMachineElements[currentSlide].classList.add('header-nav-list_link__active');
-    }
-
-    if (pageYOld === 0) {
-        menuMachineElements.removeClass('header-nav-list_link__active');
-        menuMachineElements[1].classList.add('header-nav-list_link__active');
+    let menuSlide = (currentSlide > 3) ? (currentSlide - 3) : (currentSlide - 2);
+    currentSlideTop = slides[currentSlide].getBoundingClientRect().top;
+    previousSlideMiddle = slides[currentSlide - 1].getBoundingClientRect().bottom * 0.9;
+    if (currentSlideTop < previousSlideMiddle) {
+        menuMachineElements.removeClass('anchors-nav-list_link__active');
+        menuMachineElements[menuSlide].classList.add('anchors-nav-list_link__active');
+    } else {
+        menuMachineElements.removeClass('anchors-nav-list_link__active');
     }
 }
 
 export function updateMenu() {
     if (currentMenu === 'index') {
         updateIndexMenu();
+    } else {
+        updateMachineMenu();
     }
 }
 
