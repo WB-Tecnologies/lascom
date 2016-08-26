@@ -33,7 +33,7 @@ const anchorNav = document.querySelector('.anchors-nav');
 const anchorNavBottom = document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
 const updateMenuThrottled = _.throttle(updateMenu, 500);
 
-initialize();
+// initialize();
 
 function initialize() {
     if (viewPortWidth > MOBILE_SIZE) {
