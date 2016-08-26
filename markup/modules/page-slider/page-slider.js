@@ -30,10 +30,10 @@ let scrolledPercent = 0;
 let updateParalaxPositionThrottled = _.throttle(updateParalaxPosition, 10);
 window.initialize = initialize;
 const anchorNav = document.querySelector('.anchors-nav');
-const anchorNavBottom = document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
+const anchorNavBottom = document.querySelector('.anchors-nav') && document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
 const updateMenuThrottled = _.throttle(updateMenu, 500);
 
-// initialize();
+initialize();
 
 function initialize() {
     if (viewPortWidth > MOBILE_SIZE) {
@@ -155,7 +155,7 @@ function updateMachineMenu() {
 export function updateMenu() {
     if (currentMenu === 'index') {
         updateIndexMenu();
-    } else {
+    } else if (currentMenu === 'machine') {
         updateMachineMenu();
     }
 }

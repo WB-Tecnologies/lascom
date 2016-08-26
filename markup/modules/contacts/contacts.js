@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import googleApi from 'google-maps';
 
-console.log('here');
-
 const MOBILE_SIZE = 768;
 let isDraggable = $(document).width() > MOBILE_SIZE ? true : false;
 
