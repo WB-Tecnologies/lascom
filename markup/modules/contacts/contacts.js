@@ -3,15 +3,17 @@ import googleApi from 'google-maps';
 
 const MOBILE_SIZE = 768;
 let isDraggable = $(document).width() > MOBILE_SIZE ? true : false;
+let mapDiv = document.getElementById('map');
 
 googleApi.load((google) => {
-    initMap(google);
+    if (mapDiv) {
+        initMap(google);
+    }
 });
 
 function initMap(google) {
     let lascomOffice = {lat: 56.749665, lng: 37.22828};
 
-    let mapDiv = document.getElementById('map');
     let map = new google.maps.Map(mapDiv, {
         center: lascomOffice,
         zoom: 14,
