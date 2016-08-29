@@ -29,8 +29,6 @@ let heightDelta = 0;
 let scrolledPercent = 0;
 let updateParalaxPositionThrottled = _.throttle(updateParalaxPosition, 10);
 window.initialize = initialize;
-const anchorNav = document.querySelector('.anchors-nav');
-const anchorNavBottom = document.querySelector('.anchors-nav') && document.querySelector('.anchors-nav').getBoundingClientRect().bottom;
 const updateMenuThrottled = _.throttle(updateMenu, 500);
 
 initialize();
@@ -174,24 +172,12 @@ function playLaserVideo(_currentSlide) {
     }
 }
 
-function toggleSecondaryMenu(_currentSlideNumber) {
-    let secondSlideTop = slides[_currentSlideNumber].getBoundingClientRect().top;
-    if (secondSlideTop < anchorNavBottom) {
-        anchorNav.classList.add('anchors-nav__active');
-    } else {
-        anchorNav.classList.remove('anchors-nav__active');
-    }
-}
 
 function scrollSlides() {
     let pageYNew = window.pageYOffset;
 
     if (laserVideo) {
         playLaserVideo(currentSlide);
-    }
-
-    if (currentSlide === 2) {
-        toggleSecondaryMenu(currentSlide);
     }
 
     // Scroll direction top.
