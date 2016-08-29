@@ -30,7 +30,7 @@ $headerLinkColor = #666666
   transition: opacity 200ms
   left 0
   width: 100%
-  z-index: 9999
+  z-index: 10
 
 .sticky-header
   .header-fixed
@@ -98,7 +98,7 @@ $headerLinkColor = #666666
   cursor: default
 
 .header-nav-list_link__lang
-  font-family: $AvenirDemi
+  display: none;
 
 .header-nav_logo-img
   height: 30px
@@ -126,8 +126,18 @@ $headerLinkColor = #666666
   &:last-child
     margin-bottom: 0
 
-.header-nav-list__lang
-  opacity: 0
+.header-nav-list_link__order
+  cursor: pointer
+  display: inline-block;
+  text-transform: none;
+  padding: 0 17px;
+  color: #ffffff;
+  background: $colorRed
+  border-radius: 3px
+  line-height: 36px;
+  &:hover
+    color: #ffffff
+    background: #da0018
 
 .mobile-menu
   background: #ffffff;
@@ -169,6 +179,9 @@ $headerLinkColor = #666666
     display: none
 
 .mobile-close-btn__menu {display: none;right: 10px;}
+
+.no-scroll
+  overflow: hidden
 
 @media (max-width $palmtopWidth)
   .header-fixed

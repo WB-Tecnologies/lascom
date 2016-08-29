@@ -1,11 +1,33 @@
-$colorInputBorder = #F89DAC
-$colorInputBorderFocus = #EB0029
+$colorInputBorder = #cccccc
+$colorInputBorderFocus = #b3b3b3
+
+.modal-screen
+  background: rgba(0,0,0,.5)
+  position: fixed;
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  z-index: -1
+  .content-wrapper
+    background: #ffffff
+    border-radius: 4px
+    box-sizing: border-box
+    padding: 35px 24px;
+    margin-top: 90px;
+    max-width: 464px;
+
+.modal-screen__active
+  z-index: 11
 
 .detached-screen__order
   background: #ffffff
 
 .content-title__order
   font-size: 24px !important
+  color: #262626 !important;
+  text-align: center;
+  margin-top: 0 !important;
 
 .order-form-list
   list-style: none
@@ -14,14 +36,15 @@ $colorInputBorderFocus = #EB0029
   width: 100%
 
 .order-form-list_item
-  margin-top: -1px
+  margin-bottom: 24px
   position: relative
-  &:first-child
-    margin-top: 0
+  &:last-child
+    margin-bottom: 0
 
 .order-form_input
   box-sizing border-box
   border 1px solid $colorInputBorder
+  border-radius: 4px
   color $colorRed
   font-family: $AvenirRegular
   font-size: 16px
@@ -50,11 +73,12 @@ $colorInputBorderFocus = #EB0029
 .order-form_textarea
   box-sizing border-box
   border 1px solid $colorInputBorder
+  border-radius: 4px
   color $colorRed
   font-family: $AvenirRegular
   font-size: 16px
   line-height: 20px
-  margin-top: 2.2vh
+  margin-top: 24px;
   min-height: 180px
   padding: 15px
   position: relative
