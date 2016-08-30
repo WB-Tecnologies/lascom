@@ -14,7 +14,6 @@ let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerW
 let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 let currentSlide = 1;
 let pageYOld = window.pageYOffset;
-let getSlideOverlayMemo = _.memoize(getSlideOverlay);
 let menuIndexElements = $('.anchors-nav__index .anchors-nav-list_link');
 let menuMachineElements = $('.anchors-nav__ulsp .anchors-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
@@ -81,9 +80,6 @@ function сurentSlideBoundaryFactory() {
     };
 }
 
-function getSlideOpacity(_pageYNew, _currentSlide) {
-    return (_pageYNew) / viewPortHeight - (_currentSlide - 1);
-}
 
 function getSlideOverlay(element) {
     return element.querySelector('.detached-screen_overlay');
@@ -182,9 +178,6 @@ function scrollSlides() {
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
-        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
-        let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
-        updateParalaxPositionThrottled(currentSlide, slideOpacity);
 
         // Set current slide fixed.
         if (pageYNew < (currentSlideBoundary + heightDelta)) {
@@ -202,9 +195,6 @@ function scrollSlides() {
 
     // Scroll direction bottom.
     } else {
-        let slideOpacity = getSlideOpacity(pageYNew, currentSlide);
-        let slideOverlay = getSlideOverlayMemo(slides[currentSlide - 1]);
-        updateParalaxPositionThrottled(currentSlide, slideOpacity);
 
         // Make current slide scrollable.
         if (pageYNew >= (currentSlideBoundary + heightDelta) && slides[currentSlide + 1]) {
