@@ -7,7 +7,6 @@
   background url("../img/general/bg-ulsp.png")no-repeat center;
   top: 120px
   text-align:center
-  margin-bottom: 20px
   width:100%
 
 .proguction-machine_img
@@ -22,34 +21,38 @@
   width: 100%
 
 .production-content_btn
-  background $btnRed
+  background rgba(255, 255, 255, .6)
   box-sizing border-box
-  border none
-  border-radius: 8px
-  color #ffffff
+  border 1px solid #c7c7c7
+  border-radius: 60px
+  color $colorRed;
   display: block
   font-family: $AvenirDemi
   font-size: 18px
   margin:0 auto 40px
+  position: relative;
+  top: -120px;
   padding: 30px 50px 30px 20px;
   text-align: center
   transition background 50ms
   text-decoration: none
-  max-width: 786px
+  max-width: 944px
   width 100%
   &:hover
     background #da0018
+    border 1px solid #a70000
+    color #ffffff;
     transition background 100ms
   &:focus
     outline none
-  &:after
-    content ''
-    background: url('../img/general/icon-arrow-right.svg')no-repeat center;
-    height: 20px
-    position: absolute
-    right: 30px
-    top 30px
-    width: 12px
+  // &:after
+  //   content ''
+  //   background: url('../img/general/icon-arrow-right.svg')no-repeat center;
+  //   height: 20px
+  //   position: absolute
+  //   right: 30px
+  //   top 30px
+  //   width: 12px
 
 @media (max-width: 600px)
   .production-content_btn
