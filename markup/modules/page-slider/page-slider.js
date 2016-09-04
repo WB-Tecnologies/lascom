@@ -18,7 +18,6 @@ let menuIndexElements = $('.anchors-nav__index .anchors-nav-list_link');
 let menuMachineElements = $('.anchors-nav__ulsp .anchors-nav-list_link');
 let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
-let paralaxScrollMax = getParalxMaxScroll();
 let paralaxSpeed = 45;
 let currentMenu;
 let laserVideo = $('.laser-videobg')[0];
@@ -26,7 +25,6 @@ let videoIsPlay = false;
 let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
 let heightDelta = 0;
 let scrolledPercent = 0;
-let updateParalaxPositionThrottled = _.throttle(updateParalaxPosition, 10);
 window.initialize = initialize;
 const updateMenuThrottled = _.throttle(updateMenu, 500);
 
@@ -49,15 +47,6 @@ function initSliderHeight() {
     });
 }
 
-export function getParalxMaxScroll() {
-    let paralaxContentWidth = 0;
-    _.forEach($paralaxContent.children(), (child) => {
-        paralaxContentWidth += child.clientWidth;
-    });
-
-    return paralaxContentWidth;
-}
-
 function сurentSlideBoundaryFactory() {
     let cache = {};
 
@@ -71,9 +60,6 @@ function сurentSlideBoundaryFactory() {
         let _currentSlideBoundary = 0;
         _.forEach(slides, (slide, i) => {
             _currentSlideBoundary += slide.clientHeight;
-            if ($paralaxContent.length && i + 1 === SLIDE_PARALAX) {
-                _currentSlideBoundary += paralaxScrollMax - $paralaxContent.width();
-            }
             cache[i + 1] = _currentSlideBoundary;
         });
         return cache[_currentSlide];
@@ -92,24 +78,6 @@ function updateSlideOpacity(slide, slideOpacity) {
         slide.classList.add('detached-screen_overlay__transparent');
     } else {
         slide.classList.remove('detached-screen_overlay__transparent');
-    }
-}
-
-function updateParalaxPosition(_currentSlide, scrolledSlice) {
-    if (!paralaxContent) {
-        return;
-    }
-
-    scrolledSlice = scrolledSlice.toFixed(2);
-
-    if (_currentSlide === SLIDE_BEFORE_PARALAX) {
-        scrolledPercent = 100 - (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
-        if (scrolledPercent < 0) {
-            $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * Math.abs(scrolledPercent));
-        }
-    } else if (_currentSlide === SLIDE_PARALAX && scrolledSlice < 0) {
-        scrolledPercent = (1 + parseFloat(scrolledSlice, 10)).toFixed(2) * 100;
-        $paralaxWrapper.scrollLeft(paralaxScrollMax / 100 * scrolledPercent);
     }
 }
 
