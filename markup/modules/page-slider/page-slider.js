@@ -20,7 +20,6 @@ let $paralaxContent = $('.usage-paralax');
 let $paralaxWrapper = $('.usage-paralax-wrapper');
 let paralaxSpeed = 45;
 let currentMenu;
-let laserVideo = $('.laser-videobg')[0];
 let videoIsPlay = false;
 let currentSlideBoundary = getCurentSlideBoundary(currentSlide);
 let heightDelta = 0;
@@ -122,27 +121,10 @@ export function updateMenu() {
     }
 }
 
-function playLaserVideo(_currentSlide) {
-    if (_currentSlide === LASER_VIDEO_SLIDE) {
-        if (!videoIsPlay) {
-            laserVideo.play();
-            videoIsPlay = true;
-        }
-    } else {
-        if (videoIsPlay) {
-            laserVideo.pause();
-            videoIsPlay = false;
-        }
-    }
-}
 
 
 function scrollSlides() {
     let pageYNew = window.pageYOffset;
-
-    if (laserVideo) {
-        playLaserVideo(currentSlide);
-    }
 
     // Scroll direction top.
     if (pageYOld > pageYNew) {
