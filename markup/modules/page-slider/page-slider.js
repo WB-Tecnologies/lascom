@@ -4,7 +4,6 @@ import $ from 'jquery';
 const SLIDE_BEFORE_PARALAX = 3;
 const SLIDE_PARALAX = 4;
 const MOBILE_SIZE = 768;
-const LASER_VIDEO_SLIDE = 3;
 const paralaxContent = document.querySelector('.usage-paralax');
 const slides = document.querySelectorAll('.detached-screen');
 const scrollSlidesDebounced = _.throttle(scrollSlides, 0);
@@ -16,8 +15,6 @@ let currentSlide = 1;
 let pageYOld = window.pageYOffset;
 let menuIndexElements = $('.anchors-nav__index .anchors-nav-list_link');
 let menuMachineElements = $('.anchors-nav__ulsp .anchors-nav-list_link');
-let $paralaxContent = $('.usage-paralax');
-let $paralaxWrapper = $('.usage-paralax-wrapper');
 let paralaxSpeed = 45;
 let currentMenu;
 let videoIsPlay = false;
@@ -27,8 +24,9 @@ let scrolledPercent = 0;
 window.initialize = initialize;
 const updateMenuThrottled = _.throttle(updateMenu, 500);
 
-initialize();
-
+if (!menuMachineElements.length) {
+    initialize();
+}
 function initialize() {
     if (viewPortWidth > MOBILE_SIZE) {
         updateMenuInit();

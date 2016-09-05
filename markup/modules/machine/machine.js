@@ -56,7 +56,7 @@ function rotatorInit() {
         }]
     }, () => {
         setTimeout(() => {
-            // window.initialize();
+            window.initialize();
             // window.initSliderHeightForMenu();
         }, 500);
     });
