@@ -36,18 +36,34 @@
 .content-title__laser
   color #ffffff !important
   transition: opacity 300ms
+  margin-bottom: 78px !important;
 
 .laser-content_description
   color #ffffff
   font-family: $AvenirDemi
-  font-size: 21px
-  line-height: 30px
-  margin-bottom: 2.3vh
+  font-size: 18px
+  line-height: 24px
+  margin-bottom: 22px
   margin-top: 0
   transition: opacity 300ms
 
-.laser-sound-btn {background:url('../img/general/icon-sound-on.svg')no-repeat center;cursor:pointer;height:40px;width:100px;position:absolute;top:40px;right:40px;transition: opacity 300ms;z-index: 9999;}
-.laser-sound-btn:hover {background:url('../img/general/icon-sound-on__hover.svg')no-repeat center;}
+.laser-sound-btn {
+    background: rgba(255, 255, 255, .6);
+    border 1px solid #c7c7c7
+    border-radius: 60px
+    cursor: pointer;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 auto;
+    width:100px;
+}
+.laser-sound-btn:hover {
+    background #da0018
+    border 1px solid #a70000
+    color #ffffff;
+    transition background 100ms
+}
 
 .video-back {background:url('../img/general/icon-sound-off.svg')no-repeat center;cursor:pointer;height:40px;width:100px;position:absolute;top:40px;right:40px;transition: opacity 300ms;opacity: 0;z-index: 9999;}
 .video-back:hover {background:url('../img/general/icon-sound-off__hover.svg')no-repeat center;}

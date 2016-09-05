@@ -8,4 +8,5 @@ import * as orderValidator from 'modules/order-form/order-form';
 import * as samplesValidator from 'modules/get-samples/get-samples';
 import * as contacts from 'modules/contacts/contacts';
 import * as footer from 'modules/footer/footer';
+import * as laserFullVideo from 'modules/laser-full-video/laser-full-video';
 
