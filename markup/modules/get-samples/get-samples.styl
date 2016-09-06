@@ -1,5 +1,5 @@
-$colorInputBorder = #F89DAC
-$colorInputBorderFocus = #EB0029
+$colorInputBorder = #cccccc
+$colorInputBorderFocus = #b3b3b3
 
 .detached-screen__samples
   background: #ffffff
@@ -22,14 +22,15 @@ $colorInputBorderFocus = #EB0029
   width: 100%
 
 .samples-form-list_item
-  margin-top: -1px
+  margin-bottom: 24px
   position: relative
-  &:first-child
-    margin-top: 0
+  &:last-child
+    margin-bottom: 0
 
 .samples-form_input
   box-sizing border-box
   border 1px solid $colorInputBorder
+  border-radius: 4px
   color $colorRed
   font-family: $AvenirRegular
   font-size: 16px
@@ -83,7 +84,7 @@ $colorInputBorderFocus = #EB0029
 .samples-submit_btn
   background $colorRed
   border none
-  border-radius 8px
+  border-radius 60px
   color #ffffff
   font-family: $AvenirDemi
   font-size: 18px

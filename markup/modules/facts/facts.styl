@@ -1,24 +1,28 @@
 .detached-screen__facts
   background #F7F7F7
 
-.facts-content_fact
-  margin-bottom: 4.45vh
+.facts-wrapper
+  display: flex
+  margin-top: 60px
+
 
 .facts-content_number
+  align-self: flex-start
   color: $colorTextGrey
   font-family: $AvenirDemi
   font-size: 48px
-  margin-bottom: 1.2vh
-
+  position: relative
+  top: 7px
 
 .facts-content_description
-  color $colorRed
+  align-self: flex-start
+  color $colorTextGrey
   font-family: $AvenirRegular
   font-size: 16px
   line-height: 20px
-  margin-bottom: 1.2vh
-  margin-top: 0
+  margin-bottom: 24px;
   max-width: 430px
+  margin-left: 10px;
 
 .facts-content_author
   color $colorTextGrey
@@ -26,6 +30,10 @@
   font-size: 16px
   line-height: 20px
   max-width: 390px
+
+@media (max-width: 1025px)
+  .facts-wrapper
+    display: block
 
 @media (max-width: $phoneWidth)
   .detached-screen__facts .content-wrapper
