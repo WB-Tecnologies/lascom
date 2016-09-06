@@ -18,6 +18,17 @@
 
         <!-- Main scripts. You can replace it, but I recommend you to leave it here     -->
         <!-- <script src="%=static=%js/main%=hash=%%=min=%.js"></script> -->
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script>
+          $(function() {
+            var $body = $('body');
+            var scrollTopBtn = $('.scrolltop-btn');
+            scrollTopBtn.on('click', scrollTop);
+            function scrollTop() {
+                $body.animate({'scrollTop': 0}, 800);
+            }
+          })
+        </script>
     </body>
 
 </html>
