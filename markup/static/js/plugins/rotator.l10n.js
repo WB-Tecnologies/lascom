@@ -68,7 +68,7 @@
     },
 
     RU: {
-      heading: "Станок lascom",
+      heading: "Принципы работы",
       categories: {
         nasal: "",
         jaw: ""
