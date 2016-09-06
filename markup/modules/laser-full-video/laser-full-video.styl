@@ -15,21 +15,23 @@
   display: block;
 
 .laser-full-close
-  background: rgba(255, 255, 255, .6);
+  background: rgba(255, 255, 255, .6) url('../img/general/icon-cross.svg')no-repeat center;
+  background-size: 15px;
   border 1px solid #c7c7c7
   border-radius: 60px
   cursor: pointer;
-  height:40px;
+  height:30px;
   line-height: 40px;
   text-align: center;
   margin: 0 auto;
-  width:100px;
+  width:30px;
   position: absolute
   top: 30px;
   right: 20px;
   z-index: 9
   &:hover
-    background #da0018
+    background #da0018 url('../img/general/icon-cross__active.svg')no-repeat center;
+    background-size: 15px;
     border 1px solid #a70000
     color #ffffff;
     transition background 100ms
