@@ -23,8 +23,9 @@ let heightDelta = 0;
 let scrolledPercent = 0;
 window.initialize = initialize;
 const updateMenuThrottled = _.throttle(updateMenu, 500);
+const aboutPage = $('.detached-screen__about-page');
 
-if (!menuMachineElements.length) {
+if (!menuMachineElements.length && !aboutPage.length) {
     initialize();
 }
 function initialize() {
