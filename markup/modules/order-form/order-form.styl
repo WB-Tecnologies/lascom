@@ -7,6 +7,7 @@ $colorInputBorderFocus = #b3b3b3
   position: fixed;
   top: 0
   left: 0
+  overflow-y: auto
   height: 100%
   width: 100%
   z-index: -1
@@ -102,21 +103,24 @@ $colorInputBorderFocus = #b3b3b3
     -webkit-text-fill-color: initial
 
 .order-submit_btn
-  background $btnRed
-  border none
+  background: transparent
+  border 1px solid $colorRed
   border-radius: 60px
+  color $colorRed
   display: block
-  color #ffffff
   font-family: $AvenirDemi
-  font-size: 16px
-  margin: 32px 0 0 auto
-  min-height 36px
-  line-height 36px
-  padding: 0 17px;
-  transition background 50ms
+  font-size: 18px
+  line-height 64px
+  margin 50px auto 24px
+  max-width: 304px
+  text-decoration: none
+  text-align: center
+  transition background 150ms, color 150ms
+  width 100%
   &:hover
     background #da0018
-    transition background 100ms
+    color #ffffff
+    transition background 50ms, color 50ms
   &:focus
     outline none
 
