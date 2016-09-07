@@ -28,7 +28,7 @@
 .production-content_btn
   background rgba(255, 255, 255, .6)
   box-sizing border-box
-  border 1px solid #c7c7c7
+  border 1px solid $colorRed
   border-radius: 60px
   color $colorRed;
   display: block
@@ -46,9 +46,8 @@
   width 100%
   &:hover
     background #da0018
-    border 1px solid #a70000
-    color #ffffff;
-    transition background 100ms
+    color #ffffff
+    transition background 50ms, color 50ms
   &:focus
     outline none
   // &:after
