@@ -19,14 +19,48 @@ function initMap(google) {
         zoom: 14,
         mapTypeControl: false,
         draggable: isDraggable,
-        scrollwheel: false
+        scrollwheel: false,
+        styles: [
+            {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [
+                    { color: '#fafafa' }
+                ]
+            }, {
+                featureType: 'landscape',
+                elementType: 'geometry',
+                stylers: [
+                    { color: '#f0f0f0' }
+                ]
+            }, {
+                featureType: 'poi',
+                elementType: 'geometry',
+                stylers: [
+                    { visibility: 'off' }
+                ]
+            }, {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [
+                    {color: '#d4d4d4'}
+                ]
+            }
+        ]
     });
+
+    var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    var icons = {
+        lascom: {
+            icon: 'static/img/general/icon-lascom-map.png'
+        }
+    };
 
 
     let marker = new google.maps.Marker({
         position: lascomOffice,
-        map: map,
-        labelClass: 'label'
+        icon: icons.lascom.icon,
+        map: map
     });
 
 }

@@ -23,12 +23,6 @@
       2,
       "1tbs"
     ],
-    "camelcase": [
-      2,
-      {
-        "properties": "always"
-      }
-    ],
     "comma-spacing": [
       2,
       {
