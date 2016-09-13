@@ -1,0 +1,230 @@
+// Color Map.
+$headerFixedBg = #ffffff
+$headerLinkColor = #666666
+
+.l-restrictor__header
+  max-width: 786px
+  padding: 0
+  display: none
+
+.header
+  display: block
+  box-sizing border-box
+  padding 40px 64px 0
+  position: fixed
+  opacity: 0;
+  width: 100%
+  z-index: 2
+
+.header-fixed
+  background $headerFixedBg
+  box-sizing border-box
+  border-bottom: 1px solid #cccccc
+  left: 0
+  right: 0
+  min-height: 70px
+  margin 0 auto
+  padding: 0 20px
+  position fixed
+  top 0
+  transition: opacity 200ms
+  left 0
+  width: 100%
+  z-index: 10
+
+.sticky-header
+  .header-fixed
+    opacity: 1
+
+.header-nav
+    display flex
+    justify-content: space-between
+    align-items center
+    margin: 0 auto
+    max-width: 1440px
+    min-height: 70px
+
+.header-fixed__active
+  opacity: 1
+  z-index: 9999
+
+.header-nav-list__main
+  position: relative
+  left: 55px
+
+.header-fixed_btn
+  background $btnRed
+  border-radius 60px
+  border none
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 16px
+  min-height 40px
+  width 220px
+  transition background 50ms
+  &:hover
+    background #da0018
+    transition background 100ms
+  &:focus
+    outline none
+
+.header-nav
+  text-align left
+
+.header-nav-list
+  list-style none
+  margin 0
+  padding: 0
+
+.header-nav-list_item
+  display inline-block
+  margin-right 30px
+  vertical-align middle
+  &:first-child
+    margin-right 40px
+  &:last-child
+    margin-right 0
+
+.header-nav-list_link
+  color: $headerLinkColor
+  cursor pointer
+  font-size 14px
+  font-family $AvenirRegular
+  text-decoration none
+  text-transform uppercase
+  transition color 100ms
+  &:hover
+    color #eb0029
+    transition color 50ms
+
+.header-nav-list_link__active
+  color $colorRed
+  cursor: default
+
+.header-nav_logo-img
+  height: 30px
+  position: relative
+  top: 3px
+  width: 106px
+
+.header-fixed_menu-btn
+  display: none
+  cursor: pointer
+  list-style: none
+  padding: 0
+  position: relative
+  width: 24px
+
+.header-fixed_menu-btn:hover li
+  background: $colorRed
+
+.header-fixed_menu-btn li
+  background: $colorTextGrey
+  border-radius: 3px
+  height: 2px
+  margin-bottom: 7px
+  width: 100%
+  &:last-child
+    margin-bottom: 0
+
+.header-nav-list_link__order
+  cursor: pointer
+  display: inline-block;
+  font-family: $AvenirDemi
+  text-transform: none;
+  padding: 0 17px;
+  color: #ffffff;
+  background: $colorRed
+  border-radius: 60px
+  line-height: 36px;
+  &:hover
+    color: #ffffff
+    background: #da0018
+
+.mobile-menu
+  background: #ffffff;
+  box-sizing border-box
+  height: 100%;
+  max-width: 320px;
+  overflow: auto
+  position: fixed;
+  right: 0;
+  width: 0;
+  z-index: 999;
+  .header-fixed_btn
+    min-height: 50px
+    width: 100%
+
+.mobile-menu .header-nav-list_item
+  display: block
+  margin-bottom: 40px
+
+.mobile-close-btn
+  cursor: pointer
+  position: absolute
+  opacity: 0.6
+  top 20px
+  right: 337px
+  height: 30px
+  width: 30px
+  img
+    width: 100%
+  &:hover
+    opacity: 1
+
+.mob-menu-active
+  .mobile-menu
+    padding: 20px
+    width: 100%
+
+  .header-fixed_menu-btn
+    display: none
+
+.mobile-close-btn__menu {display: none;right: 10px;}
+
+.no-scroll
+  overflow: hidden
+
+@media (max-width $palmtopWidth)
+  .header-fixed
+    padding: 0 64px;
+
+  .header-nav-list__desktop
+    display: none
+
+  .header-fixed_menu-btn
+    display: block
+
+  .header-fixed:before,
+  .header-fixed:after
+    display: none
+
+  .header-nav-list_link__order
+    box-sizing: border-box
+    text-align: center;
+    line-height: 42px;
+    width: 100%;
+
+  .anchors-nav-list_item
+    display: block;
+    margin-bottom: 40px;
+    text-align: left;
+    width: 100%;
+    .anchors-nav-list_link
+      font-size: 14px;
+
+@media (max-width 500px)
+  .header-fixed
+    padding: 0 20px;
+
+@media (max-width: 370px) {
+    .mobile-close-btn {display: none;}
+    .mobile-close-btn__menu {display: block;}
+}
+
+
+
+
+
+
+
