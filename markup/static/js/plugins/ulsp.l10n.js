@@ -2,67 +2,39 @@
 (function() {
   $.wbtRotator.l10n = {
     EN: {
-      heading: "Human Skull",
+      heading: "Work principles",
       categories: {
-        nasal: "Nasal bones",
-        jaw: "Jaw bones"
+        nasal: "",
+        jaw: ""
       },
       masks: {
-        conchae: {
-          title: "Inferior nasal conchae",
-          description: "A pair of spongy bones located in the nasal cavity and connected with the upper jaw. Mucosal surface and the shape of these bones allows effective humidification and purification of the air going through the nasal cavity."
+        laser: {
+          title: "Laser",
+          description: "A&nbsp;laser is&nbsp;the core component of&nbsp;the machine, making cutoffs on&nbsp;the glass surface. IPG Photonics produces the lasers and supplies them all over the world. Lascom provides the guarantee period of&nbsp;two years. Reliability of&nbsp;the laser assures up&nbsp;to&nbsp;50&nbsp;000 hours of&nbsp;<nobr>non-stop</nobr> laser performance (about 4&ndash;5 years). The speed of&nbsp;coating removal makes up&nbsp;to&nbsp;360 mm<sup>2</sup>/sec."
         },
-        ethmoid: {
-          title: "Ethmoid bone",
-          description: "Spongy bone that separates the nasal cavity from the brain. It is divided into  the cribriform plate, the ethmoidal labyrinth, and the perpendicular plate. Ethmoid bone forms the upper and middle nasal conchae and articulates with the frontal, sphenoid, palatine, nasal and lacrimal bones, as well as with vomer, maxilla and inferior nasal conchae. Forms the inner side surface of the eye orbits."
+        scaner: {
+          title: "Сканатор",
+          description: "Сканатор (устройство с&nbsp;поворотными зеркалами, направляющее лазерный луч) позволяет обрабатывать небольшие сложные элементы с&nbsp;высокими скоростями (до&nbsp;11&nbsp;м/с)."
         },
-        frontal: {
-          title: "Frontal bone",
-          description: "Unpaired bone of the front of the cerebral cranium. Divided into large vertical portion called squama frontalis, orbital and nasal portions. Frontal bone articulates with sphenoid, ethmoid, parietal, nasal, maxillary, lacrimal and zygomatic bones."
+        blend: {
+          title: "Blend",
+          description: "english content here"
         },
-        lacrimalis: {
-          title: "Lacrimal bones",
-          description: "Paired bones, located in the anterior inner walls of eye orbits, bordering the frontal process of the maxilla. Apart from the upper jaw lacrimal bones also articulate with the frontal and ethmoid bones, as well as the inferior nasal conchae."
+        motors: {
+          title: "Motors",
+          description: "3 motors move the laser in&nbsp;X, Y, Z&nbsp;coordinates. Motors provide the processing accuracy of&nbsp;300 micron (0,3 mm) and exactly this value determines the accuracy of&nbsp;the complete system. Should a&nbsp;glass sheet 6 m&nbsp;in&nbsp;length be&nbsp;processed (the so&nbsp;called  <nobr>&laquo;jumbo&raquo;-size</nobr>), the maximum possible error in&nbsp;positioning will not be&nbsp;more than 300 micron."
         },
-        mandible: {
-          title: "Mandible",
-          description: "The only motile bone of the skull forming the bottom part of the visceral cranium. It has the body and two perpendicular rami. The upper edge of the mandible body forms the alveolar arch with dental alveoli for 16 teeth. The condyloid process of the mandible makes the temporomandibular joint with the temporal bone."
+        workingSurface: {
+          title: "Work surface",
+          description: "The work surface guarantees the glass does not get damaged, and provided the service and maintenance schedule is&nbsp;followed, it&nbsp;has a&nbsp;long-time resistance to&nbsp;laser radiation. The surface is&nbsp;equipped with an&nbsp;air cushion acting both as&nbsp;transport and a&nbsp;suction clamp when positioning, or&nbsp;loading/unloading. The air cushion serves for easy glass transport or&nbsp;positioning, while suction clamp holds the sheet providing accurate processing."
         },
-        maxilla: {
-          title: "Maxilla",
-          description: "Upper jaw is formed by paired maxillary bones, each of which have body and four processes: frontal, alveolar, palatine and zygomatic. Alveolar processes contain deepenings - dental alveoli, which hold the teeth at their place. The body of maxilla contains a maxillary sinus. The nasal surface of the maxilla is involved in the formation of the lateral wall of the nasal cavity."
+        stops: {
+          title: "Positioning locators",
+          description: "Positioning locators (stops) come forward for positioning and get retracted afterwards, so&nbsp;as&nbsp;to&nbsp;not be&nbsp;in&nbsp;the way in&nbsp;the process of&nbsp;glass loading/unloading. The locators precisely adjust the glass edges to&nbsp;the coordinate grid."
         },
-        nasal: {
-          title: "Nasal bones",
-          description: "Bones involved in the formation of the nasal bridge and the front opening of the nasal cavity. Nasal bones articulate with the upper edge of the nasal portion of the frontal bone and with the frontal processes of maxillary bones."
-        },
-        occipital: {
-          title: "Occipital bone",
-          description: "Occipital bone is located at the rear part of the cerebral cranium. It is divided into the basilar part, two lateral parts and the expanded plate called squama occipitalis. Occipital bone has a large oval opening, through which the cranial cavity communicates with the vertebral canal. It is called the foramen magnum."
-        },
-        palatine: {
-          title: "Palatine bones",
-          description: "Palatine bones are involved in the formation of the hard palate, orbits and pterygopalatine fossa. Palatine bones divided into horizontal and perpendicular plates and have three processes: orbital, sphenoidal and pyramidal."
-        },
-        parietal: {
-          title: "Parietal bones",
-          description: "The parietal bones form the upper lateral surfaces of the skull. They have <a href='#'>four borders:</a> frontal, occipital, squamous and sagittal. These borders connect <strong>parietal bones</strong> with the frontal, occipital, temporal bones and with each other, respectively."
-        },
-        sphenoid: {
-          title: "Sphenoid bone",
-          description: "Sphenoid bone participates in formation of the basal and lateral parts of the skull, as well as orbits and a number of sinuses and fossae. This bone has a body, two greater wings, two lesser wings and pterygoid processes. On the upper surface of the sphenoid body has a recess - sella turcica which houses the pituitary gland. The space between greater and lower wings of sphenoid is called superior orbital fissure. It connects orbits with the cranial cavity."
-        },
-        temporal: {
-          title: "Temporal bones",
-          description: "Temporal bones are involved in the formation of the basal and lateral walls of the skull. They house the structures of the organ of hearing and vestibular system. Temporal bones are also traversed by internal carotid artery and lower cranial nerves: vestibulocochlear, facial, trigeminal, glossopharyngeal and vagus. Temporal bones consist of squama temporalis, mastoid portion, pyramid, tympanic part and styloid process."
-        },
-        vomer: {
-          title: "Vomer",
-          description: "Vomer is an unpaired bone plate that is involved in the formation of the nasal septum. The lower part of the vomer articulates with nasal crests of the maxilla and palatine bones. The rear edge of the vomer separates the choanae."
-        },
-        zygomatic: {
-          title: "Zygomatic bones",
-          description: "Zygomatic bones further connects the frontal bone with the upper jaw and the temporal bones. Zygomatic bones have temporal, frontal and maxillary processes, that allows the articulation with the corresponding bones. Temporal process of the zygomatic bone together with zygomatic process of the temporal bone make a zygomatic arch."
+        belts: {
+          title: "Transport system",
+          description: "Transport systemis of&nbsp;use when the table operates together with a&nbsp;loading station and, in&nbsp;the case of&nbsp;straight shaped glass sheets, glass sheets are loaded and transported from the table automatically (additional delivery)."
         }
       }
     },
@@ -105,30 +77,6 @@
         belts: {
           title: "Транспортные ремни",
           description: "Транспортные ремни полезны при применении автоматической загрузочной станции и&nbsp;работе с&nbsp;прямолинейными листами стекла&nbsp;&mdash; позволяют загружать стекло на&nbsp;стол и&nbsp;выводить стекло со&nbsp;стола в&nbsp;автоматическом режиме (поставляются дополнительно)."
-        },
-        palatine: {
-          title: "Небные кости",
-          description: "Нёбные кости участвуют в образовании твердого нёба, глазниц и крыловидно-нёбных ямок. Нёбные кости подразделяются на горизонтальные и перпендикулярные пластинки и имеют три отростка: глазничный, клиновидный и пирамидальный."
-        },
-        parietal: {
-          title: "Теменные кости",
-          description: "Теменные кости образуют верхнебоковые отделы свода черепа. Они имеют четыре края: лобный, затылочный, чешуйчатый и саггитальный, которые соединяют теменные кости с лобной, затылочной, височными костями и друг с другом соответственно."
-        },
-        sphenoid: {
-          title: "Клиновидная кость",
-          description: "Клиновидная кость уачствует в образовании основания и боковых отделов черепа, а также целого ряда полостей и ямок. В составе клиновидной кости различают тело, большие и малые крылья и пару крыловидных отростков. На верхней поверхности тела имеется углубление - турецкое седло с глубокой гипофизарной ямкой, в которой располагается гипофиз. Между малым крылом и верхним краем большого крыла раполагается верхняя глазничная щель, соединяющая полость черепа с глазницей."
-        },
-        temporal: {
-          title: "Височные кости",
-          description: "Височные кости участвуют в формировании основания и боковых стенок черепа. Эти кости вмещают органы слуха и равновесия, а также участки внутренней сонной артерии и нервов: преддверно-улиткового, лицевого, тройничного, блуждающего и языкоглоточного. В составе височных костей различают пирамиду, барабаннную и чешуйчатую части."
-        },
-        vomer: {
-          title: "Сошник",
-          description: "Сошник - это непарная костная пластинка, участвующая в формировании перегородки носа. Нижняя часть сошника сочленяется с носовыми гребнями верхней челюсти и нёбных костей. Задний край сошника отделяет друг от друга хоаны."
-        },
-        zygomatic: {
-          title: "Скуловые кости",
-          description: "Скуловые кости дополнительно соединяют лобную кость с верхней челюстью и височными костями. Скуловые кости имеют височные отростки, соединяющиеся со скуловыми отростками височных костей, образуя скуловые дуги, а также лобные отростки, соединяющиеся с лобной костью и большими кряльями клиновидной кости."
         }
       }
     },
