@@ -120,7 +120,7 @@ Created by WB—Tech, http://wbtech.pro/
       this.$maskSVG.appendTo(this.$elContent).attr({
         "class": "wbt-rotator-mask",
         "preserveAspectRatio": "xMinYMin meet"
-      })[0].setAttribute("viewBox", "0, 0, 1440, 810");
+      })[0].setAttribute("viewBox", "0, 0, 1920, 1080");
       if (typeof this.cfg.maskSrc === "object") {
         if (this.cfg.autoLoad) {
           this.loadSVG();
