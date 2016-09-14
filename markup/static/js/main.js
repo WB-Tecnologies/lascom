@@ -9,4 +9,5 @@ import * as samplesValidator from 'modules/get-samples/get-samples';
 import * as contacts from 'modules/contacts/contacts';
 import * as footer from 'modules/footer/footer';
 import * as laserFullVideo from 'modules/laser-full-video/laser-full-video';
+import * as gds from 'modules/gds/gds';
 
