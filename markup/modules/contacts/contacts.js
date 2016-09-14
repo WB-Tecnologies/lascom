@@ -3,7 +3,7 @@ import googleApi from 'google-maps';
 
 const MOBILE_SIZE = 768;
 let isDraggable = $(document).width() > MOBILE_SIZE ? true : false;
-let mapDiv = document.getElementById('map');
+let mapDiv = document.getElementById('map-ru');
 
 googleApi.load((google) => {
     if (mapDiv) {
