@@ -1,0 +1,42 @@
+.laser-videobg-full-wrapper
+  display: none;
+  position: fixed;
+  background: rgba(0,0,0,.9);
+  height: auto
+  margin: 0 auto
+  left: 0
+  right: 0
+  top: 0;
+  bottom: 0;
+  width: 100%
+  z-index: 999999
+
+.laser-videobg-full-wrapper__active
+  display: block;
+
+.laser-full-close
+  background: url('../img/general/icon-cross.svg')no-repeat center;
+  background-size: 26px;
+  border 2px solid #fff
+  border-radius: 60px
+  cursor: pointer;
+  height:66px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 auto;
+  width: 66px;
+  position: absolute
+  top: 50px;
+  right: 50px;
+  z-index: 9
+  &:hover
+    background #da0018 url('../img/general/icon-cross.svg')no-repeat center;
+    background-size: 26px;
+    border 2px solid #da0018
+    transition background 100ms, border 100ms
+
+.laser-videobg__full
+  top: 0
+  margin: auto
+  height: 100vh;
+  width: 100%;

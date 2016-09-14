@@ -8,8 +8,7 @@ const $tnxText = $('.order-submit_tnx');
 $samplesForm.validate({
     rules: {
         name: {
-            required: true,
-            alphabetical: true
+            required: true
         },
         email: {
             required: true
@@ -73,7 +72,7 @@ function submitOrder() {
 
     $.ajax({
         type: 'POST',
-        url: 'http://127.0.0.1:5000/contact',
+        url: '/contact',
         data: dataObj
     });
 

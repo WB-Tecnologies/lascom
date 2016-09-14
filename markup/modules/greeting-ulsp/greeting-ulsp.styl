@@ -1,0 +1,61 @@
+.detached-screen__ulsp
+  background url("../img/general/bg-ulsp.jpg") no-repeat center
+  background-size cover
+  opacity: 1;
+
+.anchors-nav__active .anchors-nav-list_link
+    color: $anchorLinkColor;
+    &:hover
+      color: #eb0029;
+
+.content-wrapper__ulsp
+  padding-top: 26.7vh !important
+
+.content-title__ulsp
+  color #ffffff !important
+
+.ulsp-content_subtitle
+  color #ffffff
+  font-family: $AvenirRegular
+  font-size: 18px
+  text-transform: uppercase
+  margin: 0 0 4.45vh 0
+
+.ulsp-content_description
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 21px
+  line-height: 30px
+  margin-bottom: 25px
+  margin-top: 0
+
+.ulsp-content_btn
+  background $btnRed
+  border none
+  border-radius 8px
+  color #ffffff
+  font-family: $AvenirDemi
+  font-size: 18px
+  margin-top 20vh
+  min-height 80px
+  width 100%
+  transition background 50ms
+  &:hover
+    background #da0018
+    transition background 100ms
+  &:focus
+    outline none
+
+@media (max-width: 500px)
+  .ulsp-content_btn
+    margin-top: 40px
+    min-height 50px
+
+@media (max-width: $smallPhoneWidth)
+  .ulsp-content_subtitle
+    font-size: 16px
+    margin-bottom: 20px
+
+  .ulsp-content_description
+    font-size: 16px
+    line-height: 20px

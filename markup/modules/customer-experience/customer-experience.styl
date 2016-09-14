@@ -1,0 +1,53 @@
+.detached-screen__facts
+  background #F7F7F7
+
+.facts-wrapper
+  margin-top: 60px
+  text-align: center
+
+.facts-content_fact
+   margin-bottom: 34px
+
+.facts-content_number
+  color: $colorTextGrey
+  font-family: $AvenirDemi
+  font-size: 48px
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  top: 7px;
+
+.facts-content_description
+  color $colorTextGrey
+  display: inline-block
+  font-family: $AvenirRegular
+  font-size: 16px
+  line-height: 20px
+  margin-bottom: 24px;
+  max-width: 710px
+  text-align: left;
+  margin-left: 33px;
+  vertical-align: top;
+
+.facts-content_author
+  color $colorTextGrey
+  font-family: $AvenirRegular
+  font-size: 16px
+  line-height: 20px
+  max-width: 390px
+
+@media (max-width: 1025px)
+  .facts-wrapper
+    display: block
+
+@media (max-width: $phoneWidth)
+  .detached-screen__facts .content-wrapper
+    padding-top: 5px
+
+  .facts-content_number
+    font-size: 32px
+
+  .facts-content_author
+    font-size: 14px
+    line-height: 20px
+

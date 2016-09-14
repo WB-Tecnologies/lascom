@@ -1,8 +1,13 @@
 <article class="detached-screen detached-screen__laser">
+
     <div class="video-wrapper">
     <div class="video-filter"></div>
     <video autoplay loop muted class="laser-videobg">
-        <source src="static/img/general/laser-video-bg.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        <source src="static/img/general/laser-video-loop.mp4" type="video/mp4" />
+        <source src="static/img/general/laser-video-loop.webm" type="video/webm" />
+        <source src="static/img/general/laser-video-loop.ogv" type="video/ogv" />
+        <source src="static/img/general/laser-video-loop.flv" type="rtmp/flv">
+        Your browser does not support the video tag. I suggest you upgrade your browser.
     </video>
     </div>
     <div class="detached-screen_overlay"></div>
@@ -12,14 +17,21 @@
 
                 <h2 class="content-title content-title__laser">Лазер</h2>
 
-                <p class="laser-content_description">Гарантия работы лазера составляет 50&nbsp;000 часов без какого-либо обслуживания. В&nbsp;случае поломки лазера в&nbsp;течение этого срока инженеры Ласком самостоятельно приедут и&nbsp;заменят лазер. В&nbsp;компании Ласком собраны данные о&nbsp;работе 500 лазеров этого типа производства IPG Photonics. Срок службы каждого лазера из&nbsp;этой группы превышает 50&nbsp;000&nbsp;часов. За&nbsp;всё это время выходил из&nbsp;строя всего один лазер, который после непродолжительного ремонта продолжил работать в обычном режиме.</p>
+                <p class="laser-content_description">Стол лазерного снятия покрытия (ULSP) снимает &laquo;дорожки&raquo; токопроводящего покрытия с&nbsp;низкоэмиссионного стекла со&nbsp;скоростью до&nbsp;360&nbsp;мм&sup2;/с. Поставляемое с&nbsp;модулем программное обеспечение позволяет рассчитать температуру в&nbsp;каждой зоне стекла любой формы для обеспечения его равномерного нагрева.</p>
 
-                <p class="laser-content_description">Лазер обеспечивает скорость снятия покрытия до&nbsp;8&nbsp;м/с по&nbsp;прямой линии и&nbsp;до&nbsp;360 кв.мм./с по&nbsp;площади. Если сравнить скорость снятия покрытия станком УЛСП и&nbsp;традиционный метод травления с&nbsp;помощью кислоты, то&nbsp;разница производительности при прочих равных условиях составит 15&nbsp;раз.</p>
+                <!-- <p class="laser-content_description">Гарантия работы лазера составляет 50&nbsp;000 часов без <nobr>какого-либо</nobr> обслуживания. В&nbsp;случае поломки лазера в&nbsp;течение этого срока инженеры &laquo;Ласкома&raquo; самостоятельно приедут и&nbsp;заменят лазер. В&nbsp;компании &laquo;Ласком&raquo; собраны данные о&nbsp;работе 500 лазеров этого типа производства IPG Photonics. Срок службы каждого лазера из&nbsp;этой группы превышает 50&nbsp;000 часов. За&nbsp;всё это время выходил из&nbsp;строя всего один лазер, который после непродолжительного ремонта продолжил работать в&nbsp;обычном режиме.</p> -->
 
+                <p class="laser-content_description">Можно, наоборот, обеспечить необходимую разницу в&nbsp;значениях температуры между различными функциональными областями стекла и&nbsp;усилить обогрев, например, зоны парковки щёток лобового стекла автомобиля.</p>
+
+                <!-- <p class="laser-content_description">Лазер обеспечивает скорость снятия покрытия до&nbsp;8 м/с&nbsp;по&nbsp;прямой линии и&nbsp;до&nbsp;360 кв.мм./с по&nbsp;площади. Если сравнить скорость снятия покрытия станком ULSP и&nbsp;традиционный метод травления с&nbsp;помощью кислоты, то&nbsp;разница производительности при прочих равных условиях составит 15 раз.</p> -->
+
+                <div class="laser-sound-btn">Смотреть видео</div>
             </div>
         </div>
     </div>
 </article>
+
+{{> laser-full-video/laser-full-video}}
 
 
 
