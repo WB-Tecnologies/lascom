@@ -161,10 +161,9 @@
                         color: '#f44',
                         src: 'static/img/plugins/machine/machine-belts.\{\{01\}\}.svg'
                     }]
-                }, () => {
-                    setTimeout(() => {
+                }, function () {
+                    setTimeout( function(){
                         window.initialize();
-                        // window.initSliderHeightForMenu();
                     }, 500);
                 });
             }
