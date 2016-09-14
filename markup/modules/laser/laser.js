@@ -1,17 +1,20 @@
+let $body = $('body');
 let soundBtn = $('.laser-sound-btn');
-let videoBackBtn = $('.video-back');
-let videoScreen = $('.detached-screen__laser');
-let laserVideo = $('.laser-videobg')[0];
+let fullVideoWrapper = $('.laser-videobg-full-wrapper');
+let laserFullVideo = document.querySelector('.laser-videobg__full');
+let videoBackBtn = $('.laser-full-close');
 
-soundBtn.on('click', firstPlanVideo);
-videoBackBtn.on('click', backPlanVideo);
+soundBtn.on('click', laserFullVideoStart);
+videoBackBtn.on('click', laserFullVideoStop);
 
-function firstPlanVideo() {
-    videoScreen.addClass('detached-screen__video');
-    laserVideo.muted = false;
+function laserFullVideoStart() {
+    fullVideoWrapper.addClass('laser-videobg-full-wrapper__active');
+    $body.addClass('no-scroll');
+    laserFullVideo.play();
 }
 
-function backPlanVideo() {
-    videoScreen.removeClass('detached-screen__video');
-    laserVideo.muted = true;
+function laserFullVideoStop() {
+    fullVideoWrapper.removeClass('laser-videobg-full-wrapper__active');
+    $body.removeClass('no-scroll');
+    laserFullVideo.pause();
 }

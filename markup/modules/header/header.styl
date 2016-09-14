@@ -5,31 +5,32 @@ $headerLinkColor = #666666
 .l-restrictor__header
   max-width: 786px
   padding: 0
+  display: none
 
 .header
   display: block
   box-sizing border-box
   padding 40px 64px 0
   position: fixed
+  opacity: 0;
   width: 100%
   z-index: 2
 
 .header-fixed
   background $headerFixedBg
-  box-shadow 0 0 30px 0 rgba(0, 0, 0, .13)
   box-sizing border-box
+  border-bottom: 1px solid #cccccc
   left: 0
   right: 0
   min-height: 70px
   margin 0 auto
-  opacity: 0
   padding: 0 20px
   position fixed
   top 0
   transition: opacity 200ms
   left 0
   width: 100%
-  z-index: 888
+  z-index: 10
 
 .sticky-header
   .header-fixed
@@ -47,9 +48,13 @@ $headerLinkColor = #666666
   opacity: 1
   z-index: 9999
 
+.header-nav-list__main
+  position: relative
+  left: 38px
+
 .header-fixed_btn
   background $btnRed
-  border-radius 4px
+  border-radius 60px
   border none
   color #ffffff
   font-family: $AvenirDemi
@@ -75,8 +80,8 @@ $headerLinkColor = #666666
   display inline-block
   margin-right 30px
   vertical-align middle
-  &:first-child
-    margin-right 40px
+  // &:first-child
+  //   margin-right 40px
   &:last-child
     margin-right 0
 
@@ -95,9 +100,6 @@ $headerLinkColor = #666666
 .header-nav-list_link__active
   color $colorRed
   cursor: default
-
-.header-nav-list_link__lang
-  font-family: $AvenirDemi
 
 .header-nav_logo-img
   height: 30px
@@ -125,8 +127,19 @@ $headerLinkColor = #666666
   &:last-child
     margin-bottom: 0
 
-.header-nav-list__lang
-  opacity: 0
+.header-nav-list_link__order
+  cursor: pointer
+  display: inline-block;
+  font-family: $AvenirDemi
+  text-transform: none;
+  padding: 0 17px;
+  color: #ffffff;
+  background: $colorRed
+  border-radius: 60px
+  line-height: 36px;
+  &:hover
+    color: #ffffff
+    background: #da0018
 
 .mobile-menu
   background: #ffffff;
@@ -169,6 +182,9 @@ $headerLinkColor = #666666
 
 .mobile-close-btn__menu {display: none;right: 10px;}
 
+.no-scroll
+  overflow: hidden
+
 @media (max-width $palmtopWidth)
   .header-fixed
     padding: 0 64px;
@@ -182,6 +198,20 @@ $headerLinkColor = #666666
   .header-fixed:before,
   .header-fixed:after
     display: none
+
+  .header-nav-list_link__order
+    box-sizing: border-box
+    text-align: center;
+    line-height: 42px;
+    width: 100%;
+
+  .anchors-nav-list_item
+    display: block;
+    margin-bottom: 40px;
+    text-align: left;
+    width: 100%;
+    .anchors-nav-list_link
+      font-size: 14px;
 
 @media (max-width 500px)
   .header-fixed

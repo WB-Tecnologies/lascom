@@ -11,22 +11,25 @@ $anchorLinkColor = #666666
   padding-top 26.7vh
 
 .greeting-content_description
-  color $descriptionTextColor
+  color #fff
   font-family: $AvenirDemi
   font-size 56px
-  line-height 60px
+  line-height: 60px
   margin 0
-  max-width: 755px
+  max-width: 800px
+  text-align: center
 
-.greeting-content_btn
+.greeting-content_order-btn
   background $btnRed
-  border-radius: 8px;
+  border-radius: 60px;
   border none
   color #ffffff
+  display: block;
   font-family: $AvenirDemi
   font-size: 18px
-  margin-top 20vh
-  min-height 80px
+  margin: 164px auto 0;
+  min-height 64px
+  max-width: 304px;
   width 100%
   transition background 50ms
   &:hover
@@ -36,16 +39,28 @@ $anchorLinkColor = #666666
     outline none
 
 .anchors-nav
-  display: none
-  margin-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid;
+  background: #ffffff
+  border-bottom: 1px solid #cccccc
+  padding-top: 20px;
+  position: fixed;
+  top: 71px;
+  width: 100%;
+  z-index: 10;
 
 .anchors-nav-list
   list-style none
   margin: 0
-  padding: 0
+  padding: 0 0 20px 0
   text-align:center
+  max-width: 786px;
+  margin: 0 auto;
+
+.anchors-nav__active
+  background: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  .anchors-nav-list
+    border-bottom: none;
+    padding: 0;
 
 .anchors-nav-list_item
   display inline-block
@@ -57,7 +72,7 @@ $anchorLinkColor = #666666
 .anchors-nav-list_link
   color: $anchorLinkColor
   cursor pointer
-  font-size 14px
+  font-size 12px
   font-family $AvenirRegular
   text-decoration none
   text-transform uppercase
@@ -65,6 +80,11 @@ $anchorLinkColor = #666666
   &:hover
     color #eb0029
     transition color 50ms
+
+.anchors-nav-list_link__active {
+    color #eb0029 !important;
+    cursor: default;
+}
 
 @media (max-width: $phoneWidth)
   .greeting-content_description

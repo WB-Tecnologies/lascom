@@ -120,7 +120,7 @@ Created by WB—Tech, http://wbtech.pro/
       this.$maskSVG.appendTo(this.$elContent).attr({
         "class": "wbt-rotator-mask",
         "preserveAspectRatio": "xMinYMin meet"
-      })[0].setAttribute("viewBox", "0, 0, 1440, 810");
+      })[0].setAttribute("viewBox", "0, 0, 1920, 1080");
       if (typeof this.cfg.maskSrc === "object") {
         if (this.cfg.autoLoad) {
           this.loadSVG();
@@ -218,7 +218,7 @@ Created by WB—Tech, http://wbtech.pro/
           });
         }
       }
-      cssText = ".wbt-rotator {color:" + this.cfg.theme.text + " !important;background-color:" + this.cfg.theme.background + " !important;} .wbt-rotator-titles_item:hover, .wbt-rotator-titles_item__hover, .wbt-rotator .wbt-input-select_item:hover {color:" + this.cfg.theme.hover + " !important;} .wbt-rotator-titles_item__active, .wbt-rotator-titles_item__active:hover, .wbt-rotator-legend a, .wbt-rotator .wbt-input-select__active .wbt-input-select_button, .wbt-rotator .wbt-input-select_item__active, .wbt-rotator .wbt-input-select_item__active:hover, .wbt-rotator .wbt-input-select_selected:hover {color:" + this.cfg.theme.active + " !important;} .wbt-rotator .wbt-input-select_selected, .wbt-rotator .wbt-input-select_list {border:1px solid " + this.cfg.theme.text + ";} .wbt-rotator .wbt-input-select_selected:hover, .wbt-rotator .wbt-input-select_list:hover, .wbt-rotator .wbt-input-select__active .wbt-input-select_list {border:1px solid " + this.cfg.theme.active + ";} .wbt-rotator-titles_item__active .wbt-rotator-titles_icon {border-color:" + this.cfg.theme.active + ";}";
+      cssText = ".wbt-rotator {color:" + this.cfg.theme.text + " !important;background-color:" + this.cfg.theme.background + " !important;} .wbt-rotator-titles_item:hover, .wbt-rotator-titles_item__hover, .wbt-rotator .wbt-input-select_item:hover {color:" + this.cfg.theme.hover + ";} .wbt-rotator-titles_item__active, .wbt-rotator-titles_item__active:hover, .wbt-rotator-legend a, .wbt-rotator .wbt-input-select__active .wbt-input-select_button, .wbt-rotator .wbt-input-select_item__active, .wbt-rotator .wbt-input-select_item__active:hover, .wbt-rotator .wbt-input-select_selected:hover {color:" + this.cfg.theme.active + ";} .wbt-rotator .wbt-input-select_selected, .wbt-rotator .wbt-input-select_list {border:1px solid " + this.cfg.theme.text + ";} .wbt-rotator .wbt-input-select_selected:hover, .wbt-rotator .wbt-input-select_list:hover, .wbt-rotator .wbt-input-select__active .wbt-input-select_list {border:1px solid " + this.cfg.theme.active + ";} .wbt-rotator-titles_item__active .wbt-rotator-titles_icon {border-color:" + this.cfg.theme.active + ";}";
       $style = $("<style></style>").prependTo(this.$el);
       if ($style[0].styleSheet) {
         $style[0].styleSheet.cssText = cssText;
