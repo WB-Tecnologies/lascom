@@ -18,9 +18,12 @@ from email.mime.text import MIMEText
 
 from flask import Flask, request, make_response
 from jinja2 import Template, Undefined
+from raven.contrib.flask import Sentry
 
 
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
+sentry = Sentry(app, dsn='http://d0ec3639da8e4c9e86c8af276aa80551:56ab587bcd8f4275a3f271e566d1eac9@alerts.wbtech.pro/9')
 
 
 MAIL_TEMPLATE_TXT = Template(u"""
@@ -57,17 +60,23 @@ MAIL_TEMPLATE_HTML = Template(u"""
 {% endif %}
 {% if message is defined %}
 <p><b>Message</b>:</p>
-<p>{{message.0}}</p>
+<p>{{message.0|replace("\n", "<br>")}}</p>
 {% endif %}
 """)
 
-SMTP_FROM = 'no-reply@lascom.pro'
-SMTP_TO = 'admin@lascom.pro'
-SMTP_HOST = 'debugmail.io'
-SMTP_PORT = 25
-SMTP_LOGIN = 'dizballanze@gmail.com'
-SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
+# SMTP_FROM = 'no-reply@lascom.pro'
+# SMTP_TO = 'admin@lascom.pro'
+# SMTP_HOST = 'debugmail.io'
+# SMTP_PORT = 25
+# SMTP_LOGIN = 'dizballanze@gmail.com'
+# SMTP_PASSWORD = 'c94655a0-139a-11e6-acb8-b387215ae1ba'
 
+SMTP_FROM = 'ask@wbtech.pro'
+SMTP_TO = 'dmitry.volodkin@lascom.pro'
+SMTP_HOST = 'in-v3.mailjet.com'
+SMTP_PORT = 25
+SMTP_LOGIN = '5c68accfc347d434988c59a886cd6350'
+SMTP_PASSWORD = '07dbb3fd8a51075f9b241d0d1c5c83c8'
 
 
 def _send_message(data):
@@ -85,7 +94,7 @@ def _send_message(data):
     msg['From'] = SMTP_FROM
     msg['To'] = SMTP_TO
     if 'email' in data:
-        msg['Reply-To'] = data['email'][0]
+        msg['Reply-To'] = data['email']
     # text part
     text = MAIL_TEMPLATE_TXT.render(**data)
     text_part = MIMEText(text, 'plain', 'utf-8')
@@ -114,11 +123,16 @@ def _send_message(data):
 
 @app.route('/contact', methods=['POST'])
 def hello():
-    logging.debug(request.form)
+    logging.info(request.form)
     result = _send_message(request.form)
     resp = make_response(json.dumps(dict(result=result)), 200)
     resp.headers['Content-Type'] = 'application/json'
     return resp
+
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    return make_response('Pong', 200)
 
 
 if __name__ == '__main__':

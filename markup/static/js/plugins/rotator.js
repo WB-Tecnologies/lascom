@@ -120,7 +120,7 @@ Created by WB—Tech, http://wbtech.pro/
       this.$maskSVG.appendTo(this.$elContent).attr({
         "class": "wbt-rotator-mask",
         "preserveAspectRatio": "xMinYMin meet"
-      })[0].setAttribute("viewBox", "0, 0, 1440, 900");
+      })[0].setAttribute("viewBox", "0, 0, 1920, 1080");
       if (typeof this.cfg.maskSrc === "object") {
         if (this.cfg.autoLoad) {
           this.loadSVG();
@@ -194,7 +194,7 @@ Created by WB—Tech, http://wbtech.pro/
             }
           }
         }
-        this.$maskLegend.on("" + ($.wbtIsTouch() ? "singleTap" : "click"), ".wbt-rotator-titles_item", $.proxy(this.onPathClick, this, null));
+        this.$maskLegend.on("click", ".wbt-rotator-titles_item", $.proxy(this.onPathClick, this, null));
         if (!$.wbtIsTouch()) {
           this.$maskLegend.on("mouseover", ".wbt-rotator-titles_item", $.proxy(this.onPathOver, this, null));
           this.$maskLegend.on("mouseout", ".wbt-rotator-titles_item", $.proxy(this.onPathOut, this, null));
@@ -218,7 +218,7 @@ Created by WB—Tech, http://wbtech.pro/
           });
         }
       }
-      cssText = ".wbt-rotator {color:" + this.cfg.theme.text + " !important;background-color:" + this.cfg.theme.background + " !important;} .wbt-rotator-titles_item:hover, .wbt-rotator-titles_item__hover, .wbt-rotator .wbt-input-select_item:hover {color:" + this.cfg.theme.hover + " !important;} .wbt-rotator-titles_item__active, .wbt-rotator-titles_item__active:hover, .wbt-rotator-legend a, .wbt-rotator .wbt-input-select__active .wbt-input-select_button, .wbt-rotator .wbt-input-select_item__active, .wbt-rotator .wbt-input-select_item__active:hover, .wbt-rotator .wbt-input-select_selected:hover {color:" + this.cfg.theme.active + " !important;} .wbt-rotator .wbt-input-select_selected, .wbt-rotator .wbt-input-select_list {border:1px solid " + this.cfg.theme.text + ";} .wbt-rotator .wbt-input-select_selected:hover, .wbt-rotator .wbt-input-select_list:hover, .wbt-rotator .wbt-input-select__active .wbt-input-select_list {border:1px solid " + this.cfg.theme.active + ";} .wbt-rotator-titles_item__active .wbt-rotator-titles_icon {border-color:" + this.cfg.theme.active + ";}";
+      cssText = ".wbt-rotator {color:" + this.cfg.theme.text + " !important;background-color:" + this.cfg.theme.background + " !important;} .wbt-rotator-titles_item:hover, .wbt-rotator-titles_item__hover, .wbt-rotator .wbt-input-select_item:hover {color:" + this.cfg.theme.hover + ";} .wbt-rotator-titles_item__active, .wbt-rotator-titles_item__active:hover, .wbt-rotator-legend a, .wbt-rotator .wbt-input-select__active .wbt-input-select_button, .wbt-rotator .wbt-input-select_item__active, .wbt-rotator .wbt-input-select_item__active:hover, .wbt-rotator .wbt-input-select_selected:hover {color:" + this.cfg.theme.active + ";} .wbt-rotator .wbt-input-select_selected, .wbt-rotator .wbt-input-select_list {border:1px solid " + this.cfg.theme.text + ";} .wbt-rotator .wbt-input-select_selected:hover, .wbt-rotator .wbt-input-select_list:hover, .wbt-rotator .wbt-input-select__active .wbt-input-select_list {border:1px solid " + this.cfg.theme.active + ";} .wbt-rotator-titles_item__active .wbt-rotator-titles_icon {border-color:" + this.cfg.theme.active + ";}";
       $style = $("<style></style>").prependTo(this.$el);
       if ($style[0].styleSheet) {
         $style[0].styleSheet.cssText = cssText;
@@ -525,51 +525,51 @@ Created by WB—Tech, http://wbtech.pro/
       }
     };
     WBTRotator.prototype.onPointerMove = function(e) {
-      var delta, newPosition, x, y;
-      if (e.touches) {
-        x = e.touches[0].pageX;
-        y = e.touches[0].pageY;
-      } else {
-        x = e.pageX;
-        y = e.pageX;
-      }
-      if (!e.touches || e.touches && e.touches.length === 1) {
-        if (e.preventDefault) {
-          e.preventDefault();
-        } else {
-          e.returnValue = false;
-        }
-      }
-      if (this.sliderPressed) {
-        newPosition = this.sliderPosition.current;
-        if (this.cfg.invertAxes) {
-          newPosition += y - this.sliderPosition.y;
-        } else {
-          newPosition += x - this.sliderPosition.x;
-        }
-        if (newPosition < 0) {
-          newPosition = 0;
-        }
-        if (newPosition > this.sliderPosition.max) {
-          newPosition = this.sliderPosition.max;
-        }
-        this.frames.current = Math.floor(newPosition * (this.frames.total - 1) / this.sliderPosition.max);
-        this.changeFrame(this.frames.current);
-      }
-      if (this.pointerPressed) {
-        if (this.cfg.invertAxes) {
-          delta = y - this.pointerPosition.y;
-        } else {
-          delta = x - this.pointerPosition.x;
-        }
-        delta = Math.floor(delta * this.frames.total / (this.invertAxes ? this.frames.size.height : this.frames.size.width));
-        if (this.cfg.invertMouse) {
-          delta = this.frames.current - delta;
-        } else {
-          delta = this.frames.current + delta;
-        }
-        this.changeFrame(delta);
-      }
+      // var delta, newPosition, x, y;
+      // if (e.touches) {
+      //   x = e.touches[0].pageX;
+      //   y = e.touches[0].pageY;
+      // } else {
+      //   x = e.pageX;
+      //   y = e.pageX;
+      // }
+      // if (!e.touches || e.touches && e.touches.length === 1) {
+      //   if (e.preventDefault) {
+      //     e.preventDefault();
+      //   } else {
+      //     e.returnValue = false;
+      //   }
+      // }
+      // if (this.sliderPressed) {
+      //   newPosition = this.sliderPosition.current;
+      //   if (this.cfg.invertAxes) {
+      //     newPosition += y - this.sliderPosition.y;
+      //   } else {
+      //     newPosition += x - this.sliderPosition.x;
+      //   }
+      //   if (newPosition < 0) {
+      //     newPosition = 0;
+      //   }
+      //   if (newPosition > this.sliderPosition.max) {
+      //     newPosition = this.sliderPosition.max;
+      //   }
+      //   this.frames.current = Math.floor(newPosition * (this.frames.total - 1) / this.sliderPosition.max);
+      //   this.changeFrame(this.frames.current);
+      // }
+      // if (this.pointerPressed) {
+      //   if (this.cfg.invertAxes) {
+      //     delta = y - this.pointerPosition.y;
+      //   } else {
+      //     delta = x - this.pointerPosition.x;
+      //   }
+      //   delta = Math.floor(delta * this.frames.total / (this.invertAxes ? this.frames.size.height : this.frames.size.width));
+      //   if (this.cfg.invertMouse) {
+      //     delta = this.frames.current - delta;
+      //   } else {
+      //     delta = this.frames.current + delta;
+      //   }
+      //   this.changeFrame(delta);
+      // }
     };
     WBTRotator.prototype.pathSelect = function(title, frame) {
       var mask, _i, _len, _ref;
@@ -627,8 +627,6 @@ Created by WB—Tech, http://wbtech.pro/
       }
     };
     WBTRotator.prototype.onPathClick = function(el, e) {
-
-
       var mask, title, _i, _len, _ref, _results;
       if ((el != null) || (e != null)) {
         title = el ? el.data("title") : $(e.target).data("title") || $(e.target).closest(".wbt-rotator-titles_item").data("title");
@@ -755,35 +753,35 @@ Created by WB—Tech, http://wbtech.pro/
     WBTRotator.prototype.onPointerEnter = function() {};
     WBTRotator.prototype.onPointerLeave = function() {};
     WBTRotator.prototype.onScroll = function(e, delta) {
-      var scrollUp;
-      if (this.cfg.rotateManual) {
-        e.preventDefault();
-        scrollUp = void 0;
-        if (undefined !== e.wheelDelta) {
-          scrollUp = e.wheelDelta > 0;
-        } else if (undefined !== e.detail) {
-          scrollUp = e.detail > 0;
-        } else {
-          scrollUp = e.originalEvent.wheelDelta > 0;
-        }
-        if (scrollUp) {
-          this.frames.current++;
-        } else {
-          this.frames.current--;
-        }
-        if (this.cfg.circular) {
-          this.frames.current += this.frames.total;
-          this.frames.current %= this.frames.total;
-        } else {
-          if (this.frames.current > this.frames.total - 1) {
-            this.frames.current = this.frames.total - 1;
-          }
-          if (this.frames.current < 0) {
-            this.frames.current = 0;
-          }
-        }
-        this.changeFrame(this.frames.current);
-      }
+      // var scrollUp;
+      // if (this.cfg.rotateManual) {
+      //   e.preventDefault();
+      //   scrollUp = void 0;
+      //   if (undefined !== e.wheelDelta) {
+      //     scrollUp = e.wheelDelta > 0;
+      //   } else if (undefined !== e.detail) {
+      //     scrollUp = e.detail > 0;
+      //   } else {
+      //     scrollUp = e.originalEvent.wheelDelta > 0;
+      //   }
+      //   if (scrollUp) {
+      //     this.frames.current++;
+      //   } else {
+      //     this.frames.current--;
+      //   }
+      //   if (this.cfg.circular) {
+      //     this.frames.current += this.frames.total;
+      //     this.frames.current %= this.frames.total;
+      //   } else {
+      //     if (this.frames.current > this.frames.total - 1) {
+      //       this.frames.current = this.frames.total - 1;
+      //     }
+      //     if (this.frames.current < 0) {
+      //       this.frames.current = 0;
+      //     }
+      //   }
+      //   this.changeFrame(this.frames.current);
+      // }
     };
     WBTRotator.prototype.findFrame = function() {
       var animateStep, path, pathsRotated, stepsBackward, stepsForward, _i, _j, _len;

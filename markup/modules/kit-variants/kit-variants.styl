@@ -4,7 +4,7 @@ $colorTip = #4d4d4d
   background #ffffff
 
 .kit-table-wrapper
-  margin-bottom: 40px
+  margin-bottom: 48px
   &:last-child
     margin-bottom: 80px
 
@@ -16,7 +16,7 @@ $colorTip = #4d4d4d
 .kit-table-title
   color $colorTextGrey
   font-family: $AvenirDemi
-  font-size: 21px
+  font-size: 24px
   margin-bottom: 20px
 
 .kit-table-subtitle
@@ -30,11 +30,16 @@ $colorTip = #4d4d4d
   padding-bottom: 20px
   margin-bottom: 20px
 
+// .kit-table-wrapper__models .kit-table_row
+//   border-bottom: none;
+//   &:first-child
+//     border-bottom: 1px solid #E5E5E5
+
 .kit-table_row__tip
   border-bottom: none
 
 .kit-table_col
-  color $colorRed
+  color $colorTextGrey
   font-family: $AvenirRegular
   font-size: 16px
   display: inline-block
@@ -46,8 +51,11 @@ $colorTip = #4d4d4d
 
 .kit-table__short
   list-style: none
-  margin: 0
+  margin: 0 0 40px 0
   padding: 0
+  .kit-table_row:first-child
+    border-top: 1px solid #E5E5E5
+    padding-top: 17px
 
 .kit-table__short .kit-table_col
   &:first-child
@@ -56,8 +64,8 @@ $colorTip = #4d4d4d
     width: 30%
 
 .kit-table_row__tip .kit-table_col
-  color $colorTip
-  font-size: 14px
+  color #666666
+  font-size: 12px
   width: 100% !important
 
 .kit-table_col__model
@@ -67,8 +75,8 @@ $colorTip = #4d4d4d
   color $colorTextGrey
 
 .kit-table_row__head .kit-table_col
-  color $colorTextGrey
-  font-size: 14px
+  color #666666
+  font-size: 12px
 
 .kit-table_side
   color $colorTip
@@ -91,6 +99,9 @@ $colorTip = #4d4d4d
 .kit-table-mobile_val
   color $colorRed
   text-align: right
+
+.kit-table_col__double .kit-table_col_variant
+  margin-bottom: 4px;
 
 @media (max-width: $phoneWidth)
   .detached-screen__kit .content-wrapper

@@ -1,19 +1,21 @@
-$colorInputBorder = #F89DAC
-$colorInputBorderFocus = #EB0029
+$colorInputBorder = #cccccc
+$colorInputBorderFocus = #b3b3b3
 
 .detached-screen__samples
   background: #ffffff
 
 .content-title__samples
-  font-size: 24px !important
-  margin-bottom: 2.23vh !important
+  margin-bottom: 50px !important
 
 .samples-content_description
-  color: $colorTextGrey
+  color: #4D4D4D
   font-family: $AvenirRegular
   font-size: 21px
   line-height: 30px
-  margin-bottom: 4.45vh
+  margin-bottom: 18px
+
+.samples-form
+  margin-top: 44px
 
 .samples-form-list
   list-style: none
@@ -22,23 +24,24 @@ $colorInputBorderFocus = #EB0029
   width: 100%
 
 .samples-form-list_item
-  margin-top: -1px
+  margin-bottom: 24px
   position: relative
-  &:first-child
-    margin-top: 0
+  &:last-child
+    margin-bottom: 0
 
 .samples-form_input
   box-sizing border-box
   border 1px solid $colorInputBorder
+  border-radius: 4px
   color $colorRed
   font-family: $AvenirRegular
   font-size: 16px
-  line-height: 50px
-  padding: 0 15px
+  padding: 16px 15px
   position: relative
   text-shadow: 0px 0px 0px #000;
   width: 100%
   -webkit-text-fill-color: transparent;
+  -webkit-appearance: none;
   z-index: 0
   &:focus
     font-family: $AvenirDemi
@@ -83,11 +86,15 @@ $colorInputBorderFocus = #EB0029
 .samples-submit_btn
   background $colorRed
   border none
+  border-radius 60px
+  display: block;
   color #ffffff
   font-family: $AvenirDemi
   font-size: 18px
-  margin-top 2.2vh
-  min-height 80px
+  margin: 40px auto;
+  min-height 64px
+  line-height: 64px
+  max-width: 304px
   width 100%
   transition background 50ms
   &:hover
