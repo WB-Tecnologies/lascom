@@ -1,16 +1,23 @@
 .detached-screen__laser-description
   background #ffffff
+  padding-bottom: 0 !important
+
+// .content-wrapper__laser-description
 
 .laser-description-content_description
   color $colorTextGrey
   font-family: $AvenirRegular
   font-size: 21px
   line-height: 30px
-  margin-bottom: 2.3vh
+  margin-bottom: 25px
   margin-top: 0
 
+.laser-content_img
+  margin: 52px auto 105px;
+  max-width: 100%;
+
 .laser-content_description__mobile
-  color $colorRed
+  color $colorRed !important
   display: none
   font-size: 16px
   line-height: 25px
@@ -19,7 +26,7 @@
   .detached-screen__laser-description .content-wrapper
     padding-top: 5px
 
-@media (max-width: $smallPhoneWidth)
+@media (max-width: 640px)
   .laser-description-content_description
     font-size: 16px
     line-height: 25px

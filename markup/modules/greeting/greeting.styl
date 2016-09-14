@@ -1,5 +1,6 @@
 $descriptionTextColor = #262626
 $btnRed = #EB0029
+$anchorLinkColor = #666666
 
 .detached-screen__greenting
   background rgb(102, 102, 102) url("../img/general/bg-greeting.jpg") no-repeat center
@@ -10,21 +11,25 @@ $btnRed = #EB0029
   padding-top 26.7vh
 
 .greeting-content_description
-  color $descriptionTextColor
+  color #fff
   font-family: $AvenirDemi
   font-size 56px
-  line-height 60px
+  line-height: 60px
   margin 0
-  max-width: 755px
+  max-width: 800px
+  text-align: center
 
-.greeting-content_btn
+.greeting-content_order-btn
   background $btnRed
+  border-radius: 60px;
   border none
   color #ffffff
+  display: block;
   font-family: $AvenirDemi
   font-size: 18px
-  margin-top 20vh
-  min-height 80px
+  margin: 164px auto 0;
+  min-height 64px
+  max-width: 304px;
   width 100%
   transition background 50ms
   &:hover
@@ -32,6 +37,54 @@ $btnRed = #EB0029
     transition background 100ms
   &:focus
     outline none
+
+.anchors-nav
+  background: #ffffff
+  border-bottom: 1px solid #cccccc
+  padding-top: 20px;
+  position: fixed;
+  top: 71px;
+  width: 100%;
+  z-index: 10;
+
+.anchors-nav-list
+  list-style none
+  margin: 0
+  padding: 0 0 20px 0
+  text-align:center
+  max-width: 786px;
+  margin: 0 auto;
+
+.anchors-nav__active
+  background: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  .anchors-nav-list
+    border-bottom: none;
+    padding: 0;
+
+.anchors-nav-list_item
+  display inline-block
+  margin-right 30px
+  vertical-align middle
+  &:last-child
+    margin-right 0
+
+.anchors-nav-list_link
+  color: $anchorLinkColor
+  cursor pointer
+  font-size 12px
+  font-family $AvenirRegular
+  text-decoration none
+  text-transform uppercase
+  transition color 100ms
+  &:hover
+    color #eb0029
+    transition color 50ms
+
+.anchors-nav-list_link__active {
+    color #eb0029 !important;
+    cursor: default;
+}
 
 @media (max-width: $phoneWidth)
   .greeting-content_description
@@ -50,6 +103,8 @@ $btnRed = #EB0029
     font-size: 40px
     line-height: 46px
     max-width: 100%
+  .greeting-content_btn
+    min-height: 50px;
 
 @media (max-width: $smallPhoneWidth)
   .greeting-content_description
