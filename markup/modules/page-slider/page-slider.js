@@ -12,13 +12,15 @@ $sliderWrapper.fullpage({
     css3: true,
     easing: 'easeInOutCubic',
     easingcss3: 'ease',
-    scrollingSpeed: 800,
+    scrollingSpeed: 1500,
     fadingEffect: false,
     fitToSection: false,
-    scrollBar: true,
+    scrollBar: false,
+    paddingTop: '130px',
     afterRender: runBackgroundVideo
 });
 
 function runBackgroundVideo() {
-    document.querySelector('.laser-videobg').play();
+    let laserVideo = document.querySelector('.laser-videobg');
+    laserVideo = laserVideo ? laserVideo.play() : null;
 }
