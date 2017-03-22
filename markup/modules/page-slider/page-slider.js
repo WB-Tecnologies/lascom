@@ -1,11 +1,11 @@
 import 'scrolloverflow';
 import 'fullpage';
 
-
 window._jQuery = $;
+const VIDEO_SLIDE_INDEX = 3;
+let laserVideo = document.querySelector('.laser-videobg');
 let $sliderWrapper = $('#c-slider-wrapper');
 
-console.log($sliderWrapper);
 $sliderWrapper.fullpage({
     autoScrolling: true,
     scrollOverflow: true,
@@ -17,10 +17,21 @@ $sliderWrapper.fullpage({
     fitToSection: false,
     scrollBar: false,
     paddingTop: '130px',
-    afterRender: runBackgroundVideo
+    afterRender: backgroundVideoStep,
+    onLeave: runBackgroundVideo
 });
 
-function runBackgroundVideo() {
-    let laserVideo = document.querySelector('.laser-videobg');
-    laserVideo = laserVideo ? laserVideo.play() : null;
+function backgroundVideoStep() {
+    laserVideo.play();
+    setTimeout(() => {
+        laserVideo.pause();
+    }, 1000);
+}
+
+function runBackgroundVideo(index, nextIndex) {
+    if (nextIndex === VIDEO_SLIDE_INDEX) {
+        laserVideo.play();
+    } else {
+        laserVideo.pause();
+    }
 }
