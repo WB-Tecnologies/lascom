@@ -2,6 +2,7 @@ import 'scrolloverflow';
 import 'fullpage';
 
 window._jQuery = $;
+const $window = $(window);
 const VIDEO_SLIDE_INDEX = 3;
 let laserVideo = document.querySelector('.laser-videobg');
 let $sliderWrapper = $('#c-slider-wrapper');
@@ -20,6 +21,17 @@ $sliderWrapper.fullpage({
     afterRender: backgroundVideoStep,
     onLeave: runBackgroundVideo
 });
+
+$window.on('orderIsOpen', sliderScrollDisable);
+$window.on('orderIsClose', sliderScrollEnable);
+
+function sliderScrollEnable() {
+    $.fn.fullpage.setAllowScrolling(true);
+}
+
+function sliderScrollDisable() {
+    $.fn.fullpage.setAllowScrolling(false);
+}
 
 function backgroundVideoStep() {
     if (!laserVideo) {
