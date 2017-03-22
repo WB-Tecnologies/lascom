@@ -22,6 +22,10 @@ $sliderWrapper.fullpage({
 });
 
 function backgroundVideoStep() {
+    if (!laserVideo) {
+        return;
+    }
+
     laserVideo.play();
     setTimeout(() => {
         laserVideo.pause();
@@ -29,6 +33,9 @@ function backgroundVideoStep() {
 }
 
 function runBackgroundVideo(index, nextIndex) {
+    if (!laserVideo) {
+        return;
+    }
     if (nextIndex === VIDEO_SLIDE_INDEX) {
         laserVideo.play();
     } else {
