@@ -17,13 +17,24 @@ $sliderWrapper.fullpage({
     fadingEffect: false,
     fitToSection: false,
     scrollBar: false,
-    paddingTop: '130px',
+    paddingTop: '70px',
     afterRender: backgroundVideoStep,
     onLeave: runBackgroundVideo
 });
 
 $window.on('orderIsOpen', sliderScrollDisable);
 $window.on('orderIsClose', sliderScrollEnable);
+$window.on('scrollTop', fitSliderNoHeaderSubsection);
+$window.on('scrollBottom', fitSliderWithHeaderSubsection);
+
+
+function fitSliderNoHeaderSubsection() {
+    // $('.fp-tableCell').css('padding-top', '0');
+}
+
+function fitSliderWithHeaderSubsection() {
+    // $('.fp-tableCell').css('padding-top', '60px');
+}
 
 function sliderScrollEnable() {
     $.fn.fullpage.setAllowScrolling(true);
@@ -32,6 +43,7 @@ function sliderScrollEnable() {
 function sliderScrollDisable() {
     $.fn.fullpage.setAllowScrolling(false);
 }
+
 
 function backgroundVideoStep() {
     if (!laserVideo) {

@@ -11,8 +11,8 @@ const $anchorsNav = $('.anchors-nav');
 $menuBtn.on('click', toggleMenu);
 $orderBtn.on('click', openOrder);
 $orderModal.on('click', closeOrder);
-$window.on('scrollTop', headerSubsectionHide);
-$window.on('scrollBottom', headerSubsectionShow);
+$window.on('scrollTop', headerSubsectionShow);
+$window.on('scrollBottom', headerSubsectionHide);
 
 function toggleMenu() {
     $html.toggleClass('mob-menu-active');
