@@ -2,7 +2,21 @@
     <div class="l-restrictor l-restrictor__production">
         <div class="content-wrapper content-wrapper__gds-ulsp">
             <div class="content">
-                <h2 class="content-title content-title_production">Производственная линия для изготовления<br>электрообогревного стекла, состоящая из<br><a href="/ru/gds" class="gdsulsp_link">GDS</a>&nbsp;и&nbsp;<a href="/ru/ulsp" class="gdsulsp_link">ULSP</a></h2>
+
+                <h2 class="content-title content-title_production">Производственная линия для изготовления<br>электрообогревного стекла, состоящая из<br>
+                {{#if gds}}
+                    <span class="gdsulsp_link gdsulsp_link__current">GDS</span>
+                {{else}}
+                    <a href="/ru/gds" class="gdsulsp_link">GDS</a>
+                {{/if}}
+                &nbsp;и&nbsp;
+                {{#if ulsp}}
+                    <span class="gdsulsp_link gdsulsp_link__current">ULSP</span>
+                {{else}}
+                    <a href="/ru/ulsp" class="gdsulsp_link">ULSP</a>
+                {{/if}}
+                </h2>
+
             </div>
         </div>
     </div>
