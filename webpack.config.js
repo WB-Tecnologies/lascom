@@ -125,7 +125,16 @@ module.exports = {
         loaders
     },
 
-    plugins,
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            "window.$": "jquery",
+            $scrollFullpage: "fullpage.js",
+            "window.$scrollFullpage": "fullpage.js"
+        })
+    ],
 
     resolveLoader: {
         modulesDirectories
@@ -134,7 +143,9 @@ module.exports = {
     resolve: {
         alias: {
             modules: path.resolve('./markup/modules'),
-            static: path.resolve('./markup/' + staticFolderName)
+            static: path.resolve('./markup/' + staticFolderName),
+            "scrolloverflow": path.resolve('node_modules', 'fullpage.js/vendors/scrolloverflow.min.js'),
+            "fullpage": path.resolve('node_modules', 'fullpage.js/dist/jquery.fullpage.extensions.min.js')
         }
     },
 
