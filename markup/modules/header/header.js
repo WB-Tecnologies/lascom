@@ -10,6 +10,8 @@ const $orderModal = $('.modal-screen__order');
 $menuBtn.on('click', toggleMenu);
 $orderBtn.on('click', openOrder);
 $orderModal.on('click', closeOrder);
+$window.on('scrollTop', headerSubsectionHide);
+$window.on('scrollBottom', headerSubsectionShow);
 
 function toggleMenu() {
     $html.toggleClass('mob-menu-active');
@@ -29,4 +31,12 @@ function closeOrder(e) {
         $orderModal.removeClass('modal-screen__active');
         $window.trigger('orderIsClose');
     }
+}
+
+function headerSubsectionHide() {
+    console.log('hide');
+}
+
+function headerSubsectionShow() {
+    console.log('show');
 }
