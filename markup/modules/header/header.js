@@ -6,6 +6,7 @@ const $body = $('body');
 const $menuBtn = $('.mobile-close-btn__menu, .header-fixed_menu-btn, .l-section_overlay, .mobile-menu .header-nav-list_link, .mobile-menu .header-fixed_btn, .ulsp-header_btn');
 const $orderBtn = $('.header-nav-list_link__order, .greeting-content_order-btn');
 const $orderModal = $('.modal-screen__order');
+const $anchorsNav = $('.anchors-nav');
 
 $menuBtn.on('click', toggleMenu);
 $orderBtn.on('click', openOrder);
@@ -34,9 +35,9 @@ function closeOrder(e) {
 }
 
 function headerSubsectionHide() {
-    console.log('hide');
+    $anchorsNav.addClass('anchors-nav_hidden');
 }
 
 function headerSubsectionShow() {
-    console.log('show');
+    $anchorsNav.removeClass('anchors-nav_hidden');
 }
