@@ -1,14 +1,16 @@
-import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 const $window = $(window);
 
 initHeaderSubsectionToggle();
 
 function initHeaderSubsectionToggle() {
-    window.addEventListener('mousewheel', throttle(triggerScrollEvent, 200));
+    window.addEventListener('mousewheel', debounce(triggerScrollEvent, 200, {
+        leading: true
+    }));
 }
 
 function triggerScrollEvent(e) {
-    let scrollDirection = _getScrollDirection(e.wheelDelta);
+    let scrollDirection = getScrollDirection(e.wheelDelta);
     if (scrollDirection === 'top') {
         $window.trigger('scrollTop');
     } else {
@@ -16,6 +18,6 @@ function triggerScrollEvent(e) {
     }
 }
 
-function _getScrollDirection(_delta) {
+function getScrollDirection(_delta) {
     return _delta > 0 ? 'top' : 'bottom';
 }
