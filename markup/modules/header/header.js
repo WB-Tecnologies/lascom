@@ -14,7 +14,6 @@ $orderBtn.on('click', openOrder);
 $orderModal.on('click', closeOrder);
 $window.on('scrollTop', headerSubsectionShow);
 $window.on('scrollBottom', headerSubsectionHide);
-$navLink.on('click', slideToSection);
 $window.on('slideChanged', setActiveNav);
 
 
@@ -52,14 +51,6 @@ function headerSubsectionShow() {
     $anchorsNav.removeClass('anchors-nav_hidden');
 }
 
-function slideToSection() {
-    let $this = $(this);
-    let slideNumber = $this.data('slide');
-    $navLink.removeClass('anchors-nav-list_link__active');
-    $this.addClass('anchors-nav-list_link__active');
-    // headerSubsectionHide();
-    $window.trigger('scrollByNav', slideNumber);
-}
 
 
 
