@@ -44,9 +44,15 @@ $anchorLinkColor = #666666
   border-bottom: 1px solid #cccccc
   padding-top: 20px;
   position: fixed;
+  transition: transform 200ms ease;
   top: 71px;
   width: 100%;
+  will-change: transform;
   z-index: 10;
+
+.anchors-nav_hidden {
+    transform: translateY(-100%);
+}
 
 .anchors-nav-list
   list-style none
