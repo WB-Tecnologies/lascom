@@ -18,23 +18,24 @@ $sliderWrapper.fullpage({
     fitToSection: false,
     scrollBar: false,
     paddingTop: '70px',
+    anchors: [
+        '',
+        'work-principles',
+        'laser',
+        '',
+        '',
+        'software',
+        'equipment',
+        'order'
+    ],
     afterRender: backgroundVideoStep,
-    onLeave: runBackgroundVideo
+    onLeave: onSlideLeave
 });
 
 $window.on('orderIsOpen', sliderScrollDisable);
 $window.on('orderIsClose', sliderScrollEnable);
-$window.on('scrollTop', fitSliderNoHeaderSubsection);
-$window.on('scrollBottom', fitSliderWithHeaderSubsection);
+// $window.on('scrollByNav', scrollToSlide);
 
-
-function fitSliderNoHeaderSubsection() {
-    // $('.fp-tableCell').css('padding-top', '0');
-}
-
-function fitSliderWithHeaderSubsection() {
-    // $('.fp-tableCell').css('padding-top', '60px');
-}
 
 function sliderScrollEnable() {
     $.fn.fullpage.setAllowScrolling(true);
@@ -56,6 +57,11 @@ function backgroundVideoStep() {
     }, 1000);
 }
 
+function onSlideLeave(index, nextIndex) {
+    runBackgroundVideo(index, nextIndex);
+    $window.trigger('slideChanged', nextIndex);
+}
+
 function runBackgroundVideo(index, nextIndex) {
     if (!laserVideo) {
         return;
@@ -65,4 +71,35 @@ function runBackgroundVideo(index, nextIndex) {
     } else {
         laserVideo.pause();
     }
+
+
 }
+
+function scrollToSlide(e, _slideNumber) {
+    console.log(_slideNumber);
+    $.fn.fullpage.moveTo(_slideNumber);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
