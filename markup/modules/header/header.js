@@ -7,7 +7,7 @@ const $menuBtn = $('.mobile-close-btn__menu, .header-fixed_menu-btn, .l-section_
 const $orderBtn = $('.header-nav-list_link__order, .greeting-content_order-btn');
 const $orderModal = $('.modal-screen__order');
 const $anchorsNav = $('.anchors-nav');
-const $navLink = $('.anchors-nav-list_link');
+const $navLinks = $('.anchors-nav-list_link');
 
 $menuBtn.on('click', toggleMenu);
 $orderBtn.on('click', openOrder);
@@ -18,7 +18,7 @@ $window.on('slideChanged', setActiveNav);
 
 
 function setActiveNav(e, slideNumber) {
-    $navLink.removeClass('anchors-nav-list_link__active');
+    $navLinks.removeClass('anchors-nav-list_link__active');
     $(`.anchors-nav-list_link[data-slide=${slideNumber}]`).addClass('anchors-nav-list_link__active');
 }
 
