@@ -7,12 +7,21 @@ const $menuBtn = $('.mobile-close-btn__menu, .header-fixed_menu-btn, .l-section_
 const $orderBtn = $('.header-nav-list_link__order, .greeting-content_order-btn');
 const $orderModal = $('.modal-screen__order');
 const $anchorsNav = $('.anchors-nav');
+const $navLinks = $('.anchors-nav-list_link');
 
 $menuBtn.on('click', toggleMenu);
 $orderBtn.on('click', openOrder);
 $orderModal.on('click', closeOrder);
 $window.on('scrollTop', headerSubsectionShow);
 $window.on('scrollBottom', headerSubsectionHide);
+$window.on('slideChanged', setActiveNav);
+
+
+function setActiveNav(e, slideNumber) {
+    $navLinks.removeClass('anchors-nav-list_link__active');
+    $(`.anchors-nav-list_link[data-slide=${slideNumber}]`).addClass('anchors-nav-list_link__active');
+}
+
 
 function toggleMenu() {
     $html.toggleClass('mob-menu-active');
@@ -41,3 +50,33 @@ function headerSubsectionHide() {
 function headerSubsectionShow() {
     $anchorsNav.removeClass('anchors-nav_hidden');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
