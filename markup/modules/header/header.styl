@@ -145,12 +145,17 @@ $headerLinkColor = #666666
 .mobile-menu
   background: #ffffff;
   box-sizing border-box
+  box-shadow: -1px 0 1px #e4e4e4;
   height: 100%;
   max-width: 320px;
   overflow: auto
   position: fixed;
+  padding: 20px
   right: 0;
-  width: 0;
+  transition: transform $mobHeaderSpeed ease-out;
+  transform: translateX(101%);
+  will-change: transform;
+  width: 100%;
   z-index: 999;
   .header-fixed_btn
     min-height: 50px
@@ -175,11 +180,16 @@ $headerLinkColor = #666666
 
 .mob-menu-active
   .mobile-menu
-    padding: 20px
-    width: 100%
+    transform: translateX(0);
+
+  .detached-screen
+    transform: translateX(-320px);
 
   .header-fixed_menu-btn
     display: none
+
+  .mobile-close-btn__menu
+    display: block
 
 .mobile-close-btn__menu {display: none;right: 10px;}
 
@@ -222,14 +232,23 @@ $headerLinkColor = #666666
     .anchors-nav-list_link
       font-size: 14px;
 
-@media (max-width 500px)
+
+@media only screen and (max-width: $palmtopWidth)
+  .anchors-nav__desktop
+    display: none
+
+
+@media only screen and (max-width 500px)
   .header-fixed
     padding: 0 20px;
 
-@media (max-width: 370px) {
+@media only screen and (max-width: 370px) {
     .mobile-close-btn {display: none;}
     .mobile-close-btn__menu {display: block;}
 }
+
+
+
 
 
 

@@ -3,9 +3,12 @@
   box-sizing border-box
   min-height 100vh
   margin: 0 auto;
+  transition: transform $mobHeaderSpeed ease-out;
+  will-change: transform;
   width 100%
   &:last-child
     padding-bottom: 0
+
 
 .detached-screen__machine-header-open
   padding-top: 100px !important
@@ -76,8 +79,8 @@
     top 18px
     width 16px
 
-.mob-menu-active .detached-screen
-  left: -640px
+// .mob-menu-active .detached-screen
+
 
 @media (max-width: 1440px)
   .detached-screen:before,
