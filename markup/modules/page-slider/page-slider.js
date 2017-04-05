@@ -10,7 +10,7 @@ let laserVideo = document.querySelector('.laser-videobg');
 let $sliderWrapper = $('#c-slider-wrapper');
 let anchorsArray = getAnchorsArray();
 
-initSlider();
+toggleAutoscrollByMediaQuery();
 $window.on('orderIsOpen', sliderScrollDisable);
 $window.on('orderIsClose', sliderScrollEnable);
 
@@ -89,6 +89,46 @@ function runBackgroundVideo(index, nextIndex) {
 }
 
 function scrollToSlide(e, _slideNumber) {
-    console.log(_slideNumber);
     $.fn.fullpage.moveTo(_slideNumber);
 }
+
+function toggleAutoscrollByMediaQuery() {
+    var _matchMediaObject = window.matchMedia('(max-width: 1024px)');
+
+    autoscrollToggle(_matchMediaObject.matches);
+
+    // Add listener.
+    _matchMediaObject.addListener(function () {
+        autoscrollToggle(_matchMediaObject.matches);
+    });
+}
+
+
+function autoscrollToggle(_mediaMatch) {
+    if (_mediaMatch) {
+        let _fpExist = $.fn.fullpage.destroy && $.fn.fullpage.destroy('all');
+        console.log(_fpExist);
+    } else {
+        initSlider();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
