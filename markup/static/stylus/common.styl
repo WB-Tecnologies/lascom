@@ -10,7 +10,10 @@ $bodyBg = #ffffff
 
 html
 body
-  height 100%
+  @media only screen and (max-width: $palmtopWidth)
+      height 110%
+      overflow-y: auto
+      -webkit-overflow-scrolling: touch;
 
 body
   background: $bodyBg

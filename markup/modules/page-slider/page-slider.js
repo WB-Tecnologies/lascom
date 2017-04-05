@@ -41,12 +41,13 @@ function getAnchorsArray() {
     return anchors;
 }
 
+
 function sliderScrollEnable() {
-    $.fn.fullpage.setAllowScrolling(true);
+    let _slideScrollEnabled = $.fn.fullpage.setAllowScrolling && $.fn.fullpage.setAllowScrolling(true);
 }
 
 function sliderScrollDisable() {
-    $.fn.fullpage.setAllowScrolling(false);
+    let slideScrollDisabled = $.fn.fullpage.setAllowScrolling && $.fn.fullpage.setAllowScrolling(false);
 }
 
 function backgroundVideoStep() {

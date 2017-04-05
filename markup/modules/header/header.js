@@ -3,6 +3,7 @@ import $ from 'jquery';
 const $window = $(window);
 const $html = $('html');
 const $body = $('body');
+const $htmlbody = $('html, body');
 const $menuBtn = $('.mobile-close-btn__menu, .header-fixed_menu-btn, .l-section_overlay, .mobile-menu .header-nav-list_link, .mobile-menu .header-fixed_btn, .ulsp-header_btn');
 const $orderBtn = $('.header-nav-list_link__order, .greeting-content_order-btn');
 const $orderModal = $('.modal-screen__order');
@@ -29,7 +30,7 @@ function toggleMenu() {
 
 function openOrder(e) {
     e.preventDefault();
-    $body.addClass('no-scroll');
+    $htmlbody.addClass('no-scroll');
     $orderModal.addClass('modal-screen__active');
     $window.trigger('orderIsOpen');
 }
@@ -37,7 +38,7 @@ function openOrder(e) {
 function closeOrder(e) {
     let targetClassList = e.target.classList;
     if (targetClassList.contains('l-restrictor') || targetClassList.contains('modal-screen__active')) {
-        $body.removeClass('no-scroll');
+        $htmlbody.removeClass('no-scroll');
         $orderModal.removeClass('modal-screen__active');
         $window.trigger('orderIsClose');
     }
