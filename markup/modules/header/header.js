@@ -10,6 +10,7 @@ const $orderModal = $('.modal-screen__order');
 const $anchorsNav = $('.anchors-nav');
 const $navLinks = $('.anchors-nav-list_link');
 
+$('#c-slider-wrapper').on('click', hideMenuByArea);
 $menuBtn.on('click', toggleMenu);
 $orderBtn.on('click', openOrder);
 $orderModal.on('click', closeOrder);
@@ -17,6 +18,10 @@ $window.on('scrollTop', headerSubsectionShow);
 $window.on('scrollBottom', headerSubsectionHide);
 $window.on('slideChanged', setActiveNav);
 
+
+function hideMenuByArea() {
+    $html.removeClass('mob-menu-active');
+}
 
 function setActiveNav(e, slideNumber) {
     $navLinks.removeClass('anchors-nav-list_link__active');
