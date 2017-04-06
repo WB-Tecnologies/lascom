@@ -27,8 +27,9 @@ $headerLinkColor = #666666
   margin 0 auto
   padding: 0 20px
   position fixed
+  transition: transform 300ms ease-out, opacity 200ms
+  will-change: transform
   top 0
-  transition: opacity 200ms
   left 0
   width: 100%
   z-index: 11
@@ -249,6 +250,8 @@ $headerLinkColor = #666666
     .mobile-close-btn__menu {display: block;}
 }
 
+.mob-menu-active .header-fixed
+   transform: translateX(-320px);
 
 
 
