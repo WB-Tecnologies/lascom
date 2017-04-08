@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+
+    <head>
+        {{> head-gds-en/head-gds-en head-gds-en.defaults}}
+    </head>
+
+    <body class="page">
+        %=symbols=%
+        {{> mlc-header-en/mlc-header-en}}
+        {{> mlc-slider-en/mlc-slider-en}}
+        <div class="l-section_overlay">
+            <div class="mobile-close-btn">
+                <img src="static/img/general/icon-mob-close.svg" alt="close">
+            </div>
+        </div>
+
+        <script src="%=static=%js/separate-js/svg4everybody.min.js"></script>
+
+
+        <!-- Main scripts. You can replace it, but I recommend you to leave it here     -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+
+        <script src="%=static=%js/main%=hash=%%=min=%.js"></script>
+        <script>
+            $ = _jQuery;
+            (function() {
+              $.wbtRotator.l10n = {
+                EN: {
+                  heading: "Work principles",
+                  categories: {
+                    nasal: "",
+                    jaw: ""
+                  },
+                  masks: {
+                    laserCover: {
+                      title: "Laser cover",
+                      description: "Laser cover description."
+                    },
+                    machineCover: {
+                      title: "Machine cover",
+                      description: "Machine cover description."
+                    },
+                    opticalSystem: {
+                      title: "Optical system",
+                      description: "Optical system description"
+                    },
+                    machinePosition: {
+                      title: "Machine position",
+                      description: "Machine position description."
+                    }
+                  }
+                },
+
+                RU: {
+                  heading: "Принципы работы",
+                  categories: {
+                    nasal: "",
+                    jaw: ""
+                  },
+                  masks: {
+                    laserCover: {
+                      title: "Кожух лазера",
+                      description: "Описание кожуха лазера."
+                    },
+                    machineCover: {
+                      title: "Кожух станка",
+                      description: "Описание кожуха станка"
+                    },
+                    opticalSystem: {
+                      title: "Оптическая система",
+                      description: "Описание оптической системы."
+                    },
+                    machinePosition: {
+                      title: "Позиционирование",
+                      description: "Описание позиционирования."
+                    }
+                  }
+                }
+              };
+            }).call(this);
+        </script>
+        <script>
+            var $machine = $('#mlc-layout');
+            if ($machine.length) {
+                rotatorInit();
+            }
+            function rotatorInit() {
+
+                $machine.wbtRotator({
+                    language: 'en',
+                    src: 'static/img/plugins/mlc/mlc-machine-cover.\{\{01\}\}.jpg',
+                    sort: false,
+                    circular: true,
+                    autoLoad: true,
+                    legendDescriptions: true,
+                    theme: {
+                        text: '#999',
+                        hover: '#bbb',
+                        active: '#fff',
+                        background: '#161616'
+                    },
+                    masks: [{
+                        id: 'laserCover',
+                        color: '#f44',
+                        src: 'static/img/plugins/mlc/mlc-machine-laser-cover.\{\{01\}\}.svg'
+                    },
+                    {
+                        id: 'machineCover',
+                        color: '#f44',
+                        src: 'static/img/plugins/mlc/mlc-machine-cover.\{\{01\}\}.svg'
+                    },
+                    {
+                        id: 'opticalSystem',
+                        color: '#f44',
+                        src: 'static/img/plugins/mlc/mlc-machine-optical-system.\{\{01\}\}.svg'
+                    },
+                    {
+                        id: 'machinePosition',
+                        color: '#f44',
+                        src: 'static/img/plugins/mlc/mlc-machine-position-system.\{\{01\}\}.svg'
+                    }]
+                });
+            }
+        </script>
+    </body>
+
+</html>
