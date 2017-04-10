@@ -21,7 +21,7 @@ function initSlider() {
         css3: true,
         easing: 'easeInOutCubic',
         easingcss3: 'ease',
-        scrollingSpeed: 1500,
+        scrollingSpeed: 1000,
         fadingEffect: false,
         fitToSection: false,
         scrollBar: false,
