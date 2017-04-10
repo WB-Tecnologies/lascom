@@ -10,3 +10,4 @@ import 'modules/laser-full-video/laser-full-video';
 import 'modules/contacts-en/contacts-en';
 import 'modules/contacts/contacts';
 import 'modules/scroll-helper/scroll-helper';
+import 'modules/laser-description/laser-description';
