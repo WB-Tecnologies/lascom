@@ -1,23 +1,25 @@
-.detached-screen__gdsulsp {
+.detached-screen__gdsulsp
   background: #d6d6d6;
   padding-bottom: 0 !important;
-}
 
-.detached-screen__gdsulsp .content-wrapper {
+.detached-screen__gdsulsp .content-wrapper
   position: absolute;
   left: 0;
   right: 0;
-}
 
-.gdsulsp_link {
+  @media only screen and (max-width: $palmtopWidth)
+    padding-bottom: 40px;
+    position: initial;
+    left: initial;
+    right: initial;
+
+.gdsulsp_link
   color: #000;
   text-decoration: underline;
-  &:hover {
+  &:hover
     text-decoration: none;
-  }
-}
 
-.gdsulsp_link__current {
+
+.gdsulsp_link__current
     cursor: default;
-    text-decoration: none;
-}
+    text-decoration: none

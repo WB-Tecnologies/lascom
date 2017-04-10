@@ -24,4 +24,6 @@ m-blocks-justify()
     text-justify newspaper
 
 
-// You can add your own mixins here:
+only-screen($breakpoint) {
+    @media only screen and (max-width: $breakpoint) { @content; }
+}
