@@ -26,17 +26,17 @@ $window.on('slideChanged', setActiveNav);
 initMobNavDrag();
 
 function openNav() {
-    console.log('open');
     $html.addClass('mob-menu-active');
     $mobileNav.css('transform', 'translateX(0)');
     $content.css('transform', 'translateX(-320px)');
+    touchDelta = 0;
 }
 
 function closeNav() {
-    console.log('close');
     $html.removeClass('mob-menu-active');
     $mobileNav.css('transform', 'translateX(320px)');
     $content.css('transform', 'translateX(0)');
+    touchDelta = 0;
 }
 
 function initMobNavDrag() {
@@ -53,7 +53,7 @@ function disableDrag() {
     $mobileNav.off('touchmove', handleDrag);
     if (touchDelta > 150) {
         closeNav();
-    } else {
+    } else if (touchDelta) {
         openNav();
     }
 }
@@ -68,9 +68,12 @@ function handleDrag(e) {
 }
 
 
-function hideMenuByArea() {
-    console.warn('TODO: refactor close nav by area');
-    // $html.removeClass('mob-menu-active');
+function hideMenuByArea(e) {
+    let eClassList = e.target.classList;
+    let notNavBtn = !eClassList.contains('header-fixed_menu-btn') && !eClassList.contains('header-fixed_menu-btn_row');
+    if (notNavBtn) {
+        closeNav();
+    }
 }
 
 function setActiveNav(e, slideNumber) {
@@ -78,12 +81,12 @@ function setActiveNav(e, slideNumber) {
     $(`.anchors-nav-list_link[data-slide=${slideNumber}]`).addClass('anchors-nav-list_link__active');
 }
 
-
 function openOrder(e) {
     e.preventDefault();
     $htmlbody.addClass('no-scroll');
     $orderModal.addClass('modal-screen__active');
     $window.trigger('orderIsOpen');
+    closeNav();
 }
 
 function closeOrder(e) {
