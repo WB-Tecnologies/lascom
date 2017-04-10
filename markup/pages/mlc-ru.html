@@ -1,0 +1,28 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+
+    <head>
+        {{> head-gds-en/head-gds-en head-gds-en.defaults}}
+    </head>
+
+    <body class="page">
+        %=symbols=%
+        {{> mlc-header/mlc-header}}
+        {{> mlc-slider/mlc-slider}}
+        <div class="l-section_overlay">
+            <div class="mobile-close-btn">
+                <img src="static/img/general/icon-mob-close.svg" alt="close">
+            </div>
+        </div>
+
+        <script src="%=static=%js/separate-js/svg4everybody.min.js"></script>
+
+
+        <!-- Main scripts. You can replace it, but I recommend you to leave it here     -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+
+        <script src="%=static=%js/main%=hash=%%=min=%.js"></script>
+        {{> mlc-machine-init/mlc-machine-init RU=true}}
+    </body>
+
+</html>
