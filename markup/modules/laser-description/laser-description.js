@@ -1,8 +1,28 @@
 import '@zeitiger/elevatezoom';
 
+const $window = $('window');
 let $zoomCover = $('.c-zoom-cover');
+let $zoomContainer;
 
 toggleZoomCoverByMediaQuery();
+
+function scrollOverZoomEnable() {
+    window.addEventListener('mousewheel', scrollOverZoom);
+}
+
+function scrollOverZoomDisable() {
+    window.removeEventListener('mousewheel', scrollOverZoom);
+}
+
+function scrollOverZoom(e) {
+    if (e.wheelDelta > 0) {
+        $.fn.fullpage.moveSectionUp();
+        scrollOverZoomDisable();
+    } else {
+        $.fn.fullpage.moveSectionDown();
+        scrollOverZoomDisable();
+    }
+}
 
 function zoomCoverInit() {
     $zoomCover.elevateZoom({
@@ -10,6 +30,13 @@ function zoomCoverInit() {
         lensShape: 'round',
         lensSize: 300
     });
+
+    setTimeout(() => {
+        $zoomContainer = $('.zoomContainer');
+        $zoomContainer.on('mouseenter', scrollOverZoomEnable);
+        $zoomContainer.on('mouseleave', scrollOverZoomDisable);
+    }, 500);
+
 }
 
 function zoomCoverDestroy() {
@@ -35,3 +62,4 @@ function zoomCoverToggle(_mediaMatch) {
         zoomCoverInit();
     }
 }
+
