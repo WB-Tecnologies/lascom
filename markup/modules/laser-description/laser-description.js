@@ -45,13 +45,13 @@ function zoomCoverDestroy() {
 }
 
 function toggleZoomCoverByMediaQuery() {
-    var _matchMediaObject = window.matchMedia('(max-width: 1024px)');
+    var matchMediaObject = window.matchMedia('(max-width: 1024px)');
 
-    zoomCoverToggle(_matchMediaObject.matches);
+    zoomCoverToggle(matchMediaObject.matches);
 
     // Add listener.
-    _matchMediaObject.addListener(function () {
-        zoomCoverToggle(_matchMediaObject.matches);
+    matchMediaObject.addListener(function () {
+        zoomCoverToggle(matchMediaObject.matches);
     });
 }
 
