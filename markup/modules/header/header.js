@@ -11,7 +11,9 @@ const $menuCloseBtn = $('.mobile-close-btn__menu');
 const $orderBtn = $('.header-nav-list_link__order, .greeting-content_order-btn');
 const $orderModal = $('.modal-screen__order');
 const $anchorsNav = $('.anchors-nav');
-const $navLinks = $('.anchors-nav-list_link');
+const $navLinksDesktop = $('.anchors-nav__desktop .anchors-nav-list_link');
+const $navLinksMobile = $('.mobile-menu .anchors-nav-list_link');
+const headerHeight = $('.header-fixed').height();
 let touchStart = 0;
 let touchDelta = 0;
 
@@ -20,6 +22,7 @@ $menuOpenBtn.on('click', openNav);
 $menuCloseBtn.on('click', closeNav);
 $orderBtn.on('click', openOrder);
 $orderModal.on('click', closeOrder);
+$navLinksMobile.on('click', scrollToScreenMob);
 $window.on('scrollTop', headerSubsectionShow);
 $window.on('scrollBottom', headerSubsectionHide);
 $window.on('slideChanged', setActiveNav);
@@ -77,7 +80,7 @@ function hideMenuByArea(e) {
 }
 
 function setActiveNav(e, slideNumber) {
-    $navLinks.removeClass('anchors-nav-list_link__active');
+    $navLinksDesktop.removeClass('anchors-nav-list_link__active');
     $(`.anchors-nav-list_link[data-slide=${slideNumber}]`).addClass('anchors-nav-list_link__active');
 }
 
@@ -106,7 +109,15 @@ function headerSubsectionShow() {
     $anchorsNav.removeClass('anchors-nav_hidden');
 }
 
+function scrollToScreenMob(e) {
+    $navLinksMobile.removeClass('anchors-nav-list_link__active');
+    $(this).addClass('anchors-nav-list_link__active');
+    let $slideToScroll = $('.' + $(e.target).data('slide'));
+    let slideToScrollOffset = $slideToScroll.offset().top - headerHeight;
 
+    $htmlbody.animate({scrollTop: slideToScrollOffset}, 400);
+    closeNav();
+}
 
 
 

@@ -9,6 +9,8 @@
   &:last-child
     padding-bottom: 0
 
+  @media only screen and (max-width: $palmtopWidth)
+    min-height: initial
 
 .detached-screen__machine-header-open
   padding-top: 100px !important
@@ -107,9 +109,6 @@
   .detached-screen
     position: relative !important
     opacity: 1
-
-  .content-wrapper
-    padding-top: 40px !important
 
 @media (max-width: $smallPhoneWidth)
   .content-title
