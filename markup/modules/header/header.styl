@@ -52,7 +52,10 @@ $headerLinkColor = #666666
 
 .header-nav-list__main
   position: relative
-  left: 52px
+  left: 27px
+
+.header-nav-list__main__ru
+  left: 47px
 
 .header-fixed_btn
   background $btnRed
@@ -86,6 +89,7 @@ $headerLinkColor = #666666
   //   margin-right 40px
   &:last-child
     margin-right 0
+
 
 .header-nav-list_link
   color: $headerLinkColor
@@ -237,6 +241,38 @@ $headerLinkColor = #666666
     width: 100%;
     .anchors-nav-list_link
       font-size: 14px;
+
+
+.header-nav-list_equipment,
+.header-nav-list_equipment-list
+    display: inline-block
+    vertical-align: bottom
+
+.header-nav-list_equipment
+  cursor: pointer
+  color: $headerLinkColor
+  font-size 14px
+  font-family $AvenirRegular
+  text-decoration none
+  text-transform uppercase
+
+.header-nav-list_equipment__active
+    font-family $AvenirDemi
+    &:after
+        content: ':'
+
+.header-nav-list_equipment-list
+  padding-left: 0
+  height: 0;
+  overflow: hidden;
+  transition: width 300ms ease;
+  width: 0;
+  white-space: nowrap;
+
+.header-nav-list_equipment-list__active
+  height: initial
+  padding-left: 8px
+  width: 154px;
 
 
 @media only screen and (max-width: $palmtopWidth)
