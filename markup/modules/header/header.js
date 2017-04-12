@@ -5,6 +5,7 @@ const $html = $('html');
 const $body = $('body');
 const $htmlbody = $('html, body');
 const $mobileNav = $('.mobile-menu');
+const mobileNavHalfWidth = $mobileNav.width() / 2;
 const $content = $('.header-fixed, .detached-screen');
 const $menuOpenBtn = $('.mobile-close-btn__menu, .header-fixed_menu-btn, .l-section_overlay, .mobile-menu .header-nav-list_link, .mobile-menu .header-fixed_btn, .ulsp-header_btn');
 const $menuCloseBtn = $('.mobile-close-btn__menu');
@@ -50,11 +51,13 @@ function initMobNavDrag() {
 function enableDrag(e) {
     touchStart = e.originalEvent.touches[0].pageX;
     $mobileNav.on('touchmove', handleDrag);
+
 }
 
 function disableDrag() {
     $mobileNav.off('touchmove', handleDrag);
-    if (touchDelta > 150) {
+    $mobileNav.removeClass('mobile-menu__static');
+    if (touchDelta > mobileNavHalfWidth) {
         closeNav();
     } else if (touchDelta) {
         openNav();
@@ -65,6 +68,9 @@ function handleDrag(e) {
     touchDelta = e.originalEvent.touches[0].pageX - touchStart;
     if (touchDelta < 0 ) {
         touchDelta = 0;
+    }
+    if (touchDelta) {
+        $mobileNav.addClass('mobile-menu__static');
     }
     $mobileNav.css('transform', 'translateX(' + touchDelta + 'px)');
     $content.css('transform', 'translateX(' + (-320 + touchDelta) + 'px)');
