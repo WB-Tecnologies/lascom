@@ -15,6 +15,8 @@ const $anchorsNav = $('.anchors-nav');
 const $navLinksDesktop = $('.anchors-nav__desktop .anchors-nav-list_link');
 const $navLinksMobile = $('.mobile-menu .anchors-nav-list_link');
 const headerHeight = $('.header-fixed').height();
+const $equipmentBtn = $('.header-nav-list_equipment');
+const $equipmentList = $('.header-nav-list_equipment-list');
 let touchStart = 0;
 let touchDelta = 0;
 
@@ -27,7 +29,13 @@ $navLinksMobile.on('click', scrollToScreenMob);
 $window.on('scrollTop', headerSubsectionShow);
 $window.on('scrollBottom', headerSubsectionHide);
 $window.on('slideChanged', setActiveNav);
+$equipmentBtn.on('click', toggleEquipment);
 initMobNavDrag();
+
+function toggleEquipment() {
+    $equipmentBtn.toggleClass('header-nav-list_equipment__active');
+    $equipmentList.toggleClass('header-nav-list_equipment-list__active');
+}
 
 function openNav() {
     $html.addClass('mob-menu-active');
