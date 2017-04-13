@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'static/js/plugins/no-scroll-helper.js';
 
 const $window = $(window);
 const $html = $('html');
@@ -17,6 +18,7 @@ const $navLinksMobile = $('.mobile-menu .anchors-nav-list_link');
 const headerHeight = $('.header-fixed').height();
 const $equipmentBtn = $('.header-nav-list_equipment');
 const $equipmentList = $('.header-nav-list_equipment-list');
+let equipmentIsOpen = JSON.parse(localStorage.equipmentIsOpen);
 let touchStart = 0;
 let touchDelta = 0;
 
@@ -31,8 +33,21 @@ $window.on('scrollBottom', headerSubsectionHide);
 $window.on('slideChanged', setActiveNav);
 $equipmentBtn.on('click', toggleEquipment);
 initMobNavDrag();
+keepEquipmentOpen();
+
+function keepEquipmentOpen() {
+    if (equipmentIsOpen) {
+        $equipmentBtn.addClass('header-nav-list_equipment__active');
+        $equipmentList.addClass('header-nav-list_equipment-list__active header-nav-list_equipment-list__static');
+        setTimeout(() => {
+            $equipmentList.removeClass('header-nav-list_equipment-list__static');
+        }, 500);
+    }
+}
 
 function toggleEquipment() {
+    equipmentIsOpen = !equipmentIsOpen;
+    localStorage.equipmentIsOpen = equipmentIsOpen;
     $equipmentBtn.toggleClass('header-nav-list_equipment__active');
     $equipmentList.toggleClass('header-nav-list_equipment-list__active');
 }
@@ -101,6 +116,7 @@ function setActiveNav(e, slideNumber) {
 function openOrder(e) {
     e.preventDefault();
     $htmlbody.addClass('no-scroll');
+    $.fn.disableScroll();
     $orderModal.addClass('modal-screen__active');
     $window.trigger('orderIsOpen');
     closeNav();
@@ -110,6 +126,7 @@ function closeOrder(e) {
     let targetClassList = e.target.classList;
     if (targetClassList.contains('l-restrictor') || targetClassList.contains('modal-screen__active')) {
         $htmlbody.removeClass('no-scroll');
+        $.fn.enableScroll();
         $orderModal.removeClass('modal-screen__active');
         $window.trigger('orderIsClose');
     }

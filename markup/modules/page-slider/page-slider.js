@@ -16,8 +16,8 @@ $window.on('orderIsClose', sliderScrollEnable);
 
 function initSlider() {
     $sliderWrapper.fullpage({
-        autoScrolling: true,
-        scrollOverflow: true,
+        autoScrolling: false,
+        scrollOverflow: false,
         css3: true,
         easing: 'easeInOutCubic',
         easingcss3: 'ease',
@@ -33,7 +33,7 @@ function initSlider() {
 }
 
 function getAnchorsArray() {
-    let anchors = [''];
+    let anchors = [];
     $navLinks.each((index, item) => {
         let anchorHref = $(item).attr('href').slice(1);
         anchors.push(anchorHref);
@@ -108,7 +108,6 @@ function toggleAutoscrollByMediaQuery() {
 function autoscrollToggle(_mediaMatch) {
     if (_mediaMatch) {
         let _fpExist = $.fn.fullpage.destroy && $.fn.fullpage.destroy('all');
-        console.log(_fpExist);
     } else {
         initSlider();
     }
