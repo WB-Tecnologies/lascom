@@ -9,7 +9,6 @@ const $navLinks = $('.anchors-nav__desktop .anchors-nav-list_link');
 let laserVideo = document.querySelector('.laser-videobg');
 let $sliderWrapper = $('#c-slider-wrapper');
 let anchorsArray = getAnchorsArray();
-console.log(anchorsArray);
 
 toggleAutoscrollByMediaQuery();
 $window.on('orderIsOpen', sliderScrollDisable);
@@ -109,7 +108,6 @@ function toggleAutoscrollByMediaQuery() {
 function autoscrollToggle(_mediaMatch) {
     if (_mediaMatch) {
         let _fpExist = $.fn.fullpage.destroy && $.fn.fullpage.destroy('all');
-        console.log(_fpExist);
     } else {
         initSlider();
     }

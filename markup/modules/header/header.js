@@ -18,6 +18,7 @@ const $navLinksMobile = $('.mobile-menu .anchors-nav-list_link');
 const headerHeight = $('.header-fixed').height();
 const $equipmentBtn = $('.header-nav-list_equipment');
 const $equipmentList = $('.header-nav-list_equipment-list');
+let equipmentIsOpen = JSON.parse(localStorage.equipmentIsOpen);
 let touchStart = 0;
 let touchDelta = 0;
 
@@ -32,8 +33,21 @@ $window.on('scrollBottom', headerSubsectionHide);
 $window.on('slideChanged', setActiveNav);
 $equipmentBtn.on('click', toggleEquipment);
 initMobNavDrag();
+keepEquipmentOpen();
+
+function keepEquipmentOpen() {
+    if (equipmentIsOpen) {
+        $equipmentBtn.addClass('header-nav-list_equipment__active');
+        $equipmentList.addClass('header-nav-list_equipment-list__active header-nav-list_equipment-list__static');
+        setTimeout(() => {
+            $equipmentList.removeClass('header-nav-list_equipment-list__static');
+        }, 500);
+    }
+}
 
 function toggleEquipment() {
+    equipmentIsOpen = !equipmentIsOpen;
+    localStorage.equipmentIsOpen = equipmentIsOpen;
     $equipmentBtn.toggleClass('header-nav-list_equipment__active');
     $equipmentList.toggleClass('header-nav-list_equipment-list__active');
 }
