@@ -51,14 +51,13 @@ function sliderScrollDisable() {
 }
 
 function backgroundVideoStep() {
-    // if (!laserVideo) {
-    //     return;
-    // }
+    if (!laserVideo) {
+        return;
+    }
 
-    laserVideo.play();
-    // setTimeout(() => {
-    //     laserVideo.pause();
-    // }, 1000);
+    setTimeout(() => {
+        laserVideo.play();
+    }, 1000);
 }
 
 function onSlideLeave(index, nextIndex) {
