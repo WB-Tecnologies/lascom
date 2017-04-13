@@ -9,6 +9,7 @@ const $navLinks = $('.anchors-nav__desktop .anchors-nav-list_link');
 let laserVideo = document.querySelector('.laser-videobg');
 let $sliderWrapper = $('#c-slider-wrapper');
 let anchorsArray = getAnchorsArray();
+console.log(anchorsArray);
 
 toggleAutoscrollByMediaQuery();
 $window.on('orderIsOpen', sliderScrollDisable);
@@ -16,8 +17,8 @@ $window.on('orderIsClose', sliderScrollEnable);
 
 function initSlider() {
     $sliderWrapper.fullpage({
-        autoScrolling: true,
-        scrollOverflow: true,
+        autoScrolling: false,
+        scrollOverflow: false,
         css3: true,
         easing: 'easeInOutCubic',
         easingcss3: 'ease',
@@ -33,7 +34,7 @@ function initSlider() {
 }
 
 function getAnchorsArray() {
-    let anchors = [''];
+    let anchors = [];
     $navLinks.each((index, item) => {
         let anchorHref = $(item).attr('href').slice(1);
         anchors.push(anchorHref);
