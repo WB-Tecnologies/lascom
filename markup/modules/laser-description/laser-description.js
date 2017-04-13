@@ -12,11 +12,6 @@ function zoomCoverInit() {
         lensShape: 'round',
         lensSize: 250
     });
-
-    setTimeout(() => {
-        $zoomContainer = $('.zoomContainer');
-        $zoomContainer.insertAfter($zoomCover);
-    }, 1000);
 }
 
 function zoomCoverDestroy() {
