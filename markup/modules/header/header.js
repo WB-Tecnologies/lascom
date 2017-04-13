@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'static/js/plugins/no-scroll-helper.js';
 
 const $window = $(window);
 const $html = $('html');
@@ -101,6 +102,7 @@ function setActiveNav(e, slideNumber) {
 function openOrder(e) {
     e.preventDefault();
     $htmlbody.addClass('no-scroll');
+    $.fn.disableScroll();
     $orderModal.addClass('modal-screen__active');
     $window.trigger('orderIsOpen');
     closeNav();
@@ -110,6 +112,7 @@ function closeOrder(e) {
     let targetClassList = e.target.classList;
     if (targetClassList.contains('l-restrictor') || targetClassList.contains('modal-screen__active')) {
         $htmlbody.removeClass('no-scroll');
+        $.fn.enableScroll();
         $orderModal.removeClass('modal-screen__active');
         $window.trigger('orderIsClose');
     }
