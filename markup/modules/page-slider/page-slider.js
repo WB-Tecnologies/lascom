@@ -51,18 +51,18 @@ function sliderScrollDisable() {
 }
 
 function backgroundVideoStep() {
-    if (!laserVideo) {
-        return;
-    }
+    // if (!laserVideo) {
+    //     return;
+    // }
 
     laserVideo.play();
-    setTimeout(() => {
-        laserVideo.pause();
-    }, 1000);
+    // setTimeout(() => {
+    //     laserVideo.pause();
+    // }, 1000);
 }
 
 function onSlideLeave(index, nextIndex) {
-    runBackgroundVideo(index, nextIndex);
+    // runBackgroundVideo(index, nextIndex);
     ofsetMachineWithHeaderSubsection();
     $window.trigger('slideChanged', nextIndex);
 
@@ -79,14 +79,14 @@ function ofsetMachineWithHeaderSubsection() {
 }
 
 function runBackgroundVideo(index, nextIndex) {
-    if (!laserVideo) {
-        return;
-    }
-    if (nextIndex === VIDEO_SLIDE_INDEX) {
-        laserVideo.play();
-    } else {
-        laserVideo.pause();
-    }
+    // if (!laserVideo) {
+    //     return;
+    // }
+    // if (nextIndex === VIDEO_SLIDE_INDEX) {
+    //     laserVideo.play();
+    // } else {
+    //     laserVideo.pause();
+    // }
 }
 
 function scrollToSlide(e, _slideNumber) {

@@ -12,12 +12,16 @@ head: {
     ulsp: {
         title: 'Lascom | ULSP',
         description: 'Coating evaporation laser table (ULSP) removes electric conductive coating from the surface of low-emissivity glass with a speed of 360 mm²/sec. Software supplied together with the table, controls temperature values in each spot of glass of any shape.',
-        useSocialMetaTags: true
+        useSocialMetaTags: true,
+        video: 'http://lascom.pro/static/img/general/laser-video-loop.mp4',
+        videoBig: 'http://lascom.pro/static/img/general/laser-video-full.mp4'
     },
     ulsp_RU: {
         title: 'Lascom | ULSP',
         description: 'Установка лазерного снятия покрытия (УЛСП) удаляет участки токопроводящего покрытия с низкоэмиссионного стекла со скоростью 2 кв.м. в минуту.',
-        useSocialMetaTags: true
+        useSocialMetaTags: true,
+        video: 'http://lascom.pro/static/img/general/laser-video-loop.mp4',
+        videoBig: 'http://lascom.pro/static/img/general/laser-video-full.mp4'
     },
     gds: {
         title: 'Lascom | GDS',
