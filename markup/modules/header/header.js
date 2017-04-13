@@ -18,9 +18,13 @@ const $navLinksMobile = $('.mobile-menu .anchors-nav-list_link');
 const headerHeight = $('.header-fixed').height();
 const $equipmentBtn = $('.header-nav-list_equipment');
 const $equipmentList = $('.header-nav-list_equipment-list');
-let equipmentIsOpen = JSON.parse(localStorage.equipmentIsOpen);
+let equipmentIsOpen;
 let touchStart = 0;
 let touchDelta = 0;
+
+if (localStorage.equipmentIsOpen) {
+    equipmentIsOpen = JSON.parse(localStorage.equipmentIsOpen);
+}
 
 $('.header-fixed').on('click', hideMenuByArea);
 $menuOpenBtn.on('click', openNav);
