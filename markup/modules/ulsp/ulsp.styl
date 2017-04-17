@@ -44,12 +44,12 @@
     .content-title__machine
       left: 64px
 
-@media (max-width $phoneWidth)
+
+
+
+@media only screen and  (max-width $phoneWidth)
   .detached-screen__machine
     padding-bottom: 0 !important
-
-  .wbt-rotator-titles_item__active .wbt-rotator-titles_text
-    color: #fff !important;
 
   .wbt-rotator-legend
     position: static
@@ -76,9 +76,6 @@
 
   .wbt-rotator-legend
     background: rgb(51, 51, 51)
-
-  .wbt-rotator-titles_item__active:before
-      background: url("../img/plugins/legend-arrow-right__active.svg") no-repeat center !important;
 
   .wbt-rotator-titles_item:hover
     background: $colorRed
@@ -110,8 +107,11 @@
     &:before
       background: url("../img/general/legend-arrow-left__active.svg") no-repeat center !important;
 
+  .wbt-rotator-titles_item__active:before
+      background: url("../img/plugins/legend-arrow-right__active.svg") no-repeat center !important;
 
-
+  .wbt-rotator-titles_item__active .wbt-rotator-titles_text
+    color: #fff !important;
 
 
 
